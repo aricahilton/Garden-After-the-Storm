@@ -8,13 +8,13 @@ const API = `${BACKEND_URL}/api`;
 // Image URLs from the live site
 const IMAGES = {
   hero: "https://tune-stage.preview.emergentagent.com/api/uploads/images/f1c2950b-a4c0-46cd-9180-0511a19ff3ed.jpg",
-  album: "https://tune-stage.preview.emergentagent.com/api/uploads/images/41b4e71c-518c-4983-a9da-fdbf02e11f57.jpg",
+  album: "https://customer-assets.emergentagent.com/job_helper-upload-issue/artifacts/unc8lw89_Darko%20%26%20Sophia%20-%20Cover%20Art%20%28PNG3%29.jpg",
   erich: "https://tune-stage.preview.emergentagent.com/api/uploads/images/44e40de9-3e17-4fbb-8069-3cc18efe3541.png",
   arica: "https://tune-stage.preview.emergentagent.com/api/uploads/images/0f70b6fd-d42c-4189-8158-3e89c8f06d91.jpg"
 };
 
 // Video URL for hero background - blue sky with moving clouds
-const HERO_VIDEO = "https://static.videezy.com/system/resources/previews/000/044/030/original/Clouds_4K_Motion_Background_Loop.mp4";
+const HERO_VIDEO = `${BACKEND_URL}/api/uploads/sky_video.mp4`;
 
 // Track data
 const TRACKS = [
@@ -365,21 +365,24 @@ function App() {
 
       {/* Hero Section */}
       <section className="hero" data-testid="hero-section">
-        <div className="hero-sky">
-          <div className="cloud cloud-1"></div>
-          <div className="cloud cloud-2"></div>
-          <div className="cloud cloud-3"></div>
-          <div className="cloud cloud-4"></div>
-          <div className="cloud cloud-5"></div>
-        </div>
+        <video 
+          className="hero-video" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          preload="auto"
+          poster={IMAGES.album}
+          data-testid="hero-video"
+          onCanPlay={(e) => e.target.play()}
+        >
+          <source src={HERO_VIDEO} type="video/mp4" />
+        </video>
         <div className="hero-overlay"></div>
         <div className="hero-content">
           <div className="hero-album-cover" data-testid="hero-album-cover">
-            <img src={IMAGES.album} alt="Garden After the Storm Album" />
+            <img src={IMAGES.album} alt="Garden After the Storm Album - Erich Fritz and Arica Hilton" />
           </div>
-          <h1>GARDEN AFTER THE STORM</h1>
-          <p className="hero-subtitle">by <span className="artist-name">Erich Fritz</span> and <span className="artist-name">Arica Hilton</span></p>
-          <p className="hero-description">10 tracks of poetry and music through a journey of transformation, love, passion and ultimately peace.</p>
           <button className="stream-btn" onClick={() => scrollToSection("music")} data-testid="stream-now-btn">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
             Stream Now
