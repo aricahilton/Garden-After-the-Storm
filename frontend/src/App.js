@@ -1,9 +1,132 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import "@/App.css";
 import axios from "axios";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
+
+// Checkout Success Component
+const CheckoutSuccess = ({ onBackToShop }) => {
+  const [status, setStatus] = useState("checking");
+  const [paymentInfo, setPaymentInfo] = useState(null);
+  const [attempts, setAttempts] = useState(0);
+  const maxAttempts = 5;
+
+  const checkPaymentStatus = useCallback(async (sessionId) => {
+    try {
+      const response = await axios.get(`${API}/checkout/status/${sessionId}`);
+      const data = response.data;
+      
+      if (data.payment_status === "paid") {
+        setStatus("success");
+        setPaymentInfo(data);
+      } else if (data.status === "expired") {
+        setStatus("expired");
+      } else if (attempts < maxAttempts) {
+        setAttempts(prev => prev + 1);
+        setTimeout(() => checkPaymentStatus(sessionId), 2000);
+      } else {
+        setStatus("pending");
+      }
+    } catch (error) {
+      console.error("Error checking payment status:", error);
+      setStatus("error");
+    }
+  }, [attempts]);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const sessionId = urlParams.get("session_id");
+    
+    if (sessionId) {
+      checkPaymentStatus(sessionId);
+    } else {
+      setStatus("error");
+    }
+  }, [checkPaymentStatus]);
+
+  return (
+    <div className="checkout-success-page" data-testid="checkout-success">
+      <div className="checkout-success-content">
+        {status === "checking" && (
+          <>
+            <div className="checkout-spinner"></div>
+            <h2>Processing your payment...</h2>
+            <p>Please wait while we confirm your purchase.</p>
+          </>
+        )}
+        
+        {status === "success" && (
+          <>
+            <div className="checkout-icon success">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h2>Thank You for Your Purchase!</h2>
+            <p>Your order has been confirmed and is being processed.</p>
+            {paymentInfo && (
+              <p className="payment-amount">
+                Amount: ${(paymentInfo.amount_total / 100).toFixed(2)} {paymentInfo.currency?.toUpperCase()}
+              </p>
+            )}
+            <p className="payment-note">You will receive a confirmation email shortly.</p>
+          </>
+        )}
+        
+        {status === "pending" && (
+          <>
+            <div className="checkout-icon pending">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+            </div>
+            <h2>Payment Processing</h2>
+            <p>Your payment is still being processed. Please check your email for confirmation.</p>
+          </>
+        )}
+        
+        {status === "expired" && (
+          <>
+            <div className="checkout-icon error">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <h2>Session Expired</h2>
+            <p>Your payment session has expired. Please try again.</p>
+          </>
+        )}
+        
+        {status === "error" && (
+          <>
+            <div className="checkout-icon error">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+            </div>
+            <h2>Something Went Wrong</h2>
+            <p>We couldn't verify your payment. Please contact support if you were charged.</p>
+          </>
+        )}
+        
+        <button className="back-to-shop-btn" onClick={onBackToShop} data-testid="back-to-shop">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          Back to Shop
+        </button>
+      </div>
+    </div>
+  );
+};
 
 // Image URLs from the live site
 const IMAGES = {
@@ -416,6 +539,29 @@ function App() {
   const [merchFilter, setMerchFilter] = useState("all");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [checkoutLoading, setCheckoutLoading] = useState(null);
+  const [showCheckoutSuccess, setShowCheckoutSuccess] = useState(false);
+
+  // Check if returning from Stripe checkout
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path === "/checkout/success" || window.location.search.includes("session_id")) {
+      setShowCheckoutSuccess(true);
+    }
+  }, []);
+
+  const handleBackToShop = () => {
+    // Clear URL parameters and go back to main page
+    window.history.replaceState({}, document.title, "/");
+    setShowCheckoutSuccess(false);
+    setTimeout(() => {
+      document.getElementById("merch")?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  };
+
+  // Show checkout success page if returning from Stripe
+  if (showCheckoutSuccess) {
+    return <CheckoutSuccess onBackToShop={handleBackToShop} />;
+  }
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
