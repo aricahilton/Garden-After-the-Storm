@@ -576,7 +576,7 @@ const MERCH_ITEMS = [
     category: "DIGITAL",
     title: "Digital Album - Full Download",
     description: "Download the complete Garden After the Storm album in high-quality WAV format. Includes all 6 tracks plus exclusive digital artwork.",
-    price: "$12.99",
+    price: "$19.99",
     image: IMAGES.album,
     isDigital: true
   },
@@ -586,7 +586,7 @@ const MERCH_ITEMS = [
     category: "DIGITAL",
     title: "Garden After the Storm - Single",
     description: "Download the title track 'Garden After the Storm' in high-quality WAV format.",
-    price: "$1.99",
+    price: "$3.99",
     image: IMAGES.album,
     isDigital: true,
     trackFile: "track_01_garden_after_the_storm.wav"
@@ -597,7 +597,7 @@ const MERCH_ITEMS = [
     category: "DIGITAL",
     title: "I Heard an Oak Tree - Single",
     description: "Download 'I Heard an Oak Tree' in high-quality WAV format.",
-    price: "$1.99",
+    price: "$3.99",
     image: IMAGES.album,
     isDigital: true,
     trackFile: "track_02_i_heard_an_oak_tree.wav"
