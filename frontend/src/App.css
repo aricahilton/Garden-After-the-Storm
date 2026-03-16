@@ -624,8 +624,8 @@ body {
 
 .artist-img-wrapper {
   width: 100%;
-  max-width: 400px;
-  height: 400px;
+  max-width: 450px;
+  height: 450px;
   overflow: hidden;
   margin-bottom: 1.5rem;
 }
