@@ -632,6 +632,12 @@ body {
   filter: grayscale(20%);
 }
 
+.artist-card img.erich-photo {
+  object-position: center 15%;
+  transform: scale(1.1);
+  transform-origin: center top;
+}
+
 .artist-card h3 {
   font-family: var(--font-heading);
   font-size: 1.5rem;

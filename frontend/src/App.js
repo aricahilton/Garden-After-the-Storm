@@ -470,7 +470,7 @@ function App() {
         
         <div className="artists-grid">
           <div className="artist-card" data-testid="artist-erich">
-            <img src={IMAGES.erich} alt="Erich Fritz" />
+            <img src={IMAGES.erich} alt="Erich Fritz" className="erich-photo" />
             <h3>Erich Fritz</h3>
             <p>Erich Fritz, known musically as @darko_vaughn, is a composer, poet, and multidisciplinary creator whose work blends atmospheric electronic music with lyrical storytelling. His sound transforms poetry into cinematic sonic landscapes—melding spoken word, ambient textures, and progressive electronic rhythms to create music that feels both intimate and expansive.</p>
             <p>Drawing inspiration from Renaissance thinkers such as Leonardo da Vinci, Fritz approaches creativity through an interdisciplinary lens, merging analytical precision with emotional depth. His work often explores themes of love, transformation, memory, and renewal, turning written verse into immersive musical experiences.</p>
