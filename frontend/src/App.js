@@ -563,7 +563,6 @@ function App() {
 
       {/* Footer */}
       <footer className="footer" data-testid="footer">
-        <a href="https://app.emergent.sh" target="_blank" rel="noopener noreferrer">Made with Emergent</a>
       </footer>
 
       {/* Chat Widget */}
