@@ -9,8 +9,8 @@ const API = `${BACKEND_URL}/api`;
 const IMAGES = {
   hero: "https://tune-stage.preview.emergentagent.com/api/uploads/images/f1c2950b-a4c0-46cd-9180-0511a19ff3ed.jpg",
   album: "https://customer-assets.emergentagent.com/job_helper-upload-issue/artifacts/unc8lw89_Darko%20%26%20Sophia%20-%20Cover%20Art%20%28PNG3%29.jpg",
-  erich: "https://tune-stage.preview.emergentagent.com/api/uploads/images/44e40de9-3e17-4fbb-8069-3cc18efe3541.png",
-  arica: "https://tune-stage.preview.emergentagent.com/api/uploads/images/0f70b6fd-d42c-4189-8158-3e89c8f06d91.jpg"
+  erich: "https://customer-assets.emergentagent.com/job_helper-upload-issue/artifacts/jk04fq3e_2.png",
+  arica: "https://customer-assets.emergentagent.com/job_helper-upload-issue/artifacts/duduele8_Arica%20Western%20Doorway%20looking%20down.jpg"
 };
 
 // Video URL for hero background - blue sky with moving clouds
@@ -486,8 +486,10 @@ function App() {
 
         <div className="story-section" data-testid="album-story">
           <h3>The Story Behind the Album</h3>
-          <p>Erich Fritz and Arica Hilton met through their mutual love of art. The image on the cover of the album, Van Gogh's "Wheat fields with Cypresses" is especially meaningful because it was the work that brought them together.</p>
-          <p>One day Hilton sent Fritz her poem "Unlike You" (which is now transformed to Garden After the Storm) and he nonchalantly asked if he could put the poem to music. That was the beginning of their collaboration on a poetry/music album.</p>
+          <p>Erich Fritz and Arica Hilton met through their mutual love of art. Fritz is an art collector and Hilton is an artist and gallerist. The image on the cover of the album, Van Gogh's "Wheat fields with Cypresses" is especially meaningful because it was the work that brought them together. Fritz had purchased the Van Gogh "Wheatfields...." by artist Jeff Koons from his infamous Gazing Ball series long before they met. And ironically, Hilton was the inaugural artist-in-residence for Van Gogh Immersive in Chicago.</p>
+          <p>One day Hilton sent Fritz her poem "Unlike You" (which is now transformed to Garden After the Storm) and he nonchalantly asked if he could put the poem to music. That was the beginning of their collaboration on a poetry/music album that resulted in an exercise in sleepless nights and their extreme dedication to perfection in all things they do.</p>
+          <p>Contemporary polymaths, both artists also happen to be CEO's of their own companies, both are entrepreneurs and poets. Fritz studied electrical engineering and became a missile scientist studying applied mathematics and finance, AND went on to write music. Hilton studied architecture and is not only a poet, but an artist, designer, explorer and has worked with Nobel Prize winning authors and scientists.</p>
+          <p>The Garden After the Storm album is their first collaboration.</p>
         </div>
       </section>
 
