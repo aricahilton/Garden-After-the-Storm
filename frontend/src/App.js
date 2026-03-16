@@ -609,6 +609,7 @@ function App() {
   const [email, setEmail] = useState("");
   const [subscribeStatus, setSubscribeStatus] = useState("");
   const [activeTrack, setActiveTrack] = useState(null);
+  const [lyricsTrack, setLyricsTrack] = useState(null);
   const [merchFilter, setMerchFilter] = useState("all");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [checkoutLoading, setCheckoutLoading] = useState(null);
@@ -796,11 +797,22 @@ function App() {
                         </audio>
                       </div>
                       {track.description && (
-                        <div className="track-description">
-                          {track.description.split('\n\n').map((paragraph, idx) => (
-                            <p key={idx}>{paragraph}</p>
-                          ))}
-                        </div>
+                        <button 
+                          className="lyrics-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setLyricsTrack(track);
+                          }}
+                          data-testid={`lyrics-btn-${track.number}`}
+                        >
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <line x1="16" y1="13" x2="8" y2="13"></line>
+                            <line x1="16" y1="17" x2="8" y2="17"></line>
+                          </svg>
+                          View Lyrics
+                        </button>
                       )}
                     </div>
                   )}
@@ -995,6 +1007,29 @@ function App() {
       {/* Footer */}
       <footer className="footer" data-testid="footer">
       </footer>
+
+      {/* Lyrics Slide-out Panel */}
+      {lyricsTrack && (
+        <div className="lyrics-overlay" onClick={() => setLyricsTrack(null)} data-testid="lyrics-overlay">
+          <div className="lyrics-panel" onClick={(e) => e.stopPropagation()} data-testid="lyrics-panel">
+            <button className="lyrics-close-btn" onClick={() => setLyricsTrack(null)} data-testid="lyrics-close">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <div className="lyrics-content">
+              <span className="lyrics-track-number">Track {lyricsTrack.number}</span>
+              <h2 className="lyrics-title">{lyricsTrack.title}</h2>
+              <div className="lyrics-text">
+                {lyricsTrack.description.split('\n\n').map((paragraph, idx) => (
+                  <p key={idx}>{paragraph}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Chat Widget */}
       <ChatWidget />
