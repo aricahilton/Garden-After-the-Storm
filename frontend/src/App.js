@@ -386,6 +386,8 @@ function App() {
             <img src={IMAGES.album} alt="Garden After the Storm Album - Erich Fritz and Arica Hilton" />
           </div>
           <div className="hero-text">
+            <p className="release-date">Album Release</p>
+            <p className="release-date-value">10 April 2026</p>
             <button className="stream-btn" onClick={() => scrollToSection("music")} data-testid="stream-now-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
               Stream Now
