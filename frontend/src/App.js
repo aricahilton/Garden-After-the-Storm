@@ -411,6 +411,7 @@ function App() {
   const [subscribeStatus, setSubscribeStatus] = useState("");
   const [activeTrack, setActiveTrack] = useState(null);
   const [merchFilter, setMerchFilter] = useState("all");
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -427,13 +428,32 @@ function App() {
 
   const scrollToSection = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    setMobileMenuOpen(false);
   };
 
   return (
     <div className="app" data-testid="app-container">
       {/* Navigation */}
       <nav className="nav" data-testid="main-nav">
-        <div className="nav-links">
+        <button 
+          className="mobile-menu-btn"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          data-testid="mobile-menu-btn"
+        >
+          {mobileMenuOpen ? (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          ) : (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          )}
+        </button>
+        <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
           <button onClick={() => scrollToSection("music")} data-testid="nav-music">MUSIC</button>
           <button onClick={() => scrollToSection("about")} data-testid="nav-about">ABOUT</button>
           <button onClick={() => scrollToSection("merch")} data-testid="nav-merch">MERCH</button>
