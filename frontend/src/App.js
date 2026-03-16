@@ -18,12 +18,76 @@ const HERO_VIDEO = `${BACKEND_URL}/api/uploads/sky_video.mp4`;
 
 // Track data
 const TRACKS = [
-  { number: 1, title: "GARDEN AFTER THE STORM", duration: "5:23", file: "track_01_garden_after_the_storm.wav" },
-  { number: 2, title: "I HEARD AN OAK TREE", duration: "7:48", file: "track_02_i_heard_an_oak_tree.wav" },
-  { number: 3, title: "SUNSTORM OF PASSION", duration: "5:48", file: "track_03_sunstorm_of_passion.wav" },
-  { number: 4, title: "DEEPER THAN LOVE", duration: "5:23", file: "track_04_deeper_than_love.wav" },
-  { number: 5, title: "RIVERS IN ME", duration: "5:50", file: "track_05_rivers_in_me.wav" },
-  { number: 6, title: "THE MUSIC OF OUR BECOMING", duration: "5:21", file: "track_06_the_music_of_our_becoming.wav" }
+  { 
+    number: 1, 
+    title: "GARDEN AFTER THE STORM", 
+    duration: "5:23", 
+    file: "track_01_garden_after_the_storm.wav",
+    description: `Created in collaboration with the wonderfully talented, Arica Hilton (IG: @aricahilton), whose lovely poetry inspired the song – I feel extremely fortunate she allowed me to put her poetic vision to music – meant, not just to be heard, but also to be felt.
+
+"Garden After the Storm" is a cinematic piano ballad about transformation after trauma. The song reflects on the choice between carrying the darkness we've experienced and allowing it to dissolve into something new. Moving from broken rooms and quiet fear toward healing and growth, the story follows the idea that scars can become gardens if we choose to nurture what comes after the storm. With intimate verses and a powerful emotional chorus, the song explores resilience, forgiveness, and the quiet strength of letting the past drift away.`
+  },
+  { 
+    number: 2, 
+    title: "I HEARD AN OAK TREE", 
+    duration: "7:48", 
+    file: "track_02_i_heard_an_oak_tree.wav",
+    description: `"I Heard an Oak Tree" continues the story that began in "Garden After the Storm." In the first song, the artist releases the weight of past wounds and learns to let pain dissolve into something new. In this sequel, they return to that same garden (now quiet after the storm) and hear something deeper beneath the silence.
+
+An ancient oak tree becomes the voice of the earth itself, reminding the listener that the elements shaping mountains, oceans, and forests are the same elements that form us. Through hypnotic repetition and atmospheric soundscapes, the song moves from personal healing to a broader realization: that we are not separate from the world around us. The storm may pass, but what remains is belonging.
+
+The oak tree laments, "I was here before you, rooted, like you, reaching, like you."
+
+These songs are meant to be experienced as a journey rather than isolated tracks. Garden After the Storm begins with emotional release: the quiet aftermath of turmoil and the first breath of healing. I Heard an Oak Tree moves into reflection, where the listener pauses in that stillness and begins to hear the deeper rhythms of the earth and of oneself.`
+  },
+  { 
+    number: 3, 
+    title: "SUNSTORM OF PASSION", 
+    duration: "5:48", 
+    file: "track_03_sunstorm_of_passion.wav",
+    description: `"Sunstorm of Passion" is a sensual cinematic piano ballad about surrendering to a love that feels inevitable and cosmic. Set in a candlelit room filled with the scent of jasmine, the song unfolds like a storm slowly gathering in the sky: quiet longing building into overwhelming passion.
+
+Through imagery of galaxies, moonlit whispers, and clouds heavy with rain, the singer describes the intoxicating pull of desire that leaves no room for resistance. What begins as a delicate atmosphere of fragrance and distant poetry gradually becomes a powerful emotional storm: one that consumes both body and soul.
+
+As the music swells with orchestral intensity, the song captures the moment when control dissolves and two people give themselves fully to the gravity between them. In the end, the storm quiets into a whisper, leaving only breath, memory, and the lingering echo of passion in the air.`
+  },
+  { 
+    number: 4, 
+    title: "DEEPER THAN LOVE", 
+    duration: "5:23", 
+    file: "track_04_deeper_than_love.wav",
+    description: `"Deeper Than Love" is a sensual, mystical Buddha Bar–style lounge track that explores the idea that some connections transcend time, memory, and even identity. Wrapped in a slow, hypnotic groove of deep bass, atmospheric pads, and delicate world instrumentation, the song unfolds like a whispered meditation on cosmic reunion.
+
+Through imagery of roots stretching across oceans, ancient branches bearing fruit, and stardust scattering into hope, the lyrics suggest that two souls are not meeting for the first time, but rediscovering each other after lifetimes of wandering. The kiss at the center of the song becomes symbolic: less a moment of passion than a recognition of something eternal that has always existed beneath the surface.
+
+The result is a lush, late-night lounge experience: atmospheric, sensual, and contemplative, evoking the feeling of two wanderers finally realizing they have arrived home in one another.
+
+"You think you are meeting for the first time
+But you realize you are the wanderer
+who finally found home.
+
+This is deeper than love, my love."`
+  },
+  { 
+    number: 5, 
+    title: "RIVERS IN ME", 
+    duration: "5:50", 
+    file: "track_05_rivers_in_me.wav",
+    description: `The central theme of "Rivers in Me" is emotional connection that runs deeper than words. It explores the idea that when two people truly connect, the experience feels like an unseen current moving beneath the surface: quiet but powerful, like rivers flowing through the night.
+
+The imagery of rivers, stars, silence, and night represents inner emotions that are difficult to explain but deeply felt. The song suggests that love or connection is not always loud or dramatic; sometimes it appears in quiet moments of shared understanding, reflection, and presence.
+
+At its core, the theme is about surrendering to that emotional current: allowing yourself to feel something profound and transformative, even if it cannot be fully expressed in language. The repeated phrase about "rivers" becomes a metaphor for the flow of feeling, memory, and intimacy moving through both people at once.`
+  },
+  { 
+    number: 6, 
+    title: "THE MUSIC OF OUR BECOMING", 
+    duration: "5:21", 
+    file: "track_06_the_music_of_our_becoming.wav",
+    description: `"The Music of Our Becoming" is written as a metaphorically complex poem vs. a structured song. This piece centers on reunion, rebirth, and the sacred intensity of rediscovered love. It portrays two lovers returning to one another not merely as continuation, but as transformation: shedding distance, restraint, and fear to become something deeper and newly awakened.
+
+At its core, the theme is relief and renewal: love surviving exile and emerging not diminished, but purified and reborn through longing and return. Metaphors draw from René Magritte's "The Lovers," which symbolizes the frustration of desire.`
+  }
 ];
 
 // Chat Widget Component
@@ -459,10 +523,19 @@ function App() {
                     <span className="track-duration">{track.duration}</span>
                   </div>
                   {activeTrack === track.number && (
-                    <div className="track-player">
-                      <audio controls src={`${BACKEND_URL}/api/uploads/${track.file}`}>
-                        Your browser does not support the audio element.
-                      </audio>
+                    <div className="track-expanded">
+                      <div className="track-player">
+                        <audio controls src={`${BACKEND_URL}/api/uploads/${track.file}`}>
+                          Your browser does not support the audio element.
+                        </audio>
+                      </div>
+                      {track.description && (
+                        <div className="track-description">
+                          {track.description.split('\n\n').map((paragraph, idx) => (
+                            <p key={idx}>{paragraph}</p>
+                          ))}
+                        </div>
+                      )}
                     </div>
                   )}
                 </div>
