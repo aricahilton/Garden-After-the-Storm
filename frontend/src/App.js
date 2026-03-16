@@ -9,8 +9,18 @@ const API = `${BACKEND_URL}/api`;
 const CheckoutSuccess = ({ onBackToShop }) => {
   const [status, setStatus] = useState("checking");
   const [paymentInfo, setPaymentInfo] = useState(null);
+  const [downloadLinks, setDownloadLinks] = useState(null);
   const [attempts, setAttempts] = useState(0);
   const maxAttempts = 5;
+
+  const fetchDownloadLinks = async (sessionId) => {
+    try {
+      const response = await axios.get(`${API}/download/${sessionId}`);
+      setDownloadLinks(response.data);
+    } catch (error) {
+      console.log("No download links available (physical product)");
+    }
+  };
 
   const checkPaymentStatus = useCallback(async (sessionId) => {
     try {
@@ -20,6 +30,8 @@ const CheckoutSuccess = ({ onBackToShop }) => {
       if (data.payment_status === "paid") {
         setStatus("success");
         setPaymentInfo(data);
+        // Try to get download links for digital products
+        fetchDownloadLinks(sessionId);
       } else if (data.status === "expired") {
         setStatus("expired");
       } else if (attempts < maxAttempts) {
@@ -71,7 +83,36 @@ const CheckoutSuccess = ({ onBackToShop }) => {
                 Amount: ${(paymentInfo.amount_total / 100).toFixed(2)} {paymentInfo.currency?.toUpperCase()}
               </p>
             )}
-            <p className="payment-note">You will receive a confirmation email shortly.</p>
+            
+            {downloadLinks && downloadLinks.downloads && downloadLinks.downloads.length > 0 && (
+              <div className="download-section">
+                <h3>Your Downloads</h3>
+                <p className="download-note">Click below to download your files:</p>
+                <div className="download-list">
+                  {downloadLinks.downloads.map((file, index) => (
+                    <a 
+                      key={index}
+                      href={file.url}
+                      download={file.filename}
+                      className="download-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                      </svg>
+                      {file.filename.replace(/_/g, ' ').replace('.wav', '')}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {!downloadLinks && (
+              <p className="payment-note">You will receive a confirmation email shortly.</p>
+            )}
           </>
         )}
         
@@ -528,6 +569,38 @@ const MERCH_ITEMS = [
     description: "Limited Edition signed by the artist. This beautiful 8\" x 10\" paperback features the complete poetry collection from the album with stunning artwork.",
     price: "$50.00",
     image: `${BACKEND_URL}/api/uploads/book_cover.png`
+  },
+  {
+    id: 4,
+    productId: "digital_album",
+    category: "DIGITAL",
+    title: "Digital Album - Full Download",
+    description: "Download the complete Garden After the Storm album in high-quality WAV format. Includes all 6 tracks plus exclusive digital artwork.",
+    price: "$12.99",
+    image: IMAGES.album,
+    isDigital: true
+  },
+  {
+    id: 5,
+    productId: "digital_single_garden",
+    category: "DIGITAL",
+    title: "Garden After the Storm - Single",
+    description: "Download the title track 'Garden After the Storm' in high-quality WAV format.",
+    price: "$1.99",
+    image: IMAGES.album,
+    isDigital: true,
+    trackFile: "track_01_garden_after_the_storm.wav"
+  },
+  {
+    id: 6,
+    productId: "digital_single_oak",
+    category: "DIGITAL",
+    title: "I Heard an Oak Tree - Single",
+    description: "Download 'I Heard an Oak Tree' in high-quality WAV format.",
+    price: "$1.99",
+    image: IMAGES.album,
+    isDigital: true,
+    trackFile: "track_02_i_heard_an_oak_tree.wav"
   }
 ];
 
@@ -795,6 +868,11 @@ function App() {
             data-testid="merch-filter-all"
           >All</button>
           <button 
+            className={`merch-filter-btn ${merchFilter === 'DIGITAL' ? 'active' : ''}`}
+            onClick={() => setMerchFilter('DIGITAL')}
+            data-testid="merch-filter-digital"
+          >Digital</button>
+          <button 
             className={`merch-filter-btn ${merchFilter === 'ALBUMS' ? 'active' : ''}`}
             onClick={() => setMerchFilter('ALBUMS')}
             data-testid="merch-filter-albums"
@@ -818,13 +896,22 @@ function App() {
               <div className="merch-footer">
                 <p className="merch-price">{item.price}</p>
                 <button 
-                  className="merch-btn" 
+                  className={`merch-btn ${item.isDigital ? 'digital' : ''}`}
                   data-testid={`buy-btn-${item.id}`}
                   onClick={() => handleBuyNow(item.productId)}
                   disabled={checkoutLoading === item.productId}
                 >
                   {checkoutLoading === item.productId ? (
                     <>Processing...</>
+                  ) : item.isDigital ? (
+                    <>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                      </svg>
+                      Buy & Download
+                    </>
                   ) : (
                     <>
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

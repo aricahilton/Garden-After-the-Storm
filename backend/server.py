@@ -67,9 +67,12 @@ class SubscribeRequest(BaseModel):
 
 # Merch Products (fixed prices - server-side only)
 MERCH_PRODUCTS = {
-    "album_limited": {"name": "Limited Edition Album - Signed & Numbered", "price": 650.00},
-    "album_standard": {"name": "Garden After the Storm - Standard Edition", "price": 24.99},
-    "book": {"name": "Garden After the Storm 2026 - Poetry Book", "price": 50.00}
+    "album_limited": {"name": "Limited Edition Album - Signed & Numbered", "price": 650.00, "type": "physical"},
+    "album_standard": {"name": "Garden After the Storm - Standard Edition", "price": 24.99, "type": "physical"},
+    "book": {"name": "Garden After the Storm 2026 - Poetry Book", "price": 50.00, "type": "physical"},
+    "digital_album": {"name": "Digital Album - Full Download", "price": 12.99, "type": "digital", "files": ["track_01_garden_after_the_storm.wav", "track_02_i_heard_an_oak_tree.wav", "track_03_sunstorm_of_passion.wav", "track_04_deeper_than_love.wav", "track_05_rivers_in_me.wav", "track_06_the_music_of_our_becoming.wav"]},
+    "digital_single_garden": {"name": "Garden After the Storm - Single", "price": 1.99, "type": "digital", "files": ["track_01_garden_after_the_storm.wav"]},
+    "digital_single_oak": {"name": "I Heard an Oak Tree - Single", "price": 1.99, "type": "digital", "files": ["track_02_i_heard_an_oak_tree.wav"]}
 }
 
 class CheckoutRequest(BaseModel):
@@ -392,6 +395,54 @@ async def stripe_webhook(request: Request):
     except Exception as e:
         logger.error(f"Webhook error: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Webhook failed: {str(e)}")
+
+@api_router.get("/download/{session_id}")
+async def get_download_links(session_id: str, http_request: Request):
+    """Get download links for digital purchases after successful payment"""
+    try:
+        # Check payment status first
+        stripe_api_key = os.environ.get('STRIPE_API_KEY')
+        host_url = str(http_request.base_url).rstrip('/')
+        webhook_url = f"{host_url}api/webhook/stripe"
+        stripe_checkout = StripeCheckout(api_key=stripe_api_key, webhook_url=webhook_url)
+        
+        status: CheckoutStatusResponse = await stripe_checkout.get_checkout_status(session_id)
+        
+        if status.payment_status != "paid":
+            raise HTTPException(status_code=403, detail="Payment not completed")
+        
+        # Get transaction from database
+        transaction = await db.payment_transactions.find_one({"session_id": session_id})
+        if not transaction:
+            raise HTTPException(status_code=404, detail="Transaction not found")
+        
+        product_id = transaction.get("product_id")
+        if product_id not in MERCH_PRODUCTS:
+            raise HTTPException(status_code=404, detail="Product not found")
+        
+        product = MERCH_PRODUCTS[product_id]
+        if product.get("type") != "digital":
+            raise HTTPException(status_code=400, detail="Not a digital product")
+        
+        # Generate download links
+        base_url = str(http_request.base_url).rstrip('/')
+        download_links = []
+        for file in product.get("files", []):
+            download_links.append({
+                "filename": file,
+                "url": f"{base_url}api/uploads/{file}"
+            })
+        
+        return {
+            "product_name": product["name"],
+            "downloads": download_links
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Download error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Download failed: {str(e)}")
 
 # Include the router
 app.include_router(api_router)
