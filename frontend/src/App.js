@@ -312,11 +312,40 @@ const ChatWidget = () => {
   );
 };
 
+// Merch data
+const MERCH_ITEMS = [
+  {
+    id: 1,
+    category: "ALBUMS",
+    title: "Limited Edition Album - Signed & Numbered",
+    description: "A true collector's edition, limited to only 250 copies. This stunning gatefold album opens to reveal exclusive artwork and comes personally signed by Erich Fritz and Arica Hilton.",
+    price: "$650.00",
+    image: IMAGES.album
+  },
+  {
+    id: 2,
+    category: "ALBUMS",
+    title: "Garden After the Storm - Standard Edition",
+    description: "Garden After the Storm on high-quality vinyl. 10 tracks of poetry and music through a journey of transformation, love, passion and ultimately peace.",
+    price: "$24.99",
+    image: IMAGES.album
+  },
+  {
+    id: 3,
+    category: "BOOKS",
+    title: "Garden After the Storm 2026 - Poetry Book",
+    description: "Limited Edition signed by the artist. This beautiful 8\" x 10\" paperback features the complete poetry collection from the album with stunning artwork.",
+    price: "$50.00",
+    image: `${BACKEND_URL}/api/uploads/book_cover.png`
+  }
+];
+
 // Main App Component
 function App() {
   const [email, setEmail] = useState("");
   const [subscribeStatus, setSubscribeStatus] = useState("");
   const [activeTrack, setActiveTrack] = useState(null);
+  const [merchFilter, setMerchFilter] = useState("all");
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -461,48 +490,47 @@ function App() {
 
       {/* Merch Section */}
       <section id="merch" className="merch-section" data-testid="merch-section">
-        <p className="section-label">Official Merchandise</p>
-        <h2>MERCH</h2>
+        <div className="merch-filters">
+          <button 
+            className={`merch-filter-btn ${merchFilter === 'all' ? 'active' : ''}`}
+            onClick={() => setMerchFilter('all')}
+            data-testid="merch-filter-all"
+          >All</button>
+          <button 
+            className={`merch-filter-btn ${merchFilter === 'ALBUMS' ? 'active' : ''}`}
+            onClick={() => setMerchFilter('ALBUMS')}
+            data-testid="merch-filter-albums"
+          >Albums</button>
+          <button 
+            className={`merch-filter-btn ${merchFilter === 'BOOKS' ? 'active' : ''}`}
+            onClick={() => setMerchFilter('BOOKS')}
+            data-testid="merch-filter-books"
+          >Books</button>
+        </div>
+        
         <div className="merch-grid">
-          <div className="merch-item" data-testid="merch-item-1">
-            <div className="merch-image-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="4"></circle>
-              </svg>
+          {MERCH_ITEMS.filter(item => merchFilter === 'all' || item.category === merchFilter).map((item) => (
+            <div className="merch-item" key={item.id} data-testid={`merch-item-${item.id}`}>
+              <div className="merch-image-container">
+                <span className={`merch-category-badge ${item.category.toLowerCase()}`}>{item.category}</span>
+                <img src={item.image} alt={item.title} className="merch-image" />
+              </div>
+              <h3>{item.title}</h3>
+              <p className="merch-description">{item.description}</p>
+              <div className="merch-footer">
+                <p className="merch-price">{item.price}</p>
+                <button className="merch-btn" data-testid={`buy-btn-${item.id}`}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                  </svg>
+                  Buy Now
+                </button>
+              </div>
             </div>
-            <h3>Album T-Shirt</h3>
-            <p className="merch-description">Premium cotton t-shirt featuring the Garden After the Storm album artwork</p>
-            <p className="merch-price">$35.00</p>
-            <button className="merch-btn">Coming Soon</button>
-          </div>
-          
-          <div className="merch-item" data-testid="merch-item-2">
-            <div className="merch-image-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                <circle cx="12" cy="12" r="10"></circle>
-                <circle cx="12" cy="12" r="3"></circle>
-              </svg>
-            </div>
-            <h3>Vinyl Record</h3>
-            <p className="merch-description">Limited edition 180g vinyl with exclusive artwork and liner notes</p>
-            <p className="merch-price">$45.00</p>
-            <button className="merch-btn">Coming Soon</button>
-          </div>
-          
-          <div className="merch-item" data-testid="merch-item-3">
-            <div className="merch-image-placeholder">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="3" y1="9" x2="21" y2="9"></line>
-                <line x1="9" y1="21" x2="9" y2="9"></line>
-              </svg>
-            </div>
-            <h3>Signed Poster</h3>
-            <p className="merch-description">18x24 poster signed by Erich Fritz and Arica Hilton</p>
-            <p className="merch-price">$25.00</p>
-            <button className="merch-btn">Coming Soon</button>
-          </div>
+          ))}
         </div>
       </section>
 
