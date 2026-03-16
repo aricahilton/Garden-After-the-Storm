@@ -833,58 +833,96 @@ body {
 .links-section {
   padding: 6rem 4rem;
   text-align: center;
-  background: var(--color-bg-secondary);
+  background: var(--color-bg);
 }
 
 .links-section h2 {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.links-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
   margin-bottom: 3rem;
 }
 
-.links-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+.website-links {
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
-.link-card {
+.website-link-card {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1.5rem;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 12px;
-  color: var(--color-text);
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px;
   text-decoration: none;
+  color: var(--color-text);
+  text-align: left;
   transition: all 0.3s ease;
 }
 
-.link-card:hover {
-  background: rgba(42, 45, 85, 0.3);
-  border-color: var(--color-social);
-  transform: translateY(-4px);
+.website-link-card:hover {
+  border-color: rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.02);
 }
 
-.link-card svg {
+.website-link-content {
+  flex: 1;
+}
+
+.website-link-card h3 {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--color-text);
+}
+
+.website-link-card p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
   margin-bottom: 1rem;
-  color: var(--color-social);
-  transition: color 0.3s ease;
 }
 
-.link-card:hover svg {
-  color: var(--color-social-hover);
+.website-url {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  opacity: 0.7;
 }
 
-.link-card span {
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
+.external-link-icon {
+  flex-shrink: 0;
+  margin-left: 1.5rem;
+  color: var(--color-text-muted);
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+.website-link-card:hover .external-link-icon {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .website-link-card {
+    flex-direction: column;
+  }
+  
+  .external-link-icon {
+    margin-left: 0;
+    margin-top: 1rem;
+    align-self: flex-end;
+  }
 }
 
 .subscribe-section h2 {
