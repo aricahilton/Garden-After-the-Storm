@@ -506,8 +506,8 @@ function App() {
             <img src={IMAGES.album} alt="Garden After the Storm Album Cover" data-testid="album-cover" />
           </div>
           <div className="album-info">
-            <span className="album-year">2026</span>
             <h3>Garden After the Storm</h3>
+            <span className="album-year">2026</span>
             <p className="track-count">6 Tracks</p>
             
             <div className="track-list" data-testid="track-list">
