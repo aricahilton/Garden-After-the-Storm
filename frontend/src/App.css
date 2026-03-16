@@ -8,7 +8,7 @@
   --color-text-muted: #a0a0a0;
   --color-accent: #c9a962;
   --color-accent-hover: #dfc07a;
-  --color-social: #9a8455;
+  --color-social: #ffffff;
   --color-social-hover: #c9a962;
   --font-heading: 'Cormorant Garamond', serif;
   --font-body: 'Montserrat', sans-serif;
@@ -98,6 +98,7 @@ body {
 .social-links a {
   color: var(--color-social);
   transition: color 0.3s ease, transform 0.3s ease;
+  filter: drop-shadow(1px 1px 0 #000) drop-shadow(-1px -1px 0 #000) drop-shadow(1px -1px 0 #000) drop-shadow(-1px 1px 0 #000);
 }
 
 .social-links a:hover {
