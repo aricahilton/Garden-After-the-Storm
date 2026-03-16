@@ -562,8 +562,8 @@ body {
 }
 
 .album-cover img {
-  width: 350px;
-  height: 350px;
+  width: 420px;
+  height: 420px;
   object-fit: cover;
   box-shadow: 0 20px 60px rgba(0,0,0,0.5);
 }
