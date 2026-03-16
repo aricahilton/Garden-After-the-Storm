@@ -295,11 +295,12 @@ body {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 4rem;
   padding: 2rem 4rem;
   max-width: 1400px;
-  margin-top: 60px;
+  margin-top: 150px;
+  margin-left: 50px;
   flex-wrap: nowrap;
 }
 
