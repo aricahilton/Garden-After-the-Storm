@@ -97,14 +97,12 @@ body {
 
 .social-links a {
   color: var(--color-social);
-  transition: color 0.3s ease, transform 0.3s ease, filter 0.3s ease;
-  filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.5));
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-links a:hover {
   color: var(--color-social-hover);
   transform: scale(1.15);
-  filter: drop-shadow(0 3px 6px rgba(255, 255, 255, 0.7));
 }
 
 /* Hero Section */
