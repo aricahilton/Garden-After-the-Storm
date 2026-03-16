@@ -381,14 +381,19 @@ function App() {
           <source src={HERO_VIDEO} type="video/mp4" />
         </video>
         <div className="hero-overlay"></div>
-        <div className="hero-content">
+        <div className="hero-content-wrapper">
           <div className="hero-album-cover" data-testid="hero-album-cover">
             <img src={IMAGES.album} alt="Garden After the Storm Album - Erich Fritz and Arica Hilton" />
           </div>
-          <button className="stream-btn" onClick={() => scrollToSection("music")} data-testid="stream-now-btn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-            Stream Now
-          </button>
+          <div className="hero-text">
+            <h1>GARDEN AFTER THE STORM</h1>
+            <p className="hero-subtitle">by <span className="artist-name">Erich Fritz</span> and <span className="artist-name">Arica Hilton</span></p>
+            <p className="hero-description">10 tracks of poetry and music through a journey of transformation, love, passion and ultimately peace.</p>
+            <button className="stream-btn" onClick={() => scrollToSection("music")} data-testid="stream-now-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              Stream Now
+            </button>
+          </div>
         </div>
       </section>
 
