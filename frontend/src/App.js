@@ -472,8 +472,12 @@ function App() {
           <div className="artist-card" data-testid="artist-erich">
             <img src={IMAGES.erich} alt="Erich Fritz" />
             <h3>Erich Fritz</h3>
-            <p>Erich Fritz, known musically as @darko_vaughn, is a composer, poet, and multidisciplinary creator whose work blends atmospheric electronic music with lyrical storytelling. His sound transforms poetry into cinematic sonic landscapes—melding spoken word, ambient textures, and progressive electronic rhythms.</p>
-            <p>Drawing inspiration from Renaissance thinkers such as Leonardo da Vinci, Fritz approaches creativity through an interdisciplinary lens, merging analytical precision with emotional depth.</p>
+            <p>Erich Fritz, known musically as @darko_vaughn, is a composer, poet, and multidisciplinary creator whose work blends atmospheric electronic music with lyrical storytelling. His sound transforms poetry into cinematic sonic landscapes—melding spoken word, ambient textures, and progressive electronic rhythms to create music that feels both intimate and expansive.</p>
+            <p>Drawing inspiration from Renaissance thinkers such as Leonardo da Vinci, Fritz approaches creativity through an interdisciplinary lens, merging analytical precision with emotional depth. His work often explores themes of love, transformation, memory, and renewal, turning written verse into immersive musical experiences.</p>
+            <p>His latest collaboration marks the first release from the album "Garden After the Storm," a project built around the idea of poetry reborn through music. The album is part of a broader creative partnership that will also include original music for the television series "For the Love of Art."</p>
+            <p>Outside of music, Fritz is the Founder and CEO of Fritz & Company, a technology-focused advisory firm. Prior to founding the firm, he spent more than a decade in investment banking advising technology companies and began his career as an electrical engineer working on advanced missile defense software at Northrop Grumman. He holds an MBA from the University of Chicago Booth School of Business, completed graduate coursework in applied mathematics at Johns Hopkins University's Applied Physics Laboratory, and earned his Bachelor's degree in Electrical Engineering from Penn State.</p>
+            <p>Whether composing music, writing poetry, or building companies, Fritz embodies a modern Renaissance ethos—bringing together engineering, finance, and artistic expression into a singular creative voice.</p>
+            <p>Follow @darko_vaughn to experience the evolving journey of Garden After the Storm and future collaborations.</p>
           </div>
           
           <div className="artist-card" data-testid="artist-arica">
