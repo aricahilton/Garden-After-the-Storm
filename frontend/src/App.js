@@ -456,13 +456,46 @@ function App() {
       <section id="merch" className="merch-section" data-testid="merch-section">
         <p className="section-label">Official Merchandise</p>
         <h2>MERCH</h2>
-        <p className="merch-description">Coming Soon - Exclusive merchandise from Garden After the Storm</p>
-        <div className="merch-placeholder">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-            <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-            <line x1="7" y1="7" x2="7.01" y2="7"></line>
-          </svg>
-          <p>Stay tuned for exclusive apparel, vinyl, and more</p>
+        <div className="merch-grid">
+          <div className="merch-item" data-testid="merch-item-1">
+            <div className="merch-image-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </div>
+            <h3>Album T-Shirt</h3>
+            <p className="merch-description">Premium cotton t-shirt featuring the Garden After the Storm album artwork</p>
+            <p className="merch-price">$35.00</p>
+            <button className="merch-btn">Coming Soon</button>
+          </div>
+          
+          <div className="merch-item" data-testid="merch-item-2">
+            <div className="merch-image-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </div>
+            <h3>Vinyl Record</h3>
+            <p className="merch-description">Limited edition 180g vinyl with exclusive artwork and liner notes</p>
+            <p className="merch-price">$45.00</p>
+            <button className="merch-btn">Coming Soon</button>
+          </div>
+          
+          <div className="merch-item" data-testid="merch-item-3">
+            <div className="merch-image-placeholder">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="3" y1="9" x2="21" y2="9"></line>
+                <line x1="9" y1="21" x2="9" y2="9"></line>
+              </svg>
+            </div>
+            <h3>Signed Poster</h3>
+            <p className="merch-description">18x24 poster signed by Erich Fritz and Arica Hilton</p>
+            <p className="merch-price">$25.00</p>
+            <button className="merch-btn">Coming Soon</button>
+          </div>
         </div>
       </section>
 
