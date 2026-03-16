@@ -596,6 +596,23 @@ body {
   background: rgba(255,255,255,0.1);
 }
 
+.track-description {
+  padding: 1rem 0 0.5rem 30px;
+  text-align: justify;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.track-description p {
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.track-description p:last-child {
+  margin-bottom: 0;
+}
+
 .track-number {
   width: 30px;
   font-size: 0.85rem;
