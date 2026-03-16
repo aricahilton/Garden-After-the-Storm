@@ -68,7 +68,7 @@ class SubscribeRequest(BaseModel):
 # Merch Products (fixed prices - server-side only)
 MERCH_PRODUCTS = {
     "album_limited": {"name": "Limited Edition Album - Signed & Numbered", "price": 650.00, "type": "physical"},
-    "album_standard": {"name": "Garden After the Storm - Standard Edition", "price": 24.99, "type": "physical"},
+    "album_standard": {"name": "Garden After the Storm - Standard Edition", "price": 44.99, "type": "physical"},
     "book": {"name": "Garden After the Storm 2026 - Poetry Book", "price": 50.00, "type": "physical"},
     "digital_album": {"name": "Digital Album - Full Download", "price": 19.99, "type": "digital", "files": ["track_01_garden_after_the_storm.wav", "track_02_i_heard_an_oak_tree.wav", "track_03_sunstorm_of_passion.wav", "track_04_deeper_than_love.wav", "track_05_rivers_in_me.wav", "track_06_the_music_of_our_becoming.wav"]},
     "digital_single_garden": {"name": "Garden After the Storm - Single", "price": 3.99, "type": "digital", "files": ["track_01_garden_after_the_storm.wav"]},

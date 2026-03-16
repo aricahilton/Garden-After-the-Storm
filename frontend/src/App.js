@@ -558,7 +558,7 @@ const MERCH_ITEMS = [
     category: "ALBUMS",
     title: "Garden After the Storm - Standard Edition",
     description: "Garden After the Storm on high-quality vinyl. 10 tracks of poetry and music through a journey of transformation, love, passion and ultimately peace.",
-    price: "$24.99",
+    price: "$44.99",
     image: IMAGES.album
   },
   {
