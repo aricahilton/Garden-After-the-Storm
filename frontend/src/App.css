@@ -304,6 +304,7 @@ body {
   margin-top: 80px;
   margin-left: 50px;
   flex-wrap: nowrap;
+  animation: floatAlbum 6s ease-in-out infinite;
 }
 
 .hero-text {
@@ -314,7 +315,6 @@ body {
   margin-left: -80px;
   position: relative;
   z-index: 10;
-  animation: floatAlbum 6s ease-in-out infinite;
 }
 
 .hero-text h1 {
@@ -349,7 +349,6 @@ body {
 
 .hero-album-cover {
   flex-shrink: 0;
-  animation: floatAlbum 6s ease-in-out infinite;
   perspective: 1000px;
 }
 
