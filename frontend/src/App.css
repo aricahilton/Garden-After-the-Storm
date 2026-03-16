@@ -110,7 +110,7 @@ body {
 .social-links-vertical {
   position: fixed;
   right: 2rem;
-  top: 120px;
+  top: 95px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
