@@ -470,7 +470,9 @@ function App() {
         
         <div className="artists-grid">
           <div className="artist-card" data-testid="artist-erich">
-            <img src={IMAGES.erich} alt="Erich Fritz" className="erich-photo" />
+            <div className="artist-img-wrapper">
+              <img src={IMAGES.erich} alt="Erich Fritz" className="erich-photo" />
+            </div>
             <h3>Erich Fritz</h3>
             <p>Erich Fritz, known musically as @darko_vaughn, is a composer, poet, and multidisciplinary creator whose work blends atmospheric electronic music with lyrical storytelling. His sound transforms poetry into cinematic sonic landscapes—melding spoken word, ambient textures, and progressive electronic rhythms to create music that feels both intimate and expansive.</p>
             <p>Drawing inspiration from Renaissance thinkers such as Leonardo da Vinci, Fritz approaches creativity through an interdisciplinary lens, merging analytical precision with emotional depth. His work often explores themes of love, transformation, memory, and renewal, turning written verse into immersive musical experiences.</p>
@@ -481,7 +483,9 @@ function App() {
           </div>
           
           <div className="artist-card" data-testid="artist-arica">
-            <img src={IMAGES.arica} alt="Arica Hilton" />
+            <div className="artist-img-wrapper">
+              <img src={IMAGES.arica} alt="Arica Hilton" />
+            </div>
             <h3>Arica Hilton</h3>
             <p>Arica Hilton (pen name Sophia Jolie) is a multidisciplinary artist, poet and global advocate whose life mission is to use her creativity to bring awareness to humanitarian and environmental issues that effect our world.</p>
             <p>In March 2026, Hilton collaborated with composer and poet, Erich Fritz (stage name @darko_vaughn) to create an album titled GARDEN AFTER THE STORM. Fritz wrote the music to Hilton's poetry. The complete album will be released late spring 2026.</p>
