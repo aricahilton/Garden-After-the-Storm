@@ -381,6 +381,7 @@ const ChatWidget = () => {
 const MERCH_ITEMS = [
   {
     id: 1,
+    productId: "album_limited",
     category: "ALBUMS",
     title: "Limited Edition Album - Signed & Numbered",
     description: "A true collector's edition, limited to only 250 copies. This stunning gatefold album opens to reveal exclusive artwork and comes personally signed by Erich Fritz and Arica Hilton.",
@@ -389,6 +390,7 @@ const MERCH_ITEMS = [
   },
   {
     id: 2,
+    productId: "album_standard",
     category: "ALBUMS",
     title: "Garden After the Storm - Standard Edition",
     description: "Garden After the Storm on high-quality vinyl. 10 tracks of poetry and music through a journey of transformation, love, passion and ultimately peace.",
@@ -397,6 +399,7 @@ const MERCH_ITEMS = [
   },
   {
     id: 3,
+    productId: "book",
     category: "BOOKS",
     title: "Garden After the Storm 2026 - Poetry Book",
     description: "Limited Edition signed by the artist. This beautiful 8\" x 10\" paperback features the complete poetry collection from the album with stunning artwork.",
@@ -412,6 +415,7 @@ function App() {
   const [activeTrack, setActiveTrack] = useState(null);
   const [merchFilter, setMerchFilter] = useState("all");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [checkoutLoading, setCheckoutLoading] = useState(null);
 
   const handleSubscribe = async (e) => {
     e.preventDefault();
@@ -423,6 +427,26 @@ function App() {
       setEmail("");
     } catch (error) {
       setSubscribeStatus("error");
+    }
+  };
+
+  const handleBuyNow = async (productId) => {
+    setCheckoutLoading(productId);
+    try {
+      const originUrl = window.location.origin;
+      const response = await axios.post(`${API}/checkout/create`, {
+        product_id: productId,
+        origin_url: originUrl
+      });
+      
+      if (response.data.url) {
+        window.location.href = response.data.url;
+      }
+    } catch (error) {
+      console.error("Checkout error:", error);
+      alert("Unable to process checkout. Please try again.");
+    } finally {
+      setCheckoutLoading(null);
     }
   };
 
@@ -647,14 +671,24 @@ function App() {
               <p className="merch-description">{item.description}</p>
               <div className="merch-footer">
                 <p className="merch-price">{item.price}</p>
-                <button className="merch-btn" data-testid={`buy-btn-${item.id}`}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                  </svg>
-                  Buy Now
+                <button 
+                  className="merch-btn" 
+                  data-testid={`buy-btn-${item.id}`}
+                  onClick={() => handleBuyNow(item.productId)}
+                  disabled={checkoutLoading === item.productId}
+                >
+                  {checkoutLoading === item.productId ? (
+                    <>Processing...</>
+                  ) : (
+                    <>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="m1 1 4 4h16l-2 9H7"></path>
+                      </svg>
+                      Buy Now
+                    </>
+                  )}
                 </button>
               </div>
             </div>

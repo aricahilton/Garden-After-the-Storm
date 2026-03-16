@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, UploadFile, File, Form, HTTPException
+from fastapi import FastAPI, APIRouter, UploadFile, File, Form, HTTPException, Request
 from fastapi.responses import FileResponse
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
@@ -7,11 +7,12 @@ import os
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
-from typing import List, Optional
+from typing import List, Optional, Dict
 import uuid
 from datetime import datetime, timezone
 import aiofiles
 from emergentintegrations.llm.chat import LlmChat, UserMessage, FileContentWithMimeType
+from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionResponse, CheckoutStatusResponse, CheckoutSessionRequest
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -63,6 +64,20 @@ class ChatResponse(BaseModel):
 
 class SubscribeRequest(BaseModel):
     email: str
+
+# Merch Products (fixed prices - server-side only)
+MERCH_PRODUCTS = {
+    "album_limited": {"name": "Limited Edition Album - Signed & Numbered", "price": 650.00},
+    "album_standard": {"name": "Garden After the Storm - Standard Edition", "price": 24.99},
+    "book": {"name": "Garden After the Storm 2026 - Poetry Book", "price": 50.00}
+}
+
+class CheckoutRequest(BaseModel):
+    product_id: str
+    origin_url: str
+
+class PaymentStatusRequest(BaseModel):
+    session_id: str
 
 # Initialize chat instances per session
 chat_instances = {}
@@ -251,6 +266,132 @@ async def subscribe(request: SubscribeRequest):
     except Exception as e:
         logger.error(f"Subscribe error: {str(e)}")
         raise HTTPException(status_code=500, detail="Subscription failed")
+
+# Stripe Payment Endpoints
+@api_router.post("/checkout/create")
+async def create_checkout(request: CheckoutRequest, http_request: Request):
+    """Create a Stripe checkout session for merch purchase"""
+    try:
+        # Validate product exists
+        if request.product_id not in MERCH_PRODUCTS:
+            raise HTTPException(status_code=400, detail="Invalid product")
+        
+        product = MERCH_PRODUCTS[request.product_id]
+        amount = product["price"]
+        
+        # Build URLs from frontend origin
+        success_url = f"{request.origin_url}/checkout/success?session_id={{CHECKOUT_SESSION_ID}}"
+        cancel_url = f"{request.origin_url}/#merch"
+        
+        # Initialize Stripe
+        stripe_api_key = os.environ.get('STRIPE_API_KEY')
+        host_url = str(http_request.base_url).rstrip('/')
+        webhook_url = f"{host_url}api/webhook/stripe"
+        stripe_checkout = StripeCheckout(api_key=stripe_api_key, webhook_url=webhook_url)
+        
+        # Create checkout session
+        checkout_request = CheckoutSessionRequest(
+            amount=float(amount),
+            currency="usd",
+            success_url=success_url,
+            cancel_url=cancel_url,
+            metadata={
+                "product_id": request.product_id,
+                "product_name": product["name"],
+                "source": "garden_storm_merch"
+            }
+        )
+        
+        session: CheckoutSessionResponse = await stripe_checkout.create_checkout_session(checkout_request)
+        
+        # Store transaction in database
+        transaction = {
+            "id": str(uuid.uuid4()),
+            "session_id": session.session_id,
+            "product_id": request.product_id,
+            "product_name": product["name"],
+            "amount": amount,
+            "currency": "usd",
+            "status": "initiated",
+            "payment_status": "pending",
+            "created_at": datetime.now(timezone.utc).isoformat()
+        }
+        await db.payment_transactions.insert_one(transaction)
+        
+        logger.info(f"Checkout session created: {session.session_id}")
+        return {"url": session.url, "session_id": session.session_id}
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Checkout error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Checkout failed: {str(e)}")
+
+@api_router.get("/checkout/status/{session_id}")
+async def get_checkout_status(session_id: str, http_request: Request):
+    """Get the status of a checkout session"""
+    try:
+        stripe_api_key = os.environ.get('STRIPE_API_KEY')
+        host_url = str(http_request.base_url).rstrip('/')
+        webhook_url = f"{host_url}api/webhook/stripe"
+        stripe_checkout = StripeCheckout(api_key=stripe_api_key, webhook_url=webhook_url)
+        
+        status: CheckoutStatusResponse = await stripe_checkout.get_checkout_status(session_id)
+        
+        # Update transaction in database
+        update_data = {
+            "status": status.status,
+            "payment_status": status.payment_status,
+            "updated_at": datetime.now(timezone.utc).isoformat()
+        }
+        
+        await db.payment_transactions.update_one(
+            {"session_id": session_id},
+            {"$set": update_data}
+        )
+        
+        return {
+            "status": status.status,
+            "payment_status": status.payment_status,
+            "amount_total": status.amount_total,
+            "currency": status.currency
+        }
+        
+    except Exception as e:
+        logger.error(f"Status check error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Status check failed: {str(e)}")
+
+@api_router.post("/webhook/stripe")
+async def stripe_webhook(request: Request):
+    """Handle Stripe webhook events"""
+    try:
+        body = await request.body()
+        signature = request.headers.get("Stripe-Signature")
+        
+        stripe_api_key = os.environ.get('STRIPE_API_KEY')
+        host_url = str(request.base_url).rstrip('/')
+        webhook_url = f"{host_url}api/webhook/stripe"
+        stripe_checkout = StripeCheckout(api_key=stripe_api_key, webhook_url=webhook_url)
+        
+        webhook_response = await stripe_checkout.handle_webhook(body, signature)
+        
+        # Update transaction based on webhook event
+        if webhook_response.session_id:
+            await db.payment_transactions.update_one(
+                {"session_id": webhook_response.session_id},
+                {"$set": {
+                    "payment_status": webhook_response.payment_status,
+                    "event_type": webhook_response.event_type,
+                    "updated_at": datetime.now(timezone.utc).isoformat()
+                }}
+            )
+        
+        logger.info(f"Webhook processed: {webhook_response.event_type}")
+        return {"status": "success"}
+        
+    except Exception as e:
+        logger.error(f"Webhook error: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Webhook failed: {str(e)}")
 
 # Include the router
 app.include_router(api_router)
