@@ -310,10 +310,11 @@ body {
   text-align: left;
   max-width: 500px;
   align-self: flex-end;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
   margin-left: -80px;
   position: relative;
   z-index: 10;
+  animation: floatAlbum 6s ease-in-out infinite;
 }
 
 .hero-text h1 {
