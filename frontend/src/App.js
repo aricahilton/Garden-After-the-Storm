@@ -18,11 +18,12 @@ const HERO_VIDEO = `${BACKEND_URL}/api/uploads/sky_video.mp4`;
 
 // Track data
 const TRACKS = [
-  { number: 1, title: "GARDEN AFTER THE STORM", duration: "5:23" },
-  { number: 2, title: "I HEARD AN OAK TREE", duration: "7:48" },
-  { number: 3, title: "SUNSTORM OF PASSION", duration: "5:48" },
-  { number: 4, title: "DEEPER THAN LOVE", duration: "5:23" },
-  { number: 5, title: "THE MUSIC OF OUR BECOMING II", duration: "5:21" }
+  { number: 1, title: "GARDEN AFTER THE STORM", duration: "5:23", file: "track_01_garden_after_the_storm.wav" },
+  { number: 2, title: "I HEARD AN OAK TREE", duration: "7:48", file: "track_02_i_heard_an_oak_tree.wav" },
+  { number: 3, title: "SUNSTORM OF PASSION", duration: "5:48", file: "track_03_sunstorm_of_passion.wav" },
+  { number: 4, title: "DEEPER THAN LOVE", duration: "5:23", file: "track_04_deeper_than_love.wav" },
+  { number: 5, title: "RIVERS IN ME", duration: "5:50", file: "track_05_rivers_in_me.wav" },
+  { number: 6, title: "THE MUSIC OF OUR BECOMING", duration: "5:21", file: "track_06_the_music_of_our_becoming.wav" }
 ];
 
 // Chat Widget Component
@@ -443,19 +444,27 @@ function App() {
           <div className="album-info">
             <span className="album-year">2026</span>
             <h3>Garden After the Storm</h3>
-            <p className="track-count">5 Tracks <span className="track-note">Click song title for lyrics</span></p>
+            <p className="track-count">6 Tracks</p>
             
             <div className="track-list" data-testid="track-list">
               {TRACKS.map((track) => (
                 <div 
                   key={track.number} 
                   className={`track ${activeTrack === track.number ? 'active' : ''}`}
-                  onClick={() => setActiveTrack(activeTrack === track.number ? null : track.number)}
                   data-testid={`track-${track.number}`}
                 >
-                  <span className="track-number">{track.number}</span>
-                  <span className="track-title">{track.title}</span>
-                  <span className="track-duration">{track.duration}</span>
+                  <div className="track-header" onClick={() => setActiveTrack(activeTrack === track.number ? null : track.number)}>
+                    <span className="track-number">{track.number}</span>
+                    <span className="track-title">{track.title}</span>
+                    <span className="track-duration">{track.duration}</span>
+                  </div>
+                  {activeTrack === track.number && (
+                    <div className="track-player">
+                      <audio controls src={`${BACKEND_URL}/api/uploads/${track.file}`}>
+                        Your browser does not support the audio element.
+                      </audio>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
