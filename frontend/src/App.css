@@ -633,9 +633,7 @@ body {
 }
 
 .artist-card img.erich-photo {
-  object-position: center 15%;
-  transform: scale(1.1);
-  transform-origin: center top;
+  object-position: center 20%;
 }
 
 .artist-card h3 {
