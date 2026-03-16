@@ -627,6 +627,7 @@ body {
   max-width: 400px;
   aspect-ratio: 1;
   object-fit: cover;
+  object-position: top center;
   margin-bottom: 1.5rem;
   filter: grayscale(20%);
 }
