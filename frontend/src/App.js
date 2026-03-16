@@ -13,6 +13,9 @@ const IMAGES = {
   arica: "https://tune-stage.preview.emergentagent.com/api/uploads/images/0f70b6fd-d42c-4189-8158-3e89c8f06d91.jpg"
 };
 
+// Video URL for hero background - blue sky with moving clouds
+const HERO_VIDEO = "https://static.videezy.com/system/resources/previews/000/044/030/original/Clouds_4K_Motion_Background_Loop.mp4";
+
 // Track data
 const TRACKS = [
   { number: 1, title: "GARDEN AFTER THE STORM", duration: "5:23" },
@@ -362,8 +365,18 @@ function App() {
 
       {/* Hero Section */}
       <section className="hero" data-testid="hero-section">
-        <div className="hero-bg" style={{ backgroundImage: `url(${IMAGES.hero})` }}></div>
+        <div className="hero-sky">
+          <div className="cloud cloud-1"></div>
+          <div className="cloud cloud-2"></div>
+          <div className="cloud cloud-3"></div>
+          <div className="cloud cloud-4"></div>
+          <div className="cloud cloud-5"></div>
+        </div>
+        <div className="hero-overlay"></div>
         <div className="hero-content">
+          <div className="hero-album-cover" data-testid="hero-album-cover">
+            <img src={IMAGES.album} alt="Garden After the Storm Album" />
+          </div>
           <h1>GARDEN AFTER THE STORM</h1>
           <p className="hero-subtitle">by <span className="artist-name">Erich Fritz</span> and <span className="artist-name">Arica Hilton</span></p>
           <p className="hero-description">10 tracks of poetry and music through a journey of transformation, love, passion and ultimately peace.</p>
