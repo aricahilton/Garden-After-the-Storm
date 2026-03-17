@@ -1,6 +1,16 @@
 /* Garden After the Storm - Styles */
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
 
+/* Hide Emergent badge */
+#emergent-badge,
+[id*="emergent-badge"],
+a[href*="emergent.sh"][style*="position: fixed"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
 :root {
   --color-bg: #0a0a0f;
   --color-bg-secondary: #12121a;
