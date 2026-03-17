@@ -1,0 +1,164 @@
+{
+  "design_system": {
+    "identity": {
+      "name": "ArtsPoetica Global",
+      "archetype": "The Modern Renaissance",
+      "vibe": "Elevated, Transcendental, Intimate, Fusion",
+      "tagline": "Saving the world one poem at a time"
+    },
+    "typography": {
+      "headings": {
+        "font_family": "Cormorant Garamond, serif",
+        "weights": ["400", "500", "600", "700"],
+        "usage": "All section titles, hero text, and featured poem excerpts.",
+        "styles": "tracking-tight leading-none italic-emphasis"
+      },
+      "body": {
+        "font_family": "DM Sans, sans-serif",
+        "weights": ["400", "500", "700"],
+        "usage": "Navigation, long-form text, UI elements, buttons.",
+        "styles": "tracking-wide leading-relaxed"
+      },
+      "scale": {
+        "h1": "text-5xl md:text-7xl lg:text-8xl",
+        "h2": "text-4xl md:text-5xl lg:text-6xl",
+        "h3": "text-2xl md:text-3xl lg:text-4xl",
+        "body_lg": "text-lg md:text-xl",
+        "body_base": "text-base",
+        "caption": "text-xs md:text-sm tracking-[0.2em] uppercase"
+      }
+    },
+    "colors": {
+      "mode": "hybrid",
+      "palette": {
+        "primary": {
+          "obsidian": "#0a0a0f",
+          "bone_white": "#F5F5F0",
+          "paper": "#F3E5D0"
+        },
+        "accent": {
+          "gold": "#C9A962",
+          "gold_hover": "#DFC07A",
+          "velvet_red": "#4A0404",
+          "ink_blue": "#0F172A"
+        },
+        "functional": {
+          "success": "#10B981",
+          "error": "#EF4444",
+          "warning": "#F59E0B",
+          "info": "#3B82F6"
+        },
+        "backgrounds": {
+          "dark": "#0a0a0f",
+          "light": "#F5F5F0",
+          "card_dark": "#12121a",
+          "card_light": "#FFFFFF"
+        }
+      },
+      "gradients": {
+        "hero_overlay": "linear-gradient(to bottom, rgba(10,10,15,0.2) 0%, rgba(10,10,15,0.8) 100%)",
+        "gold_shine": "linear-gradient(135deg, #C9A962 0%, #F0D595 50%, #C9A962 100%)"
+      }
+    },
+    "spacing": {
+      "container": "max-w-7xl mx-auto px-6 md:px-12 lg:px-24",
+      "section_gap": "py-24 md:py-32",
+      "element_gap": "space-y-6 or gap-6"
+    },
+    "visual_enhancers": {
+      "borders": {
+        "style": "1px solid",
+        "color_dark": "rgba(255, 255, 255, 0.1)",
+        "color_light": "rgba(10, 10, 15, 0.1)",
+        "radius": "rounded-sm"
+      },
+      "shadows": {
+        "card": "0 20px 40px -10px rgba(0,0,0,0.3)",
+        "glow": "0 0 20px rgba(201, 169, 98, 0.2)"
+      },
+      "textures": {
+        "grain": "url('data:image/svg+xml,...') (Use a noise overlay for depth)",
+        "paper": "Subtle paper texture for poetry sections"
+      }
+    },
+    "layout_system": {
+      "grid_gallery": "grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 (Tetris Mode)",
+      "bento_grid": "grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[300px]",
+      "editorial": "flex flex-col md:flex-row gap-12 items-center"
+    }
+  },
+  "components": {
+    "Navigation": {
+      "path": "/app/frontend/src/components/Navigation.js",
+      "style": "Fixed, glassmorphism (blur-md), minimal links, large logo.",
+      "interactions": "Links underline reveal on hover. Mobile menu full screen overlay."
+    },
+    "HeroSection": {
+      "path": "/app/frontend/src/components/Hero.js",
+      "style": "Full height (h-screen), video background or parallax image, centered typography.",
+      "elements": "H1 (Cormorant), Subheading (DM Sans), Primary CTA (Gold Pill Button)."
+    },
+    "ArtistCard": {
+      "path": "/app/frontend/src/components/ArtistCard.js",
+      "style": "Vertical portrait aspect ratio, image zoom on hover, text overlay at bottom with gradient.",
+      "props": ["image", "name", "discipline", "bio_excerpt"]
+    },
+    "PoemCard": {
+      "path": "/app/frontend/src/components/PoemCard.js",
+      "style": "Paper background (#F3E5D0), serif font, elegant padding, looks like a book page.",
+      "elements": "Title, Author, Excerpt, 'Read More' link."
+    },
+    "EventCalendar": {
+      "path": "/app/frontend/src/components/EventCalendar.js",
+      "style": "Minimalist list view (Date | Event Name | Location | CTA). Hover reveals image preview.",
+      "interactions": "Row highlight on hover."
+    },
+    "ShopItem": {
+      "path": "/app/frontend/src/components/ShopItem.js",
+      "style": "Clean minimal card, square image, price and title below. Quick add to cart button on hover."
+    }
+  },
+  "image_urls": {
+    "hero": {
+      "main": "https://images.unsplash.com/photo-1744895584588-20b29e9ecdf1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1MTN8MHwxfHNlYXJjaHw0fHxldGhlcmVhbCUyMGNvbnRlbXBvcmFyeSUyMGRhbmNlciUyMG1vdGlvbiUyMGJsdXJ8ZW58MHx8fHwxNzczNzEzMTE2fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Ethereal dancer in motion"
+    },
+    "publishing": {
+      "main": "https://images.unsplash.com/photo-1598711332034-d33308b92e13?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODd8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwcG9ldHJ5JTIwYm9vayUyMG9wZW4lMjBvbiUyMHdvb2RlbiUyMHRhYmxlJTIwc3VubGlnaHR8ZW58MHx8fHwxNzczNzEzMTE4fDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Open poetry book on table"
+    },
+    "music": {
+      "main": "https://images.unsplash.com/photo-1757360035753-5b743a7e182d?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2MTJ8MHwxfHNlYXJjaHwzfHx2aW55bCUyMHJlY29yZCUyMHNwaW5uaW5nJTIwY2xvc2UlMjB1cCUyMGRhcmslMjBhZXN0aGV0aWN8ZW58MHx8fHwxNzczNzEzMTIwfDA&ixlib=rb-4.1.0&q=85",
+      "alt": "Spinning vinyl record close up"
+    },
+    "textures": {
+      "oil_paint": "https://images.unsplash.com/photo-1611071690617-e857f5dc19e9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMjd8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMG9pbCUyMHBhaW50aW5nJTIwdGV4dHVyZSUyMG1hY3JvJTIwd2FybSUyMGVhcnRoJTIwdG9uZXN8ZW58MHx8fHwxNzczNzEzMTE3fDA&ixlib=rb-4.1.0&q=85"
+    },
+    "placeholders": {
+      "artist_portrait": "https://images.unsplash.com/photo-1768094710146-1fe9a17648ea?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDB8MHwxfHNlYXJjaHwxfHxoaWdoJTIwZmFzaGlvbiUyMGFydGlzdGljJTIwcG9ydHJhaXQlMjBwaG90b2dyYXBoeXxlbnwwfHx8fDE3NzM3MTMxMTl8MA&ixlib=rb-4.1.0&q=85",
+      "musician": "https://images.unsplash.com/photo-1641185867887-e8a0c79214b9?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NDh8MHwxfHNlYXJjaHwzfHxqYXp6JTIwbXVzaWNpYW4lMjBwbGF5aW5nJTIwc2F4b3Bob25lJTIwbW9vZHklMjBsaWdodGluZyUyMGJsYWNrJTIwYW5kJTIwd2hpdGV8ZW58MHx8fHwxNzczNzEzMTE5fDA&ixlib=rb-4.1.0&q=85"
+    }
+  },
+  "instructions_to_main_agent": [
+    "CRITICAL: Do NOT use the existing 'clouds' animation from the old CSS. It is too cartoonish. Use the 'Ethereal Motion' concept with CSS keyframes for slow fades and blurs.",
+    "Implement a 'Hybrid Theme': The Book Publishing section should feel lighter (Bone White background), while the Music section should be dark (Obsidian background).",
+    "Use 'Cormorant Garamond' for ALL Headings (h1-h6). Use 'DM Sans' for body text. Import these from Google Fonts.",
+    "Navigation: Create a 'Mega Menu' that elegantly splits into 'Publishing' and 'Music' divisions.",
+    "Artist Profiles: These are the core. They must look like magazine features, not database entries. Use large hero images.",
+    "Shop: Keep it clean and gallery-like. Minimal distraction.",
+    "AI Chat: Style it as a 'Concierge'. Use the Gold accent color for the chat bubble trigger.",
+    "Use the provided image URLs for specific sections. Do not assume other images.",
+    "Respect the 'Spacing Philosophy': Use p-12 or p-24 for section padding. Don't cram content.",
+    "Ensure the 'Bento Grid' is used for the Artists Directory."
+  ],
+  "universal_guidelines": [
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms.",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; }",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects.",
+    "Use 2-3x more spacing than feels comfortable."
+  ]
+}
