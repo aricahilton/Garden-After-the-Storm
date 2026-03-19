@@ -1923,3 +1923,91 @@ audio::-webkit-media-controls-panel {
   background: rgba(66, 133, 244, 0.2);
   color: #4285f4;
 }
+
+/* Background Music Button */
+.bg-music-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, 0.9);
+  border: 2px solid rgba(201, 169, 98, 0.5);
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  z-index: 999;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.bg-music-btn:hover {
+  background: rgba(30, 30, 30, 0.95);
+  border-color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.bg-music-btn.playing {
+  border-color: var(--color-accent);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.bg-music-btn svg {
+  width: 18px;
+  height: 18px;
+  color: var(--color-accent);
+  transition: transform 0.3s ease;
+}
+
+.bg-music-btn:hover svg {
+  transform: scale(1.1);
+}
+
+.bg-music-label {
+  font-size: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1px;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 10px rgba(201, 169, 98, 0.3);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(201, 169, 98, 0.6);
+  }
+}
+
+/* Adjust chat button position to not overlap */
+.chat-toggle-btn {
+  bottom: 24px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .bg-music-btn {
+    bottom: 90px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+  }
+  
+  .bg-music-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .bg-music-label {
+    font-size: 7px;
+  }
+}

@@ -911,6 +911,9 @@ const MERCH_ITEMS = [
   }
 ];
 
+// Background Music URL
+const BACKGROUND_MUSIC = `${BACKEND_URL}/api/uploads/background_loop.mp3`;
+
 // Main App Component
 function App() {
   const [email, setEmail] = useState("");
@@ -921,6 +924,8 @@ function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [checkoutLoading, setCheckoutLoading] = useState(null);
   const [showCheckoutSuccess, setShowCheckoutSuccess] = useState(false);
+  const [bgMusicPlaying, setBgMusicPlaying] = useState(false);
+  const bgMusicRef = useRef(null);
 
   // Check if returning from Stripe checkout
   useEffect(() => {
@@ -1379,6 +1384,42 @@ function App() {
       )}
 
       {/* Chat Widget */}
+      {/* Background Music Player */}
+      <audio
+        ref={bgMusicRef}
+        src={BACKGROUND_MUSIC}
+        loop
+        preload="auto"
+      />
+      <button
+        className={`bg-music-btn ${bgMusicPlaying ? 'playing' : ''}`}
+        onClick={() => {
+          if (bgMusicRef.current) {
+            if (bgMusicPlaying) {
+              bgMusicRef.current.pause();
+            } else {
+              bgMusicRef.current.volume = 0.3;
+              bgMusicRef.current.play();
+            }
+            setBgMusicPlaying(!bgMusicPlaying);
+          }
+        }}
+        data-testid="bg-music-btn"
+        title={bgMusicPlaying ? 'Pause ambient music' : 'Play ambient music'}
+      >
+        {bgMusicPlaying ? (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <rect x="6" y="4" width="4" height="16"></rect>
+            <rect x="14" y="4" width="4" height="16"></rect>
+          </svg>
+        ) : (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+          </svg>
+        )}
+        <span className="bg-music-label">{bgMusicPlaying ? 'Ambient' : 'Play'}</span>
+      </button>
+
       <ChatWidget />
     </div>
   );
