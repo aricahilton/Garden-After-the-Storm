@@ -122,3 +122,4 @@ backend/uploads/track_07_distance.wav
 # Environment files
 *.env
 *.env.*
+backend/uploads/track_02_i_heard_an_oak_tree.wav
