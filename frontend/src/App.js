@@ -189,7 +189,107 @@ const TRACKS = [
     file: "track_01_garden_after_the_storm.wav",
     description: `Created in collaboration with the wonderfully talented, Arica Hilton (IG: @aricahilton), whose lovely poetry inspired the song – I feel extremely fortunate she allowed me to put her poetic vision to music – meant, not just to be heard, but also to be felt.
 
-"Garden After the Storm" is a cinematic piano ballad about transformation after trauma. The song reflects on the choice between carrying the darkness we've experienced and allowing it to dissolve into something new. Moving from broken rooms and quiet fear toward healing and growth, the story follows the idea that scars can become gardens if we choose to nurture what comes after the storm. With intimate verses and a powerful emotional chorus, the song explores resilience, forgiveness, and the quiet strength of letting the past drift away.`
+"Garden After the Storm" is a cinematic piano ballad about transformation after trauma. The song reflects on the choice between carrying the darkness we've experienced and allowing it to dissolve into something new. Moving from broken rooms and quiet fear toward healing and growth, the story follows the idea that scars can become gardens if we choose to nurture what comes after the storm. With intimate verses and a powerful emotional chorus, the song explores resilience, forgiveness, and the quiet strength of letting the past drift away.`,
+    lyrics: `Garden After the Storm
+
+Unlike you
+I don't stay in the dark
+The quiet hunger for damage
+
+It's not that I don't feel it too
+Those shadows cross my mind
+But I let them drift like smoke
+And leave them far behind
+
+You might think I'm two people
+Storms beneath a smile
+Hiding ghosts in gentle words
+For just a little while
+
+Soft thoughts drifting outward
+Hands that still care
+Choosing light instead of fear
+Choosing open air
+
+Why bring back the broken rooms
+The helplessness, the fear
+Why give breath to yesterday
+When the sky is here
+
+Let the past fall into air
+Like dust across the sea
+Let the night release its hold
+And loosen up on me
+
+What was heavy fades away
+What was sharp grows soft again
+Like the sand that shifts each morning
+With the turning of the wind
+
+Maybe I tried to wash it out
+Exfoliate the mind
+Like a judge who clears the name
+Of someone left behind
+
+But are we ever helpless
+Do we have to kneel to shame
+For the violence we have witnessed
+Or the scars we cannot name
+
+Why give life to broken echoes
+Why relive the fall
+When the sky is wide above us
+And the light is calling all
+
+Let the past fall into air
+Like dust across the sea
+Let the night release its hold
+And loosen up on me
+
+What was heavy fades away
+What was sharp grows soft again
+Like the sand that shifts each morning
+With the turning of the wind
+
+A drunken storm broke through the door
+Walls shattered on the floor
+Blood and bruises in the room
+Silence at the core
+
+A child climbed out the window
+Searching sky for breath
+Running toward a life beyond
+The wreckage left by death
+
+But somewhere past that violent night
+A garden slowly grew
+Flowers rising in the sun
+Breaking morning through
+
+She washed the dust from every leaf
+Every petal clean
+Let the darkness fall away
+From everything that's green
+
+Let the past fall into air
+Like dust across the sea
+Let the night release its hold
+And loosen up on me
+
+What once marked me like a tattoo
+Fades into the wind
+Every scar becomes a garden
+If you choose to begin
+
+The sand rearranges
+Day after day
+And pain changes shape
+When it drifts away
+
+She washed herself of other people's tragedies
+As she washed the parasites from each leaf – every petal
+As they try to feed
+The way humans sometimes do to one another`
   },
   { 
     number: 2, 
