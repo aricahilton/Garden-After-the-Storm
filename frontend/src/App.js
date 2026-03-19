@@ -1383,25 +1383,32 @@ function App() {
         </div>
       )}
 
-      {/* Chat Widget */}
       {/* Background Music Player */}
       <audio
         ref={bgMusicRef}
         src={BACKGROUND_MUSIC}
         loop
         preload="auto"
+        onEnded={() => setBgMusicPlaying(false)}
+        onError={(e) => console.error('Audio error:', e)}
       />
       <button
         className={`bg-music-btn ${bgMusicPlaying ? 'playing' : ''}`}
-        onClick={() => {
+        onClick={async () => {
           if (bgMusicRef.current) {
             if (bgMusicPlaying) {
               bgMusicRef.current.pause();
+              setBgMusicPlaying(false);
             } else {
-              bgMusicRef.current.volume = 0.3;
-              bgMusicRef.current.play();
+              try {
+                bgMusicRef.current.volume = 0.3;
+                await bgMusicRef.current.play();
+                setBgMusicPlaying(true);
+              } catch (error) {
+                console.error('Audio play failed:', error);
+                setBgMusicPlaying(false);
+              }
             }
-            setBgMusicPlaying(!bgMusicPlaying);
           }
         }}
         data-testid="bg-music-btn"
