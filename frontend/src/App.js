@@ -456,6 +456,101 @@ At its core, the theme is about surrendering to that emotional current: allowing
     description: `"The Music of Our Becoming" is written as a metaphorically complex poem vs. a structured song. This piece centers on reunion, rebirth, and the sacred intensity of rediscovered love. It portrays two lovers returning to one another not merely as continuation, but as transformation: shedding distance, restraint, and fear to become something deeper and newly awakened.
 
 At its core, the theme is relief and renewal: love surviving exile and emerging not diminished, but purified and reborn through longing and return. Metaphors draw from René Magritte's "The Lovers," which symbolizes the frustration of desire.`
+  },
+  { 
+    number: 7, 
+    title: "DISTANCE", 
+    duration: "6:15", 
+    file: "track_07_distance.wav",
+    description: `"Distance" is a haunting meditation on the unbearable space that grows between two people who were once inseparable. The song traces the arc of a love that burned with fire and marrow, only to be slowly claimed by the quiet devastation of distance.
+
+Through rich, poetic imagery—flames of blue, drifting continents, trembling bridges—the piece explores how even the most passionate connections can fracture into silence. The recurring question "How is it then distance came to claim us?" echoes like a lament, searching for meaning in separation.`,
+    lyrics: `Distance
+
+And then
+came longing
+
+When distance
+poured a fire into my flesh
+Flinging flames of blue
+through the wind
+My heart flowed like a brook once
+Beating in cadence
+to your rolling ocean
+Tears falling into your tears
+Splashing into deserted pools of laughter
+So close were we
+
+My breath inhaled your marrow
+Melting into unison
+
+How is it then
+distance came to claim us?
+Distance came to claim us
+Pulling its rope
+harder and farther
+Across that feeble bridge
+connecting the cord
+of our drifting continents
+We were fire in the same breath
+Now we fracture into silence
+
+And you
+could taste the lexicon
+of my hunger
+With a litany of kisses
+Cascading endlessly
+through languid lips
+We were spilling into moments
+we could not contain
+Time folding around us
+like a forgotten name
+
+Your caprice found no welcome
+As I spread the salt
+of your prodigal oaths
+A remedy
+for my raw
+and ashen pride
+
+How is it then
+distance came to claim us?
+Distance came to claim us
+Drawing its line
+through marrow and flame
+Across that trembling bridge
+binding what could not remain
+We were music in the same breath
+Now we echo in the ache
+
+Distance
+was waiting
+In the fracture
+of timing
+In the pull
+of the thread
+In the staccato
+of our longing
+In the words
+we never said
+
+How is it then
+distance came to take us?
+Distance came to take us
+Unraveling quietly
+all we became
+There was fire in the marrow
+There was breath we couldn't follow
+Across the fragile bridge
+we could not sustain
+We were one in the same breath
+I still feel you
+Now the silence screams your name
+
+And all along
+distance
+was wise
+to our staccato embrace`
   }
 ];
 
@@ -980,7 +1075,7 @@ function App() {
           <div className="album-info">
             <h3>Garden After the Storm</h3>
             <span className="album-year">2026</span>
-            <p className="track-count">6 Tracks</p>
+            <p className="track-count">7 Tracks</p>
             
             <div className="track-list" data-testid="track-list">
               {TRACKS.map((track) => (

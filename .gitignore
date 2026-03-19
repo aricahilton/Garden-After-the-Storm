@@ -117,3 +117,4 @@ android-sdk/ -e
 # Environment files
 *.env
 *.env.*
+backend/uploads/track_07_distance.wav
