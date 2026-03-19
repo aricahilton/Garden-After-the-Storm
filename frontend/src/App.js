@@ -202,7 +202,112 @@ An ancient oak tree becomes the voice of the earth itself, reminding the listene
 
 The oak tree laments, "I was here before you, rooted, like you, reaching, like you."
 
-These songs are meant to be experienced as a journey rather than isolated tracks. Garden After the Storm begins with emotional release: the quiet aftermath of turmoil and the first breath of healing. I Heard an Oak Tree moves into reflection, where the listener pauses in that stillness and begins to hear the deeper rhythms of the earth and of oneself.`
+These songs are meant to be experienced as a journey rather than isolated tracks. Garden After the Storm begins with emotional release: the quiet aftermath of turmoil and the first breath of healing. I Heard an Oak Tree moves into reflection, where the listener pauses in that stillness and begins to hear the deeper rhythms of the earth and of oneself.`,
+    lyrics: `I Heard an Oak Tree
+
+I heard
+An oak tree
+(oak tree… oak tree…)
+And it was in a garden
+After the storm
+I heard that sound
+A deep groan
+Like a bass note
+Searching for the root
+(root… root…)
+
+I heard a collision
+Like hands pushing aside dirt
+Clearing a path for light
+Pouring into the center
+Of the earth
+
+We belong to the same sun
+We belong to the same earth
+Elements forming you
+Elements forming me
+
+I heard a chord
+Echoing rumors of sunsets
+Kissing a canopy of trees
+And rain streaming life
+Into your limbs
+(life… life…)
+
+We belong
+(we belong … we belong…)
+We belong
+To the same sun
+To the same earth
+I heard…
+(oak tree…)
+I heard an oak tree
+(oak tree… oak tree…)
+
+We belong
+We belong
+Elements forming you
+Elements forming me
+
+With the window open
+The way you like to sleep
+I heard an oak tree
+Lamenting in the breeze
+Standing in the garden
+After the storm
+
+I was here before you
+(before you… before you…)
+
+Rooted
+Like you
+(like you… like you…)
+Reaching
+Like you
+
+Mountains
+Oceans
+Trees
+All the elements
+Forming you
+Forming me
+
+We belong to the same sun
+We belong to the same earth
+We belong to the same stars
+We belong to the same birth
+We belong to the same wind
+We belong to the same sea
+Elements forming you
+Elements forming me
+
+And in the garden
+After the storm
+I heard an oak tree
+(oak tree… oak tree…)
+And it whispered
+You were never separate
+From me
+
+I heard…
+(oak tree… oak tree…)
+An oak tree
+(oak tree… oak tree…)
+Calling through the wind
+We belong
+To the same sun
+To the same earth
+Elements forming you
+Elements forming me
+
+And in the garden
+After the storm
+I heard an oak tree
+(oak tree… oak tree…)
+And it whispered
+You were never separate
+From me
+(from me… from me…)`
   },
   { 
     number: 3, 
@@ -1044,11 +1149,28 @@ function App() {
             <div className="lyrics-content">
               <span className="lyrics-track-number">Track {lyricsTrack.number}</span>
               <h2 className="lyrics-title">{lyricsTrack.title}</h2>
-              <div className="lyrics-text">
+              
+              {/* Description */}
+              <div className="lyrics-description">
+                <h3 className="lyrics-section-title">About This Track</h3>
                 {lyricsTrack.description.split('\n\n').map((paragraph, idx) => (
                   <p key={idx}>{paragraph}</p>
                 ))}
               </div>
+              
+              {/* Lyrics */}
+              {lyricsTrack.lyrics && (
+                <div className="lyrics-text">
+                  <h3 className="lyrics-section-title">Lyrics</h3>
+                  {lyricsTrack.lyrics.split('\n\n').map((verse, idx) => (
+                    <div key={idx} className="lyrics-verse">
+                      {verse.split('\n').map((line, lineIdx) => (
+                        <p key={lineIdx} className="lyrics-line">{line}</p>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
