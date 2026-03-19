@@ -551,6 +551,13 @@ And all along
 distance
 was wise
 to our staccato embrace`
+  },
+  { 
+    number: 8, 
+    title: "THE SAME MOON BETWEEN US", 
+    duration: "5:45", 
+    file: "track_08_same_moon_between_us.wav",
+    description: `"The Same Moon Between Us" explores the bittersweet beauty of connection across distance. Though separated by miles, the lovers find solace in the shared light of the moon—a celestial reminder that they remain bound by something greater than space.`
   }
 ];
 
@@ -1075,7 +1082,7 @@ function App() {
           <div className="album-info">
             <h3>Garden After the Storm</h3>
             <span className="album-year">2026</span>
-            <p className="track-count">7 Tracks</p>
+            <p className="track-count">8 Tracks</p>
             
             <div className="track-list" data-testid="track-list">
               {TRACKS.map((track) => (
