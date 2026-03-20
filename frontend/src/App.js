@@ -911,8 +911,8 @@ const MERCH_ITEMS = [
   }
 ];
 
-// Background Music URL
-const BACKGROUND_MUSIC = `${BACKEND_URL}/api/uploads/background_loop.mp3`;
+// Background Music URL (v2 = 38 second loop with vocals)
+const BACKGROUND_MUSIC = `${BACKEND_URL}/api/uploads/background_loop.mp3?v=2`;
 
 // Main App Component
 function App() {
