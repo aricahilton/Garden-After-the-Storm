@@ -135,3 +135,7 @@ backend/uploads/track_02_i_heard_an_oak_tree.wav
 # Environment files
 *.env
 *.env.*
+-e 
+# Environment files
+*.env
+*.env.*
