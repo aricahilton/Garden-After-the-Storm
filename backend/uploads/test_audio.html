@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Audio Test</title></head>
+<body>
+<h1>Audio Test</h1>
+<p>Click the button below to test if audio plays:</p>
+<button onclick="playAudio()" style="padding: 20px; font-size: 20px;">PLAY AUDIO</button>
+<br><br>
+<audio id="testAudio" controls src="/api/uploads/background_loop.mp3?t=20260320"></audio>
+<script>
+function playAudio() {
+    const audio = document.getElementById('testAudio');
+    audio.volume = 0.3;
+    audio.play().then(() => {
+        alert('Audio is playing!');
+    }).catch(err => {
+        alert('Error: ' + err.message);
+    });
+}
+</script>
+</body>
+</html>
