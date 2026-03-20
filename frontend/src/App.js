@@ -911,8 +911,8 @@ const MERCH_ITEMS = [
   }
 ];
 
-// Background Music URL - I Heard an Oak Tree 2:15-3:26
-const BACKGROUND_MUSIC = `${BACKEND_URL}/api/uploads/background_loop.mp3?t=20260320`;
+// Background Music URL - I Heard an Oak Tree 2:15-2:45 (30 sec)
+const BACKGROUND_MUSIC = `${BACKEND_URL}/api/uploads/background_loop.mp3?v=30sec`;
 
 // Main App Component
 function App() {
