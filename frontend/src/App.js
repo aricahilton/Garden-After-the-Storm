@@ -911,8 +911,8 @@ const MERCH_ITEMS = [
   }
 ];
 
-// Background Music URL - I Heard an Oak Tree 2:15-2:45 (30 sec)
-const BACKGROUND_MUSIC = `${BACKEND_URL}/api/uploads/background_loop.mp3?v=30sec`;
+// Background Music URL - Garden After the Storm intro (38 sec)
+const BACKGROUND_MUSIC = `${BACKEND_URL}/api/uploads/background_loop.mp3?v=fixed`;
 
 // Main App Component
 function App() {
