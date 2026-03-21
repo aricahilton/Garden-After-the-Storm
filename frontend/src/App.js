@@ -911,8 +911,8 @@ const MERCH_ITEMS = [
   }
 ];
 
-// Background Music URL - Garden After the Storm intro (38 sec)
-const BACKGROUND_MUSIC = `${BACKEND_URL}/api/uploads/background_loop.mp3?v=fixed`;
+// Background Music URL - Garden After the Storm intro (38 sec) - processed version
+const BACKGROUND_MUSIC = `${BACKEND_URL}/api/uploads/background_loop.mp3?v=processed`;
 
 // Main App Component
 function App() {
