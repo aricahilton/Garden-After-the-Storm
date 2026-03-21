@@ -730,6 +730,151 @@ to our staccato embrace`
     duration: "5:45", 
     file: "track_08_same_moon_between_us.wav",
     description: `"The Same Moon Between Us" explores the bittersweet beauty of connection across distance. Though separated by miles, the lovers find solace in the shared light of the moon—a celestial reminder that they remain bound by something greater than space.`
+  },
+  { 
+    number: 9, 
+    title: "SEVEN FACES OF LOVE", 
+    duration: "8:02", 
+    file: "track_09_seven_faces_of_love.wav",
+    description: `"Seven Faces of Love" is an epic, cinematic journey through ancient mythology and timeless desire. The song weaves together imagery of the Seven Wonders of the World with the seven veils of Salome, creating a tapestry of longing, discovery, and transformation.
+
+Set in a "faraway land" and "faraway time," the narrator speaks of a hidden cache—a heart locked away, waiting to be unearthed. Through archaeological metaphors of shovels and buried coffers, the song explores the risk of excavating deep emotion: the danger and beauty of revealing what has been buried beneath "millennia" of protection.
+
+The lyrics dance between surrender and fear, between the call of sirens and the terror of oblivion. Yet ultimately, the song is a celebration of love's power to release us from our tombs, to awaken the absent colors in our world, and to transform fear into freedom.`,
+    lyrics: `Seven Faces of Love
+
+In a faraway land
+In a faraway time
+Discovery led to a faraway cache
+
+A cache unopened
+A cache unnoticed
+
+A cache locked away in a faraway heart
+A heart locked away in a faraway land.
+Seven faces of love…
+
+I did not seek to fall.
+Nor did I seek your kiss.
+
+Your youth beguiled me
+luring me like the call of sirens
+to the ancient abyss of your sea.
+
+I ask you, shovel in hand
+
+should we risk digging
+into the coffers buried -- buried within?
+
+Brush away millennia
+to reveal naked desire
+
+worn, dismantled
+
+raging in whispers beneath the
+cleavage of seedless sands.
+
+The science of love
+all but threw its elements
+before our feet.
+
+But what elements comprised our fears?
+
+Was it your silence
+thundering on traffic roads
+that halted my fleeing heart?
+
+Or your dangerous kisses
+engraving gold into my flesh
+
+from which there is no carved road
+of return?
+
+I will dance each of the seven veils
+one for each of your seven faces
+
+Facing each of your seven wonders
+Brushing each of your burning layers
+
+of your pomegranate sweetness
+
+awakening the absent colors
+in the seven wonders of your world.
+
+Seven faces of love
+Seven veils of fire
+Seven faces of love
+Seven hearts of desire
+
+Fear encases me in a tomb.
+
+How do we walk, surefooted now
+through rocky slopes without slipping
+into the torso of oblivion?
+
+Bypass the dragon smoke
+armed about our ankles
+
+primed to trip the tide of trepidation
+in an effort to retrieve our squandered souls.
+
+I will dance before Zeus at Olympia
+glide through Colossus of Rhodes
+
+hang in the gardens of Babylon
+
+kneel before Artemis' temple
+
+I will pray at Bodrum
+
+seek Alexandria's beacon
+
+travel south
+
+to build the grandest pyramid
+Egypt ever bore.
+
+All in the name of your faces
+All in the name of your love
+
+Your seven faces of love.
+
+I will dance each of the seven veils
+one for each of your seven faces
+
+Facing each of your seven wonders
+
+Brushing each of your burning layers
+
+of your pomegranate sweetness.
+
+Seven faces of love
+Seven faces of love
+Seven veils of fire
+Seven faces of love
+Seven hearts of desire
+ 
+Peace nails shut the voice.
+
+The voice of the sirens silent
+silent beneath the eyelids
+the eyelids of the sea.
+
+And the only voice I hear
+will be the voice of your pomegranate sweetness.
+
+Fear releases me from my tomb.
+
+The sun awakens the moon.
+
+As the faraway land draws near
+when the faraway time has come
+to withdraw its cache of tears.
+
+All in the name of your faces
+All in the name of your love
+
+Your seven faces of love.`
   }
 ];
 
@@ -1259,7 +1404,7 @@ function App() {
           <div className="album-info">
             <h3>Garden After the Storm</h3>
             <span className="album-year">2026</span>
-            <p className="track-count">8 Tracks</p>
+            <p className="track-count">9 Tracks</p>
             
             <div className="track-list" data-testid="track-list">
               {TRACKS.map((track) => (
