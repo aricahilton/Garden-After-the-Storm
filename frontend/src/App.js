@@ -875,6 +875,56 @@ All in the name of your faces
 All in the name of your love
 
 Your seven faces of love.`
+  },
+  { 
+    number: 10, 
+    title: "NOMEN EXSPECTANS", 
+    duration: "6:10", 
+    file: "track_10_nomen_exspectans.wav",
+    description: `"Nomen Exspectans" (Latin for "Waiting to be Named") is a mystical meditation on identity, transformation, and cosmic connection. Opening with lines from the ancient Emerald Tablet of Hermes Trismegistus—"As above, so below"—the song weaves alchemical wisdom with dreamlike imagery of hunters catching stars, wings melting into fins, and souls walking up the sky.
+
+The narrator contemplates whether the Emerald Tablet represents true transformation or merely the reflection of a mythic man who found himself in the stars. Ultimately, they embrace the mystery, choosing to simply "walk up the sky like a star, waiting to be named by my discoverer."`,
+    lyrics: `Nomen Exspectans
+
+Verum, sine Mendacio, certum et verissimum.
+Quod est Superius est sicut quod est Inferius.
+Et quod est Inferius est sicut quod est Superius,
+Ad perpetranda Miracula Rei Unius.
+ 
+A hunter with a big net
+Catches stars falling from the Milky Way.
+He keeps them in a basket full of moons
+Circling love like the seasons.
+ 
+As you weave the threads of sunrise
+Like a waking wave of kisses
+Skipping the stones of my heart
+And rippling through my flesh
+As only the horns of heaven can.
+ 
+You, outlined in fireflies,
+Watch the moon filling, fulfilling…
+Strumming the sun into prose.
+ 
+A man flies into an ocean, feet first.
+His wings melt into fins,
+Neck stretching skyward, like a swan's.
+ 
+In truth, certainly, most veritable,
+As above, as below.
+ 
+I can't decide if the Emerald Tablet
+Is his ticket to transformation
+Or just the whim of a mythic man
+Who discovered his reflection in Orion.
+ 
+I simply walk up the sky
+Like a star
+Waiting to be named
+By my discoverer.
+ 
+As above…
+So below…`
   }
 ];
 
@@ -1404,7 +1454,7 @@ function App() {
           <div className="album-info">
             <h3>Garden After the Storm</h3>
             <span className="album-year">2026</span>
-            <p className="track-count">9 Tracks</p>
+            <p className="track-count">10 Tracks</p>
             
             <div className="track-list" data-testid="track-list">
               {TRACKS.map((track) => (
