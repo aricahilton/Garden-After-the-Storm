@@ -418,7 +418,105 @@ From me
 
 Through imagery of galaxies, moonlit whispers, and clouds heavy with rain, the singer describes the intoxicating pull of desire that leaves no room for resistance. What begins as a delicate atmosphere of fragrance and distant poetry gradually becomes a powerful emotional storm: one that consumes both body and soul.
 
-As the music swells with orchestral intensity, the song captures the moment when control dissolves and two people give themselves fully to the gravity between them. In the end, the storm quiets into a whisper, leaving only breath, memory, and the lingering echo of passion in the air.`
+As the music swells with orchestral intensity, the song captures the moment when control dissolves and two people give themselves fully to the gravity between them. In the end, the storm quiets into a whisper, leaving only breath, memory, and the lingering echo of passion in the air.`,
+    lyrics: `Sunstorm of Passion
+
+The sky was wide and waiting before the storm tonight
+Jasmine rising softly in the night
+Candlelight trembling on the air
+Like a dream already there
+
+Poems of eternal love drift through the distance
+Jasmine rising in the air
+There is no escaping this scent tonight
+It pulls me under everywhere
+
+Your breath moves slowly over me
+Like gravity pulling the sea
+This fragrance turns the world around
+Until it spins to vertigo
+
+Pressure building everywhere
+Thunder moving through the air
+Every second drawing closer to the flame
+
+And suddenly the sky ignites
+
+Oh —
+
+There's your sunstorm of passion rising through me tonight, tonight
+Like a fire in the dark reaching up for the light
+Every wave of you pulls me deeper below
+Every heartbeat saying don't let go
+
+And I know I should run but I'm losing control
+Every breath pulling deeper my soul
+There's your sunstorm of passion raging out of control
+You're the fire I can't let go
+
+Moonlit branches trembling overhead
+Drunken clouds spinning into drunkenness
+Until they can no longer hold their liquid sky
+Silver threads begin to unfold
+
+What is this twittering in the moonlight
+Calling softly through the night
+Signaling something I cannot refuse
+Free will quietly surrendering
+
+Every breath becoming flame
+Every whisper speaks your name
+Every second drawing closer to the fire
+
+And suddenly the sky ignites
+
+Oh —
+
+There's your sunstorm of passion rising through me tonight, tonight
+Like a fire in the dark reaching up for the light
+Every wave of you pulls me deeper below
+Every heartbeat saying don't let go
+
+And I know I should run but I'm losing control
+Every breath pulling deeper my soul
+There's your sunstorm of passion I could never outrun
+You're the storm I've become
+
+We were stars in a golden cage of galaxies
+Living somewhere between radiance and mystery
+I tried to hold the fire, but the fire held me
+And the storm only grows stronger every day
+
+Now the sky remembers every spark of your name
+And the night keeps whispering the same
+That a love like ours was never meant to fade
+Just a flame we were born to become
+
+And in the silence…
+The storm explodes
+
+Oh —
+
+There's your sunstorm of passion rising through me tonight, tonight
+Like a fire in the dark reaching up for the light
+Every wave of you pulls deeper the tide
+Every breath draws you deeper inside
+
+And I know I should run but it's already done
+You're the storm, the fire, the only one
+Rising like a sunstorm of passion deep in my soul
+You're the fire I can't let go
+
+The sky is burning in the candlelight
+Jasmine fading softly into night
+And somewhere in the air we breathe again
+Your sunstorm still remains
+
+You lapping it up
+
+ I, waiting for your waves…
+
+ to etch my perfection.`
   },
   { 
     number: 4, 
