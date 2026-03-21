@@ -533,7 +533,81 @@ The result is a lush, late-night lounge experience: atmospheric, sensual, and co
 But you realize you are the wanderer
 who finally found home.
 
-This is deeper than love, my love."`
+This is deeper than love, my love."`,
+    lyrics: `Deeper Than Love
+
+This is deeper than love…
+my love.
+
+A fusion
+of what was once one.
+
+Roots stretching across oceans
+longing for the other shore.
+
+Ancient branches press my lips
+revealing fruits of endless form.
+
+Possibilities unfolding slowly
+heavy with the knowledge of time.
+
+Like liquid gold
+your body settles into my bones…
+
+As if I were a vessel
+for your thirst. All my life
+I have been searching for this kiss.
+
+All my life
+for a moment like this.
+
+This is deeper than love, my love…
+
+Deeper than love.
+deeper than love.
+
+For a thousand years
+my atoms grew into branches.
+
+Leaves burst into being
+in a second…
+
+or a century.
+
+Who is to say?
+
+On the surge of pilgrimage
+my voice glides across the loam.
+
+Planting your lineage
+in the soil of memory.
+
+Remnants of starburst
+flare into particles of hope.
+
+All my life
+I have been searching for this kiss.
+
+All my life
+for a moment like this.
+
+This is deeper than love, my love…
+
+Deeper than love.
+deeper than love.
+
+You think we are meeting
+for the first time…
+
+But you realize
+you are the wanderer
+
+who finally
+found home.
+
+This is deeper than love…
+
+my love.`
   },
   { 
     number: 5, 
