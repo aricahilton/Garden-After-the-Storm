@@ -183,3 +183,7 @@ backend/uploads/track_10_nomen_exspectans.wav
 *.env
 *.env.*
 backend/uploads/track_11_song_of_the_gypsy.wav
+-e 
+# Environment files
+*.env
+*.env.*
