@@ -925,6 +925,95 @@ By my discoverer.
  
 As above…
 So below…`
+  },
+  { 
+    number: 11, 
+    title: "SONG OF THE GYPSY", 
+    duration: "6:25", 
+    file: "track_11_song_of_the_gypsy.wav",
+    description: `"Song of the Gypsy" traces the memory of a love that was once visceral, intoxicating, and deeply intertwined: felt through scent, touch, and shared thought. What begins as a sensory immersion (fruit, skin, breath, late-night intimacy) slowly unravels into distance and unanswered longing.
+
+The piece reflects on the quiet fracture that follows intensity: unspoken words, fading presence, and the disorientation of absence. Yet even in separation, the connection lingers: echoing through memory, rhythm, and the body itself.
+
+It is a meditation (yet fun, repeatable and danceable) on desire, impermanence, and the way certain encounters continue to move through us long after they've disappeared.`,
+    lyrics: `Song of the Gypsy
+
+Recuerdas…
+estábamos ahí…
+una vez…
+amor… tela recién cortada…
+
+Remember… we were there once
+Love was a new cut of cloth
+
+The smell of fresh fruit
+We fell into each other's arms
+An anxious sigh
+
+A kiss… two keys…
+A heart that beat like mine
+And I was wrong
+
+I dreamed of honeydew nights
+Satin sheets
+Grapes half eaten
+
+Dónde estás…
+dime dónde estás…
+Fuiste fuego en mi piel…
+y pensé que eras mío
+
+Dónde estás…
+vuelve una vez más…
+Sigo ardiendo en silencio…
+pensando en ti
+
+Your scent moves softly through my hands
+A rough cheek cuts across my breast
+Unheard apologies
+Left on my machine
+
+Where are you now?
+The one whose hunger ran through me
+Your branches running in my veins
+
+You poured your promises in my cup
+My honey hardened still
+Into stone
+
+Lo sentiste…
+pero no te quedaste…
+ 
+The guitar strums… our final line
+Reluctant memories fall away
+
+The wind blows east
+My eyes set west
+My heart still burns
+For what we pierced
+
+An August moon… urgent
+
+Dónde estás…
+dime dónde estás…
+Fuiste fuego en mi piel…
+y ya no estás
+
+Dónde estás…
+vuelve una vez más…
+Bailo sola en la noche…
+pensando en ti
+
+Dónde estás…
+
+We whispered poetry. discovered Neruda.
+debated on poverty and the wealth of nations
+whatever happened to the half-bitten oaths?
+the sunrise. shielded by clouds
+distort your ecstasy. as I drive to a movie alone
+in placid countenance…  
+ 
+replenishing my roving vessel with a moving song of the gypsy.`
   }
 ];
 
@@ -1454,7 +1543,7 @@ function App() {
           <div className="album-info">
             <h3>Garden After the Storm</h3>
             <span className="album-year">2026</span>
-            <p className="track-count">10 Tracks</p>
+            <p className="track-count">11 Tracks</p>
             
             <div className="track-list" data-testid="track-list">
               {TRACKS.map((track) => (
