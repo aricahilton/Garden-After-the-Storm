@@ -619,6 +619,7 @@ body {
 
 .track.active {
   background: rgba(201, 169, 98, 0.1);
+  border-left: 1.8px solid #C9A962;
 }
 
 .track-header {
@@ -628,7 +629,7 @@ body {
 }
 
 .track-player {
-  padding: 0.5rem 0 1rem 30px;
+  padding: 0.5rem 1rem 1rem 30px;
 }
 
 .track-player audio {
@@ -656,6 +657,7 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-bottom: 10px;
 }
 
 .lyrics-btn:hover {
@@ -692,6 +694,7 @@ body {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  margin-bottom: 10px;
 }
 
 .buy-track-btn:hover {
@@ -866,6 +869,7 @@ audio::-webkit-media-controls-panel {
   width: 30px;
   font-size: 0.85rem;
   color: var(--color-text-muted);
+  padding-left: 10px;
 }
 
 .track-title {
@@ -878,6 +882,7 @@ audio::-webkit-media-controls-panel {
 .track-duration {
   font-size: 0.85rem;
   color: var(--color-text-muted);
+  padding-right: 10px;
 }
 
 /* About Section */
@@ -1928,9 +1933,9 @@ audio::-webkit-media-controls-panel {
 .bg-music-btn {
   position: fixed;
   bottom: 100px;
-  right: 24px;
-  width: 48px;
-  height: 48px;
+  right: 2rem;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: rgba(20, 20, 20, 0.9);
   border: 2px solid rgba(201, 169, 98, 0.5);
