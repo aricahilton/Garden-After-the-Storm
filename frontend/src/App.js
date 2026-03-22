@@ -58,7 +58,11 @@ const CheckoutSuccess = ({ onBackToShop }) => {
   }, [checkPaymentStatus]);
 
   return (
+
     <div className="checkout-success-page" data-testid="checkout-success-page">
+
+    <div className="checkout-success-page" data-testid="checkout-success">
+
       <div className="checkout-success-content">
         {status === "checking" && (
           <>
@@ -68,11 +72,21 @@ const CheckoutSuccess = ({ onBackToShop }) => {
           </>
         )}
 
+
         {status === "success" && (
           <>
             <div className="checkout-icon success">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="20 6 9 17 4 12"></polyline>
+
+        
+        {status === "success" && (
+          <>
+            <div className="checkout-icon success">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+
               </svg>
             </div>
             <h2>Thank You for Your Purchase!</h2>
@@ -83,14 +97,28 @@ const CheckoutSuccess = ({ onBackToShop }) => {
               </p>
             )}
 
+
+
             {downloadLinks && downloadLinks.downloads && downloadLinks.downloads.length > 0 && (
               <div className="download-section">
                 <h3>Your Downloads</h3>
                 <p className="download-note">Click below to download your files:</p>
                 <div className="download-list">
                   {downloadLinks.downloads.map((file, index) => (
+
                     <a key={index} href={file.url} download className="download-link" data-testid={`download-link-${index}`}>
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
+                    <a 
+                      key={index}
+                      href={file.url}
+                      download={file.filename}
+                      className="download-link"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -108,10 +136,18 @@ const CheckoutSuccess = ({ onBackToShop }) => {
           </>
         )}
 
+
         {status === "pending" && (
           <>
             <div className="checkout-icon pending">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
+        
+        {status === "pending" && (
+          <>
+            <div className="checkout-icon pending">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
                 <circle cx="12" cy="12" r="10"></circle>
                 <polyline points="12 6 12 12 16 14"></polyline>
               </svg>
@@ -121,10 +157,18 @@ const CheckoutSuccess = ({ onBackToShop }) => {
           </>
         )}
 
+
         {status === "expired" && (
           <>
             <div className="checkout-icon error">
               <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
+        
+        {status === "expired" && (
+          <>
+            <div className="checkout-icon error">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="12" y1="8" x2="12" y2="12"></line>
                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
@@ -138,7 +182,13 @@ const CheckoutSuccess = ({ onBackToShop }) => {
         {status === "error" && (
           <>
             <div className="checkout-icon error">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
+        
+        {status === "error" && (
+          <>
+            <div className="checkout-icon error">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
                 <circle cx="12" cy="12" r="10"></circle>
                 <line x1="15" y1="9" x2="9" y2="15"></line>
                 <line x1="9" y1="9" x2="15" y2="15"></line>
@@ -149,8 +199,14 @@ const CheckoutSuccess = ({ onBackToShop }) => {
           </>
         )}
 
+
         <button onClick={onBackToShop} className="back-to-shop-btn" data-testid="back-to-shop-btn">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
+        
+        <button className="back-to-shop-btn" onClick={onBackToShop} data-testid="back-to-shop">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
@@ -174,10 +230,17 @@ const HERO_VIDEO = `${BACKEND_URL}/api/uploads/sky_video.mp4`;
 
 // Track data
 const TRACKS = [
+
   {
     number: 1,
     title: "GARDEN AFTER THE STORM",
     duration: "5:23",
+
+  { 
+    number: 1, 
+    title: "GARDEN AFTER THE STORM", 
+    duration: "5:23", 
+
     file: "track_01_garden_after_the_storm.wav",
     description: `Created in collaboration with the wonderfully talented, Arica Hilton (IG: @aricahilton), whose lovely poetry inspired the song – I feel extremely fortunate she allowed me to put her poetic vision to music – meant, not just to be heard, but also to be felt.
 
@@ -283,10 +346,17 @@ As she washed the parasites from each leaf – every petal
 As they try to feed
 The way humans sometimes do to one another`
   },
+
   {
     number: 2,
     title: "I HEARD AN OAK TREE",
     duration: "7:48",
+
+  { 
+    number: 2, 
+    title: "I HEARD AN OAK TREE", 
+    duration: "7:48", 
+
     file: "track_02_i_heard_an_oak_tree.wav",
     description: `"I Heard an Oak Tree" continues the story that began in "Garden After the Storm." In the first song, the artist releases the weight of past wounds and learns to let pain dissolve into something new. In this sequel, they return to that same garden (now quiet after the storm) and hear something deeper beneath the silence.
 
@@ -401,10 +471,16 @@ You were never separate
 From me
 (from me… from me…)`
   },
-  {
+ {
     number: 3,
     title: "SUNSTORM OF PASSION",
     duration: "5:48",
+
+  { 
+    number: 3, 
+    title: "SUNSTORM OF PASSION", 
+    duration: "5:48", 
+
     file: "track_03_sunstorm_of_passion.wav",
     description: `"Sunstorm of Passion" is a sensual cinematic piano ballad about surrendering to a love that feels inevitable and cosmic. Set in a candlelit room filled with the scent of jasmine, the song unfolds like a storm slowly gathering in the sky: quiet longing building into overwhelming passion.
 
@@ -510,10 +586,17 @@ You lapping it up
 
  to etch my perfection.`
   },
+
   {
     number: 4,
     title: "DEEPER THAN LOVE",
     duration: "5:23",
+
+  { 
+    number: 4, 
+    title: "DEEPER THAN LOVE", 
+    duration: "5:23", 
+
     file: "track_04_deeper_than_love.wav",
     description: `"Deeper Than Love" is a sensual, mystical Buddha Bar–style lounge track that explores the idea that some connections transcend time, memory, and even identity. Wrapped in a slow, hypnotic groove of deep bass, atmospheric pads, and delicate world instrumentation, the song unfolds like a whispered meditation on cosmic reunion.
 
@@ -601,10 +684,17 @@ This is deeper than love…
 
 my love.`
   },
+
   {
     number: 5,
     title: "THE MUSIC OF OUR BECOMING",
     duration: "5:21",
+
+  { 
+    number: 5, 
+    title: "THE MUSIC OF OUR BECOMING", 
+    duration: "5:21", 
+
     file: "track_05_the_music_of_our_becoming.wav",
     description: `"The Music of Our Becoming" is written as a metaphorically complex poem vs. a structured song. This piece centers on reunion, rebirth, and the sacred intensity of rediscovered love. It portrays two lovers returning to one another not merely as continuation, but as transformation: shedding distance, restraint, and fear to become something deeper and newly awakened.
 
@@ -686,14 +776,22 @@ not as lovers returned,
 but as lovers reborn,
 forever unhidden.`
   },
+
   {
     number: 6,
     title: "RIVERS IN ME",
     duration: "5:50",
+
+  { 
+    number: 6, 
+    title: "RIVERS IN ME", 
+    duration: "5:50", 
+
     file: "track_06_rivers_in_me.wav",
     description: `The central theme of "Rivers in Me" is emotional connection that runs deeper than words. It explores the idea that when two people truly connect, the experience feels like an unseen current moving beneath the surface: quiet but powerful, like rivers flowing through the night.
 
 The imagery of rivers, stars, silence, and night represents inner emotions that are difficult to explain but deeply felt. The song suggests that love or connection is not always loud or dramatic; sometimes it appears in quiet moments of shared understanding, reflection, and presence.
+
 
 At its core, the theme is about surrendering to that emotional current: allowing yourself to feel something profound and transformative, even if it cannot be fully expressed in language. The repeated phrase about "rivers" becomes a metaphor for the flow of feeling, memory, and intimacy moving through both people at once.`,
     lyrics: `Rivers in Me
@@ -767,6 +865,14 @@ Feel the rivers in me`
     number: 7,
     title: "SEVEN FACES OF LOVE",
     duration: "8:02",
+
+At its core, the theme is about surrendering to that emotional current: allowing yourself to feel something profound and transformative, even if it cannot be fully expressed in language. The repeated phrase about "rivers" becomes a metaphor for the flow of feeling, memory, and intimacy moving through both people at once.`
+  },
+  { 
+    number: 7, 
+    title: "SEVEN FACES OF LOVE", 
+    duration: "8:02", 
+
     file: "track_07_seven_faces_of_love.wav",
     description: `"Seven Faces of Love" is an epic, cinematic journey through ancient mythology and timeless desire. The song weaves together imagery of the Seven Wonders of the World with the seven veils of Salome, creating a tapestry of longing, discovery, and transformation.
 
@@ -886,6 +992,7 @@ Seven veils of fire
 Seven faces of love
 Seven hearts of desire
 
+
 Peace nails shut the voice.
 
 The voice of the sirens silent
@@ -908,6 +1015,7 @@ All in the name of your love
 
 Your seven faces of love.`
   },
+
   {
     number: 8,
     title: "THE SAME MOON BETWEEN US",
@@ -919,6 +1027,19 @@ Your seven faces of love.`
     number: 9,
     title: "NOMEN EXSPECTANS (NEW AGE HOUSE REMIX)",
     duration: "6:10",
+
+  { 
+    number: 8, 
+    title: "THE SAME MOON BETWEEN US", 
+    duration: "5:45", 
+    file: "track_08_same_moon_between_us.wav",
+    description: `"The Same Moon Between Us" explores the bittersweet beauty of connection across distance. Though separated by miles, the lovers find solace in the shared light of the moon—a celestial reminder that they remain bound by something greater than space.`
+  },
+  { 
+    number: 9, 
+    title: "NOMEN EXSPECTANS (NEW AGE HOUSE REMIX)", 
+    duration: "6:10", 
+
     file: "track_09_nomen_exspectans.wav",
     description: `"Nomen Exspectans" (Latin for "Waiting to be Named") is a mystical meditation on identity, transformation, and cosmic connection. Opening with lines from the ancient Emerald Tablet of Hermes Trismegistus—"As above, so below"—the song weaves alchemical wisdom with dreamlike imagery of hunters catching stars, wings melting into fins, and souls walking up the sky.
 
@@ -930,16 +1051,19 @@ Quod est Superius est sicut quod est Inferius.
 Et quod est Inferius est sicut quod est Superius,
 Ad perpetranda Miracula Rei Unius.
 
+
 A hunter with a big net
 Catches stars falling from the Milky Way.
 He keeps them in a basket full of moons
 Circling love like the seasons.
+
 
 As you weave the threads of sunrise
 Like a waking wave of kisses
 Skipping the stones of my heart
 And rippling through my flesh
 As only the horns of heaven can.
+
 
 You, outlined in fireflies,
 Watch the moon filling, fulfilling…
@@ -951,6 +1075,18 @@ Neck stretching skyward, like a swan's.
 
 In truth, certainly, most veritable,
 As above, as below.
+ 
+You, outlined in fireflies,
+Watch the moon filling, fulfilling…
+Strumming the sun into prose.
+ 
+A man flies into an ocean, feet first.
+His wings melt into fins,
+Neck stretching skyward, like a swan's.
+ 
+In truth, certainly, most veritable,
+As above, as below.
+ 
 
 I can't decide if the Emerald Tablet
 Is his ticket to transformation
@@ -962,6 +1098,7 @@ Like a star
 Waiting to be named
 By my discoverer.
 
+
 As above…
 So below…`
   },
@@ -969,6 +1106,16 @@ So below…`
     number: 10,
     title: "DISTANCE",
     duration: "6:15",
+
+ 
+As above…
+So below…`
+  },
+  { 
+    number: 10, 
+    title: "DISTANCE", 
+    duration: "6:15", 
+
     file: "track_10_distance.wav",
     description: `"Distance" is a haunting meditation on the unbearable space that grows between two people who were once inseparable. The song traces the arc of a love that burned with fire and marrow, only to be slowly claimed by the quiet devastation of distance.
 
@@ -1060,10 +1207,17 @@ distance
 was wise
 to our staccato embrace`
   },
+
   {
     number: 11,
     title: "SONG OF THE GYPSY",
     duration: "6:25",
+
+  { 
+    number: 11, 
+    title: "SONG OF THE GYPSY", 
+    duration: "6:25", 
+
     file: "track_11_song_of_the_gypsy.wav",
     description: `"Song of the Gypsy" traces the memory of a love that was once visceral, intoxicating, and deeply intertwined: felt through scent, touch, and shared thought. What begins as a sensory immersion (fruit, skin, breath, late-night intimacy) slowly unravels into distance and unanswered longing.
 
@@ -1118,6 +1272,7 @@ Into stone
 Lo sentiste…
 pero no te quedaste…
 
+
 The guitar strums… our final line
 Reluctant memories fall away
 
@@ -1145,7 +1300,11 @@ debated on poverty and the wealth of nations
 whatever happened to the half-bitten oaths?
 the sunrise. shielded by clouds
 distort your ecstasy. as I drive to a movie alone
+
 in placid countenance…
+
+in placid countenance…  
+ 
 
 replenishing my roving vessel with a moving song of the gypsy.`
   }
@@ -1206,6 +1365,12 @@ const ChatWidget = () => {
     const formData = new FormData();
     formData.append("file", file);
 
+
+    setIsUploading(true);
+    setUploadProgress(0);
+
+
+    
     setIsUploading(true);
     setUploadProgress(0);
 
@@ -1295,9 +1460,14 @@ const ChatWidget = () => {
     <>
       {/* Chat Toggle Button */}
       <button
+
         onClick={() => setIsOpen(!isOpen)}
         className="chat-toggle-btn"
+
         data-testid="chat-toggle-btn"
+        onClick={() => setIsOpen(!isOpen)}
+        className="chat-toggle-btn"
+
       >
         {isOpen ? (
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -1326,7 +1496,11 @@ const ChatWidget = () => {
 
           <div className="chat-messages" data-testid="chat-messages">
             {messages.map((msg, idx) => (
+
               <div key={idx} className={`chat-message ${msg.role}`} data-testid={`chat-message-${idx}`}>
+
+              <div key={idx} className={`chat-message ${msg.role}`}>
+
                 {msg.file && msg.file.type === "image" && (
                   <img src={`${BACKEND_URL}${msg.file.url}`} alt={msg.file.name} className="chat-file-preview" />
                 )}
@@ -1339,7 +1513,11 @@ const ChatWidget = () => {
                       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                       <polyline points="14 2 14 8 20 8"></polyline>
                     </svg>
+
                     {msg.file.name}
+
+                    <span>{msg.file.name}</span>
+
                   </div>
                 )}
                 <p>{msg.content}</p>
@@ -1357,21 +1535,32 @@ const ChatWidget = () => {
 
           {/* File Preview */}
           {selectedFile && (
-            <div className="file-preview-bar">
+
+
+            <div className="file-preview-bar" data-testid="file-preview">
+
               <div className="file-preview-info">
                 {selectedFile.type.startsWith("image/") ? (
                   <img src={URL.createObjectURL(selectedFile)} alt="Preview" className="file-thumbnail" />
                 ) : selectedFile.type.startsWith("video/") ? (
                   <div className="file-thumbnail video-thumb">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
+
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+
                       <polygon points="5 3 19 12 5 21 5 3"></polygon>
                     </svg>
                   </div>
                 ) : (
                   <div className="file-thumbnail doc-thumb">
+
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                       <polyline points="14 2 14 8 20 8"></polyline>
+
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+
                     </svg>
                   </div>
                 )}
@@ -1398,12 +1587,20 @@ const ChatWidget = () => {
               type="file"
               ref={fileInputRef}
               onChange={handleFileSelect}
+
               accept="image/*,video/*,.pdf,.doc,.docx,.txt"
               style={{ display: "none" }}
               data-testid="chat-file-input"
             />
             <button
               onClick={() => fileInputRef.current?.click()}
+
+              accept="image/*,video/*,.pdf,.txt,.csv"
+              style={{ display: "none" }}
+              data-testid="file-input"
+            />
+            <button 
+
               className="attach-btn"
               disabled={isLoading || isUploading}
               data-testid="attach-file-btn"
@@ -1421,7 +1618,16 @@ const ChatWidget = () => {
               disabled={isLoading || isUploading}
               data-testid="chat-input"
             />
+
             <button onClick={sendMessage} className="send-btn" disabled={isLoading || isUploading || (!inputText.trim() && !selectedFile)} data-testid="chat-send-btn">
+
+            <button 
+              onClick={sendMessage} 
+              disabled={(!inputText.trim() && !selectedFile) || isLoading || isUploading}
+              className="send-btn"
+              data-testid="send-message-btn"
+            >
+
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
@@ -1574,6 +1780,7 @@ function App() {
   };
 
   return (
+
     <div className="app" data-testid="app">
       {/* Navigation */}
       <nav className="nav" data-testid="navigation">
@@ -1592,6 +1799,28 @@ function App() {
               </>
             )}
           </svg>
+
+    <div className="app" data-testid="app-container">
+      {/* Navigation */}
+      <nav className="nav" data-testid="main-nav">
+        <button 
+          className="mobile-menu-btn"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          data-testid="mobile-menu-btn"
+        >
+          {mobileMenuOpen ? (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          ) : (
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          )}
+
         </button>
         <div className={`nav-links ${mobileMenuOpen ? 'mobile-open' : ''}`}>
           <button onClick={() => scrollToSection("music")} data-testid="nav-music">MUSIC</button>
@@ -1600,6 +1829,7 @@ function App() {
           <button onClick={() => scrollToSection("links")} data-testid="nav-links">LINKS</button>
           <button onClick={() => scrollToSection("subscribe")} data-testid="nav-subscribe">SUBSCRIBE</button>
         </div>
+
         <div className="social-links">
           <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" aria-label="Spotify" data-testid="social-spotify">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -1620,11 +1850,38 @@ function App() {
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
             </svg>
+
+        <div className="social-links-vertical">
+          <a href="https://spotify.com" target="_blank" rel="noopener noreferrer" data-testid="social-spotify">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+          </a>
+          <a href="https://music.apple.com" target="_blank" rel="noopener noreferrer" data-testid="social-apple-music">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.994 6.124a9.23 9.23 0 00-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 00-1.877-.726 10.496 10.496 0 00-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026-.747.043-1.49.123-2.193.401-1.336.53-2.3 1.452-2.865 2.78-.192.448-.292.925-.363 1.408-.056.392-.088.785-.1 1.18 0 .032-.007.062-.01.093v12.223c.01.14.017.283.027.424.05.815.154 1.624.497 2.373.65 1.42 1.738 2.353 3.234 2.801.42.127.856.187 1.293.228.555.053 1.11.06 1.667.06h11.03a12.5 12.5 0 001.57-.1c.822-.106 1.596-.35 2.295-.81a5.046 5.046 0 001.88-2.207c.186-.42.293-.87.37-1.324.113-.675.138-1.358.137-2.04-.002-3.8 0-7.595-.003-11.393zm-6.423 3.99v5.712c0 .417-.058.827-.244 1.206-.29.59-.76.962-1.388 1.14-.35.1-.706.157-1.07.173-.95.042-1.785-.455-2.105-1.245-.238-.588-.212-1.183.066-1.75.263-.536.715-.893 1.27-1.105.307-.118.63-.19.95-.263.47-.108.946-.196 1.407-.328.25-.072.4-.214.41-.492.005-.06.003-.12.003-.18V8.203a.96.96 0 00-.022-.208c-.04-.16-.148-.253-.305-.262-.096-.006-.193.01-.29.023-1.136.156-2.27.312-3.406.47-1.06.148-2.12.294-3.18.442-.2.03-.312.126-.343.327-.01.065-.012.13-.012.195v7.74c0 .37-.047.736-.2 1.073-.283.62-.752 1.024-1.41 1.22-.35.106-.71.17-1.08.19-.94.048-1.768-.42-2.108-1.207-.248-.575-.225-1.16.033-1.728.246-.543.68-.907 1.22-1.12.32-.127.655-.204.99-.28.39-.09.784-.163 1.17-.266.295-.078.478-.262.494-.574.004-.06.002-.12.002-.18V7.124c0-.2.027-.394.09-.582.12-.357.374-.57.73-.635.166-.03.335-.05.503-.073 1.275-.174 2.55-.346 3.824-.52 1.27-.173 2.538-.348 3.808-.52.182-.024.364-.04.547-.038.356.005.608.2.705.54.044.153.06.313.06.472v3.348z"/></svg>
+          </a>
+          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" data-testid="social-youtube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="https://soundcloud.com" target="_blank" rel="noopener noreferrer" data-testid="social-soundcloud">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M1.175 12.225c-.051 0-.094.046-.101.1l-.233 2.154.233 2.105c.007.058.05.098.101.098.05 0 .09-.04.099-.098l.255-2.105-.27-2.154c-.009-.06-.052-.1-.084-.1zm-.899 1.125c-.051 0-.094.046-.101.1l-.158 1.029.158.984c.007.055.05.095.101.095.05 0 .09-.04.099-.095l.178-.984-.193-1.029c-.009-.06-.052-.1-.084-.1zm1.8-1.501c-.06 0-.105.05-.113.109l-.22 2.255.22 2.154c.008.06.053.11.113.11.059 0 .104-.05.112-.11l.249-2.154-.249-2.255c-.008-.059-.053-.109-.112-.109zm.899-.226c-.069 0-.121.058-.128.125l-.193 2.481.193 2.363c.007.067.059.125.128.125.068 0 .12-.058.127-.125l.218-2.363-.218-2.481c-.007-.067-.059-.125-.127-.125zm.9-.3c-.078 0-.136.066-.143.14l-.165 2.781.165 2.497c.007.074.065.14.143.14.077 0 .135-.066.142-.14l.188-2.497-.188-2.781c-.007-.074-.065-.14-.142-.14zm.899-.3c-.087 0-.152.074-.158.156l-.138 3.081.138 2.631c.006.083.071.157.158.157.086 0 .151-.074.157-.157l.156-2.631-.156-3.081c-.006-.082-.071-.156-.157-.156zm.9-.226c-.096 0-.166.082-.172.171l-.11 3.307.11 2.765c.006.09.076.172.172.172.095 0 .165-.082.171-.172l.124-2.765-.124-3.307c-.006-.089-.076-.171-.171-.171zm.899-.15c-.104 0-.181.09-.187.189l-.082 3.457.082 2.898c.006.098.083.188.187.188.103 0 .18-.09.186-.188l.093-2.898-.093-3.457c-.006-.099-.083-.189-.186-.189zm.901-.076c-.114 0-.196.099-.201.205l-.055 3.533.055 3.031c.005.107.087.205.201.205.113 0 .195-.098.2-.205l.062-3.031-.062-3.533c-.005-.106-.087-.205-.2-.205zm.898.025c-.123 0-.212.107-.216.221l-.027 3.508.027 3.165c.004.114.093.221.216.221.122 0 .211-.107.215-.221l.031-3.165-.031-3.508c-.004-.114-.093-.221-.215-.221zm2.65-1.576c-.323 0-.636.047-.932.134-.19-2.149-2.012-3.831-4.236-3.831-.575 0-1.138.119-1.654.344-.193.084-.245.17-.247.336v8.173c.003.17.142.308.313.32 0 0 6.719.007 6.756.007 1.318 0 2.386-1.065 2.386-2.379 0-1.314-1.068-2.38-2.386-2.38v.276z"/></svg>
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" data-testid="social-instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" data-testid="social-tiktok">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+          </a>
+          <a href="https://x.com" target="_blank" rel="noopener noreferrer" data-testid="social-twitter">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" data-testid="social-facebook">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+
           </a>
         </div>
       </nav>
 
       {/* Hero Section */}
+
       <section className="hero" id="home" data-testid="hero-section">
         <div className="hero-sky">
           <div className="cloud cloud-1"></div>
@@ -1647,14 +1904,37 @@ function App() {
         <div className="hero-content-wrapper">
           <div className="hero-album-cover">
             <img src={IMAGES.album} alt="Garden After the Storm Album - Erich Fritz and Arica Hilton" data-testid="hero-album-cover" />
+
+      <section className="hero" data-testid="hero-section">
+        <video 
+          className="hero-video" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          preload="auto"
+          poster={IMAGES.album}
+          data-testid="hero-video"
+          onCanPlay={(e) => e.target.play()}
+        >
+          <source src={HERO_VIDEO} type="video/mp4" />
+        </video>
+        <div className="hero-overlay"></div>
+        <div className="hero-content-wrapper">
+          <div className="hero-album-cover" data-testid="hero-album-cover">
+            <img src={IMAGES.album} alt="Garden After the Storm Album - Erich Fritz and Arica Hilton" />
+
           </div>
           <div className="hero-text">
             <p className="release-date">Album Release</p>
             <p className="release-date-value">10 April 2026</p>
             <button className="stream-btn" onClick={() => scrollToSection("music")} data-testid="stream-now-btn">
+
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"/>
               </svg>
+
+
               Stream Now
             </button>
           </div>
@@ -1662,26 +1942,47 @@ function App() {
       </section>
 
       {/* Music Section */}
+
       <section className="music-section" id="music" data-testid="music-section">
         <p className="section-label">Now Available</p>
         <h2>Stream the Album</h2>
+
+      <section id="music" className="music-section" data-testid="music-section">
+        <p className="section-label">Now Available</p>
+        <h2>Stream the Album</h2>
+        
+
         <div className="album-container">
           <div className="album-cover">
             <img src={IMAGES.album} alt="Garden After the Storm Album Cover" data-testid="album-cover" />
           </div>
           <div className="album-info">
+
             <p className="album-year">2026</p>
             <h3>Garden After the Storm</h3>
             <p className="track-count">11 Tracks</p>
             <div className="track-list" data-testid="track-list">
               {TRACKS.map((track) => (
-                <div key={track.number} className={`track ${activeTrack === track.number ? 'active' : ''}`} data-testid={`track-${track.number}`}>
+
+            <h3>Garden After the Storm</h3>
+            <span className="album-year">2026</span>
+            <p className="track-count">11 Tracks</p>
+            
+            <div className="track-list" data-testid="track-list">
+              {TRACKS.map((track) => (
+                <div 
+                  key={track.number} 
+                  className={`track ${activeTrack === track.number ? 'active' : ''}`}
+                  data-testid={`track-${track.number}`}
+                >
+
                   <div className="track-header" onClick={() => setActiveTrack(activeTrack === track.number ? null : track.number)}>
                     <span className="track-number">{track.number}</span>
                     <span className="track-title">{track.title}</span>
                     <span className="track-duration">{track.duration}</span>
                   </div>
                   {activeTrack === track.number && (
+
                     <div className="track-player">
                       <audio
                         controls
@@ -1695,6 +1996,22 @@ function App() {
                       <div className="track-actions">
                         {track.description && (
                           <button
+
+                    <div className="track-expanded">
+                      <div className="track-player">
+                        <audio 
+                          controls 
+                          controlsList="nodownload" 
+                          src={`${BACKEND_URL}/api/uploads/${track.file}`}
+                          onContextMenu={(e) => e.preventDefault()}
+                        >
+                          Your browser does not support the audio element.
+                        </audio>
+                      </div>
+                      <div className="track-actions">
+                        {track.description && (
+                          <button 
+
                             className="lyrics-btn"
                             onClick={(e) => {
                               e.stopPropagation();
@@ -1702,17 +2019,27 @@ function App() {
                             }}
                             data-testid={`lyrics-btn-${track.number}`}
                           >
+
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
                               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                               <polyline points="14 2 14 8 20 8"></polyline>
                               <line x1="16" y1="13" x2="8" y2="13"></line>
                               <line x1="16" y1="17" x2="8" y2="17"></line>
+
                               <polyline points="10 9 9 9 8 9"></polyline>
+
+
                             </svg>
                             View Lyrics
                           </button>
                         )}
+
                         <button
+                        <button 
+
                           className="buy-track-btn"
                           onClick={(e) => {
                             e.stopPropagation();
@@ -1721,10 +2048,17 @@ function App() {
                           }}
                           data-testid={`buy-track-btn-${track.number}`}
                         >
+
                           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <circle cx="9" cy="21" r="1"></circle>
                             <circle cx="20" cy="21" r="1"></circle>
                             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+
                           </svg>
                           Buy Track
                         </button>
@@ -1739,9 +2073,15 @@ function App() {
       </section>
 
       {/* About Section */}
+
       <section className="about-section" id="about" data-testid="about-section">
         <p className="section-label">The Artists</p>
         <h2>About</h2>
+
+      <section id="about" className="about-section" data-testid="about-section">
+        <p className="section-label">The Artists</p>
+        <h2>About</h2>
+
         <div className="artists-grid">
           <div className="artist-card" data-testid="artist-erich">
             <div className="artist-img-wrapper">
@@ -1755,6 +2095,9 @@ function App() {
             <p>Whether composing music, writing poetry, or building companies, Fritz embodies a modern Renaissance ethos—bringing together engineering, finance, and artistic expression into a singular creative voice.</p>
             <p>Follow @darko_vaughn to experience the evolving journey of Garden After the Storm and future collaborations.</p>
           </div>
+
+
+
           <div className="artist-card" data-testid="artist-arica">
             <div className="artist-img-wrapper">
               <img src={IMAGES.arica} alt="Arica Hilton" />
@@ -1770,11 +2113,20 @@ function App() {
             <p>The former President of the Poetry Center of Chicago, Hilton created ARTS POETICA GLOBAL, whose mission is to include all creative endeavors, from the visual to the literary arts; dance, film, photography, music, architecture. Arts Poetica is a platform for global initiatives and philosophies that are presented in an imaginative and powerful way by contemporary thought leaders.</p>
             <p>Hilton has had numerous exhibitions in Europe, Asia and the United States. Her series, "I Flow Like Water," a body of works that highlight issues around water conservation and the problem of plastics weighing down our oceans, was exhibited at Art Dubai, Beirut Art Fair; QU ART in Brussels, Belgium; the Union League Club of Chicago; the Caux Forum for Just Governance and Human Security in Caux, Switzerland and in Beijing, Shanghai, Chengdu, China.</p>
             <p>Hilton is based in Chicago, where she is the Founder and CEO of Hilton Contemporary, a gallery platform she leverages to support internationally known artists and humanitarians who seek change for a better world.</p>
+
             <p><a href="https://www.aricahilton.com/" target="_blank" rel="noopener noreferrer">www.aricahilton.com</a></p>
             <p>Instagram: <a href="https://www.instagram.com/aricahilton/" target="_blank" rel="noopener noreferrer">@aricahilton</a></p>
           </div>
         </div>
         <div className="story-section" data-testid="story-section">
+
+            <p><a href="https://www.aricahilton.com" target="_blank" rel="noopener noreferrer">www.aricahilton.com</a></p>
+            <p>Instagram: <a href="https://www.instagram.com/aricahilton/" target="_blank" rel="noopener noreferrer">@aricahilton</a></p>
+          </div>
+        </div>
+
+        <div className="story-section" data-testid="album-story">
+
           <h3>The Story Behind the Album</h3>
           <p>Erich Fritz and Arica Hilton met through their mutual love of art. Fritz is an art collector and Hilton is an artist and gallerist. The image on the cover of the album, Van Gogh's "Wheat fields with Cypresses" is especially meaningful because it was the work that brought them together. Fritz had purchased the Van Gogh "Wheatfields...." by artist Jeff Koons from his infamous Gazing Ball series long before they met. And ironically, Hilton was the inaugural artist-in-residence for Van Gogh Immersive in Chicago.</p>
           <p>One day Hilton sent Fritz her poem "Unlike You" (which is now transformed to Garden After the Storm) and he nonchalantly asked if he could put the poem to music. That was the beginning of their collaboration on a poetry/music album that resulted in an exercise in sleepless nights and their extreme dedication to perfection in all things they do.</p>
@@ -1784,32 +2136,56 @@ function App() {
       </section>
 
       {/* Merch Section */}
+
       <section className="merch-section" id="merch" data-testid="merch-section">
         <div className="merch-filters">
           <button
+
+      <section id="merch" className="merch-section" data-testid="merch-section">
+        <div className="merch-filters">
+          <button 
+
             className={`merch-filter-btn ${merchFilter === 'all' ? 'active' : ''}`}
             onClick={() => setMerchFilter('all')}
             data-testid="merch-filter-all"
           >All</button>
-          <button
+
+
+          <button 
+
             className={`merch-filter-btn ${merchFilter === 'DIGITAL' ? 'active' : ''}`}
             onClick={() => setMerchFilter('DIGITAL')}
             data-testid="merch-filter-digital"
           >Digital</button>
+
           <button
+
+          <button 
+
             className={`merch-filter-btn ${merchFilter === 'ALBUMS' ? 'active' : ''}`}
             onClick={() => setMerchFilter('ALBUMS')}
             data-testid="merch-filter-albums"
           >Albums</button>
+
           <button
+
+          <button 
+
             className={`merch-filter-btn ${merchFilter === 'BOOKS' ? 'active' : ''}`}
             onClick={() => setMerchFilter('BOOKS')}
             data-testid="merch-filter-books"
           >Books</button>
         </div>
+
         <div className="merch-grid" data-testid="merch-grid">
           {MERCH_ITEMS.filter(item => merchFilter === 'all' || item.category === merchFilter).map((item) => (
             <div key={item.id} className="merch-item" data-testid={`merch-item-${item.id}`}>
+
+        
+        <div className="merch-grid">
+          {MERCH_ITEMS.filter(item => merchFilter === 'all' || item.category === merchFilter).map((item) => (
+            <div className="merch-item" key={item.id} data-testid={`merch-item-${item.id}`}>
+
               <div className="merch-image-container">
                 <span className={`merch-category-badge ${item.category.toLowerCase()}`}>{item.category}</span>
                 <img src={item.image} alt={item.title} className="merch-image" />
@@ -1817,12 +2193,21 @@ function App() {
               <h3>{item.title}</h3>
               <p className="merch-description">{item.description}</p>
               <div className="merch-footer">
+
                 <span className="merch-price">{item.price}</span>
                 <button
                   className={`merch-btn ${item.isDigital ? 'digital' : ''}`}
                   onClick={() => handleBuyNow(item.productId)}
                   disabled={checkoutLoading === item.productId}
                   data-testid={`buy-btn-${item.productId}`}
+
+                <p className="merch-price">{item.price}</p>
+                <button 
+                  className={`merch-btn ${item.isDigital ? 'digital' : ''}`}
+                  data-testid={`buy-btn-${item.id}`}
+                  onClick={() => handleBuyNow(item.productId)}
+                  disabled={checkoutLoading === item.productId}
+
                 >
                   {checkoutLoading === item.productId ? (
                     <>Processing...</>
@@ -1840,7 +2225,11 @@ function App() {
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <circle cx="9" cy="21" r="1"></circle>
                         <circle cx="20" cy="21" r="1"></circle>
+
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+
+                        <path d="m1 1 4 4h16l-2 9H7"></path>
+
                       </svg>
                       Buy Now
                     </>
@@ -1853,10 +2242,18 @@ function App() {
       </section>
 
       {/* Links Section */}
+
       <section className="links-section" id="links" data-testid="links-section">
         <p className="section-label">Explore More</p>
         <h2>Links</h2>
         <p className="links-subtitle">Discover more about the artists and their work</p>
+
+      <section id="links" className="links-section" data-testid="links-section">
+        <p className="section-label">Explore More</p>
+        <h2>Links</h2>
+        <p className="links-subtitle">Discover more about the artists and their work</p>
+        
+
         <div className="website-links">
           <a href="https://aricahilton.com/" target="_blank" rel="noopener noreferrer" className="website-link-card" data-testid="link-arica">
             <div className="website-link-content">
@@ -1870,6 +2267,10 @@ function App() {
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </a>
+
+
+          
+
           <a href="https://artspoetica.com/" target="_blank" rel="noopener noreferrer" className="website-link-card" data-testid="link-artspoetica">
             <div className="website-link-content">
               <h3>Arts Poetica Global</h3>
@@ -1886,11 +2287,20 @@ function App() {
       </section>
 
       {/* Subscribe Section */}
+
       <section className="subscribe-section" id="subscribe" data-testid="subscribe-section">
         <p className="section-label">Exclusive Access</p>
         <h2>GET BONUS TRACKS</h2>
         <p className="subscribe-description">Subscribe now and receive 2 exclusive bonus tracks from "Garden After the Storm" plus behind-the-scenes content.</p>
         <form className="subscribe-form" onSubmit={handleSubscribe} data-testid="subscribe-form">
+
+      <section id="subscribe" className="subscribe-section" data-testid="subscribe-section">
+        <p className="section-label">Exclusive Access</p>
+        <h2>GET BONUS TRACKS</h2>
+        <p className="subscribe-description">Subscribe now and receive 2 exclusive bonus tracks from "Garden After the Storm" plus behind-the-scenes content.</p>
+        
+        <form onSubmit={handleSubscribe} className="subscribe-form" data-testid="subscribe-form">
+
           <input
             type="email"
             value={email}
@@ -1899,20 +2309,31 @@ function App() {
             required
             data-testid="subscribe-email-input"
           />
+
           <button type="submit" data-testid="subscribe-btn">Subscribe</button>
         </form>
+
+          <button type="submit" data-testid="subscribe-submit-btn">Subscribe</button>
+        </form>
+        
+
         {subscribeStatus === "success" && (
           <p className="subscribe-success" data-testid="subscribe-success">Thank you for subscribing!</p>
         )}
         {subscribeStatus === "error" && (
           <p className="subscribe-error" data-testid="subscribe-error">Something went wrong. Please try again.</p>
         )}
+
+
         <p className="privacy-note">We respect your privacy. Unsubscribe anytime.</p>
       </section>
 
       {/* Footer */}
       <footer className="footer" data-testid="footer">
+
         <a href="https://www.aricahilton.com/" target="_blank" rel="noopener noreferrer">© 2026 Garden After the Storm. All rights reserved.</a>
+
+
       </footer>
 
       {/* Lyrics Slide-out Panel */}
@@ -1928,6 +2349,7 @@ function App() {
             <div className="lyrics-content">
               <span className="lyrics-track-number">Track {lyricsTrack.number}</span>
               <h2 className="lyrics-title">{lyricsTrack.title}</h2>
+
 
               {/* Description */}
               <div className="lyrics-description">
@@ -1954,6 +2376,7 @@ function App() {
           </div>
         </div>
       )}
+
 
       {/* Chat Widget */}
       <ChatWidget />
@@ -1990,17 +2413,30 @@ function App() {
         title={bgMusicPlaying ? 'Pause ambient music' : 'Play ambient music'}
       >
         {bgMusicPlaying ? (
+
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+
             <rect x="6" y="4" width="4" height="16"></rect>
             <rect x="14" y="4" width="4" height="16"></rect>
           </svg>
         ) : (
+
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+
             <polygon points="5 3 19 12 5 21 5 3"></polygon>
           </svg>
         )}
         <span className="bg-music-label">{bgMusicPlaying ? 'Ambient' : 'Play'}</span>
       </button>
+
+
+
+      <ChatWidget />
+
     </div>
   );
 }

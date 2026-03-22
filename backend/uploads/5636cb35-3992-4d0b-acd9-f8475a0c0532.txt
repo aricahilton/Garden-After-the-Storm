@@ -1,0 +1,1 @@
+Test file content for Garden After the Storm chat upload testing. This tests the chunked file reading fix.

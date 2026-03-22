@@ -1,0 +1,6 @@
+# robots.txt for Garden After the Storm
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.gardenafterthestorm.com/sitemap.xml
