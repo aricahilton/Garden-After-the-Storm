@@ -195,3 +195,7 @@ backend/uploads/track_09_nomen_exspectans.wav
 # Environment files
 *.env
 *.env.*
+-e 
+# Environment files
+*.env
+*.env.*
