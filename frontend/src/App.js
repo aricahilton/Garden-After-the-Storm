@@ -611,9 +611,18 @@ my love.`
   },
   { 
     number: 5, 
+    title: "THE MUSIC OF OUR BECOMING", 
+    duration: "5:21", 
+    file: "track_05_the_music_of_our_becoming.wav",
+    description: `"The Music of Our Becoming" is written as a metaphorically complex poem vs. a structured song. This piece centers on reunion, rebirth, and the sacred intensity of rediscovered love. It portrays two lovers returning to one another not merely as continuation, but as transformation: shedding distance, restraint, and fear to become something deeper and newly awakened.
+
+At its core, the theme is relief and renewal: love surviving exile and emerging not diminished, but purified and reborn through longing and return. Metaphors draw from René Magritte's "The Lovers," which symbolizes the frustration of desire.`
+  },
+  { 
+    number: 6, 
     title: "RIVERS IN ME", 
     duration: "5:50", 
-    file: "track_05_rivers_in_me.wav",
+    file: "track_06_rivers_in_me.wav",
     description: `The central theme of "Rivers in Me" is emotional connection that runs deeper than words. It explores the idea that when two people truly connect, the experience feels like an unseen current moving beneath the surface: quiet but powerful, like rivers flowing through the night.
 
 The imagery of rivers, stars, silence, and night represents inner emotions that are difficult to explain but deeply felt. The song suggests that love or connection is not always loud or dramatic; sometimes it appears in quiet moments of shared understanding, reflection, and presence.
@@ -621,121 +630,10 @@ The imagery of rivers, stars, silence, and night represents inner emotions that 
 At its core, the theme is about surrendering to that emotional current: allowing yourself to feel something profound and transformative, even if it cannot be fully expressed in language. The repeated phrase about "rivers" becomes a metaphor for the flow of feeling, memory, and intimacy moving through both people at once.`
   },
   { 
-    number: 6, 
-    title: "THE MUSIC OF OUR BECOMING", 
-    duration: "5:21", 
-    file: "track_06_the_music_of_our_becoming.wav",
-    description: `"The Music of Our Becoming" is written as a metaphorically complex poem vs. a structured song. This piece centers on reunion, rebirth, and the sacred intensity of rediscovered love. It portrays two lovers returning to one another not merely as continuation, but as transformation: shedding distance, restraint, and fear to become something deeper and newly awakened.
-
-At its core, the theme is relief and renewal: love surviving exile and emerging not diminished, but purified and reborn through longing and return. Metaphors draw from René Magritte's "The Lovers," which symbolizes the frustration of desire.`
-  },
-  { 
     number: 7, 
-    title: "DISTANCE", 
-    duration: "6:15", 
-    file: "track_07_distance.wav",
-    description: `"Distance" is a haunting meditation on the unbearable space that grows between two people who were once inseparable. The song traces the arc of a love that burned with fire and marrow, only to be slowly claimed by the quiet devastation of distance.
-
-Through rich, poetic imagery—flames of blue, drifting continents, trembling bridges—the piece explores how even the most passionate connections can fracture into silence. The recurring question "How is it then distance came to claim us?" echoes like a lament, searching for meaning in separation.`,
-    lyrics: `Distance
-
-And then
-came longing
-
-When distance
-poured a fire into my flesh
-Flinging flames of blue
-through the wind
-My heart flowed like a brook once
-Beating in cadence
-to your rolling ocean
-Tears falling into your tears
-Splashing into deserted pools of laughter
-So close were we
-
-My breath inhaled your marrow
-Melting into unison
-
-How is it then
-distance came to claim us?
-Distance came to claim us
-Pulling its rope
-harder and farther
-Across that feeble bridge
-connecting the cord
-of our drifting continents
-We were fire in the same breath
-Now we fracture into silence
-
-And you
-could taste the lexicon
-of my hunger
-With a litany of kisses
-Cascading endlessly
-through languid lips
-We were spilling into moments
-we could not contain
-Time folding around us
-like a forgotten name
-
-Your caprice found no welcome
-As I spread the salt
-of your prodigal oaths
-A remedy
-for my raw
-and ashen pride
-
-How is it then
-distance came to claim us?
-Distance came to claim us
-Drawing its line
-through marrow and flame
-Across that trembling bridge
-binding what could not remain
-We were music in the same breath
-Now we echo in the ache
-
-Distance
-was waiting
-In the fracture
-of timing
-In the pull
-of the thread
-In the staccato
-of our longing
-In the words
-we never said
-
-How is it then
-distance came to take us?
-Distance came to take us
-Unraveling quietly
-all we became
-There was fire in the marrow
-There was breath we couldn't follow
-Across the fragile bridge
-we could not sustain
-We were one in the same breath
-I still feel you
-Now the silence screams your name
-
-And all along
-distance
-was wise
-to our staccato embrace`
-  },
-  { 
-    number: 8, 
-    title: "THE SAME MOON BETWEEN US", 
-    duration: "5:45", 
-    file: "track_08_same_moon_between_us.wav",
-    description: `"The Same Moon Between Us" explores the bittersweet beauty of connection across distance. Though separated by miles, the lovers find solace in the shared light of the moon—a celestial reminder that they remain bound by something greater than space.`
-  },
-  { 
-    number: 9, 
     title: "SEVEN FACES OF LOVE", 
     duration: "8:02", 
-    file: "track_09_seven_faces_of_love.wav",
+    file: "track_07_seven_faces_of_love.wav",
     description: `"Seven Faces of Love" is an epic, cinematic journey through ancient mythology and timeless desire. The song weaves together imagery of the Seven Wonders of the World with the seven veils of Salome, creating a tapestry of longing, discovery, and transformation.
 
 Set in a "faraway land" and "faraway time," the narrator speaks of a hidden cache—a heart locked away, waiting to be unearthed. Through archaeological metaphors of shovels and buried coffers, the song explores the risk of excavating deep emotion: the danger and beauty of revealing what has been buried beneath "millennia" of protection.
@@ -877,10 +775,17 @@ All in the name of your love
 Your seven faces of love.`
   },
   { 
-    number: 10, 
-    title: "NOMEN EXSPECTANS", 
+    number: 8, 
+    title: "THE SAME MOON BETWEEN US", 
+    duration: "5:45", 
+    file: "track_08_same_moon_between_us.wav",
+    description: `"The Same Moon Between Us" explores the bittersweet beauty of connection across distance. Though separated by miles, the lovers find solace in the shared light of the moon—a celestial reminder that they remain bound by something greater than space.`
+  },
+  { 
+    number: 9, 
+    title: "NOMEN EXSPECTANS (NEW AGE HOUSE REMIX)", 
     duration: "6:10", 
-    file: "track_10_nomen_exspectans.wav",
+    file: "track_09_nomen_exspectans.wav",
     description: `"Nomen Exspectans" (Latin for "Waiting to be Named") is a mystical meditation on identity, transformation, and cosmic connection. Opening with lines from the ancient Emerald Tablet of Hermes Trismegistus—"As above, so below"—the song weaves alchemical wisdom with dreamlike imagery of hunters catching stars, wings melting into fins, and souls walking up the sky.
 
 The narrator contemplates whether the Emerald Tablet represents true transformation or merely the reflection of a mythic man who found himself in the stars. Ultimately, they embrace the mystery, choosing to simply "walk up the sky like a star, waiting to be named by my discoverer."`,
@@ -925,6 +830,101 @@ By my discoverer.
  
 As above…
 So below…`
+  },
+  { 
+    number: 10, 
+    title: "DISTANCE", 
+    duration: "6:15", 
+    file: "track_10_distance.wav",
+    description: `"Distance" is a haunting meditation on the unbearable space that grows between two people who were once inseparable. The song traces the arc of a love that burned with fire and marrow, only to be slowly claimed by the quiet devastation of distance.
+
+Through rich, poetic imagery—flames of blue, drifting continents, trembling bridges—the piece explores how even the most passionate connections can fracture into silence. The recurring question "How is it then distance came to claim us?" echoes like a lament, searching for meaning in separation.`,
+    lyrics: `Distance
+
+And then
+came longing
+
+When distance
+poured a fire into my flesh
+Flinging flames of blue
+through the wind
+My heart flowed like a brook once
+Beating in cadence
+to your rolling ocean
+Tears falling into your tears
+Splashing into deserted pools of laughter
+So close were we
+
+My breath inhaled your marrow
+Melting into unison
+
+How is it then
+distance came to claim us?
+Distance came to claim us
+Pulling its rope
+harder and farther
+Across that feeble bridge
+connecting the cord
+of our drifting continents
+We were fire in the same breath
+Now we fracture into silence
+
+And you
+could taste the lexicon
+of my hunger
+With a litany of kisses
+Cascading endlessly
+through languid lips
+We were spilling into moments
+we could not contain
+Time folding around us
+like a forgotten name
+
+Your caprice found no welcome
+As I spread the salt
+of your prodigal oaths
+A remedy
+for my raw
+and ashen pride
+
+How is it then
+distance came to claim us?
+Distance came to claim us
+Drawing its line
+through marrow and flame
+Across that trembling bridge
+binding what could not remain
+We were music in the same breath
+Now we echo in the ache
+
+Distance
+was waiting
+In the fracture
+of timing
+In the pull
+of the thread
+In the staccato
+of our longing
+In the words
+we never said
+
+How is it then
+distance came to take us?
+Distance came to take us
+Unraveling quietly
+all we became
+There was fire in the marrow
+There was breath we couldn't follow
+Across the fragile bridge
+we could not sustain
+We were one in the same breath
+I still feel you
+Now the silence screams your name
+
+And all along
+distance
+was wise
+to our staccato embrace`
   },
   { 
     number: 11, 
