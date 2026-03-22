@@ -191,3 +191,7 @@ backend/uploads/track_07_seven_faces_of_love.wav
 backend/uploads/track_07_seven_faces_of_love.wav
 backend/uploads/track_09_nomen_exspectans.wav
 backend/uploads/track_09_nomen_exspectans.wav
+-e 
+# Environment files
+*.env
+*.env.*
