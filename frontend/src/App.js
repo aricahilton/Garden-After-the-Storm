@@ -616,7 +616,83 @@ my love.`
     file: "track_05_the_music_of_our_becoming.wav",
     description: `"The Music of Our Becoming" is written as a metaphorically complex poem vs. a structured song. This piece centers on reunion, rebirth, and the sacred intensity of rediscovered love. It portrays two lovers returning to one another not merely as continuation, but as transformation: shedding distance, restraint, and fear to become something deeper and newly awakened.
 
-At its core, the theme is relief and renewal: love surviving exile and emerging not diminished, but purified and reborn through longing and return. Metaphors draw from René Magritte's "The Lovers," which symbolizes the frustration of desire.`
+At its core, the theme is relief and renewal: love surviving exile and emerging not diminished, but purified and reborn through longing and return. Metaphors draw from René Magritte's "The Lovers," which symbolizes the frustration of desire.`,
+    lyrics: `The Music of Our Becoming
+
+Two lovers,
+returning to orbit,
+beneath lotus-shaped stars
+opening against the velvet dark.
+
+Jasmine breathes at dusk
+the air remembering us
+before we dare to.
+
+Desire, reincarnated,
+steps back into its body,
+refusing extinction.
+Some unseen mercy
+tilts the heavens toward us
+and smiles.
+
+I am afraid I will dissolve
+not from sorrow,
+but from relief.
+
+Will you see the trembling in me?
+Will you feel it too?
+This fragile miracle
+of being here again.
+
+My hands settle at your waist,
+as though they were always meant to return there.
+I fall into your eyes,
+mirrors that refuse to lie,
+witnesses to every mile
+that tried to undo us.
+
+The music thins.
+The crowd becomes a rumor.
+Time loosens its grip.
+
+We sway in a quiet gravity
+only our bodies remember,
+a rhythm older than separation,
+older than fear.
+
+This is the moment
+my heart rehearsed in the dark,
+night after night,
+when loving you
+was the only homeland I had left.
+
+Our souls, at last, entwined,
+once exiled, now returned.
+
+Forbidden by distance and principle,
+we stand reunited,
+faces veiled in white linen;
+a boundary of breath and promise,
+a hush between restraint and fire.
+
+We kiss through the thin surrender of cloth,
+desire pressing against its softness,
+frustration sweet as withheld thunder.
+
+Let me lift this fragile barrier,
+this trembling veil of almost;
+and free us from the last echo of absence.
+
+Let skin meet light,
+let breath find breath,
+let nothing remain between us
+but the music of our becoming.
+
+And then,
+let us dance,
+not as lovers returned,
+but as lovers reborn,
+forever unhidden.`
   },
   { 
     number: 6, 
