@@ -695,7 +695,73 @@ forever unhidden.`
 
 The imagery of rivers, stars, silence, and night represents inner emotions that are difficult to explain but deeply felt. The song suggests that love or connection is not always loud or dramatic; sometimes it appears in quiet moments of shared understanding, reflection, and presence.
 
-At its core, the theme is about surrendering to that emotional current: allowing yourself to feel something profound and transformative, even if it cannot be fully expressed in language. The repeated phrase about "rivers" becomes a metaphor for the flow of feeling, memory, and intimacy moving through both people at once.`
+At its core, the theme is about surrendering to that emotional current: allowing yourself to feel something profound and transformative, even if it cannot be fully expressed in language. The repeated phrase about "rivers" becomes a metaphor for the flow of feeling, memory, and intimacy moving through both people at once.`,
+    lyrics: `Rivers in Me
+
+Evening falls
+the world grows quiet
+
+Time lies down
+in fields of silence
+
+Rose drops falling
+through the air
+
+Slow and soft
+melancholy
+
+Questions rising
+through my breath
+like an arrow
+through the night
+
+Stars awaken
+silver light
+whispering
+between tomorrow
+
+Eyes locked
+in sacred rhythm
+
+Love unfolding
+in the dark
+
+Feel the rivers in me
+Feel the rivers in me
+Feel the rivers in me,
+flowing free
+
+Through the night
+through the light
+
+Feel the rivers in me
+
+Sleep away
+the fevered sky
+Dreams awaken
+in your eyes
+
+Night fire burning
+deep inside
+Embers glowing
+in the tide
+
+Come closer now
+feel the flame
+Nothing here
+will stay the same
+
+Feel the rivers in me
+Feel the rivers in me
+Feel the rivers in me,
+flowing free
+
+Through the night
+Through the light
+
+Feel the rivers in me
+
+Feel the rivers in me`
   },
   {
     number: 7,
