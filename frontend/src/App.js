@@ -1440,8 +1440,8 @@ const MERCH_ITEMS = [
     id: 1,
     productId: "album_limited",
     category: "ALBUMS",
-    title: "Limited Edition Album - Signed & Numbered",
-    description: "A true collector's edition, limited to only 250 copies. This stunning gatefold album opens to reveal exclusive artwork and comes personally signed by Erich Fritz and Arica Hilton.",
+    title: "Deluxe Limited Edition Album",
+    description: "DELUXE LIMITED EDITION gatefold album opens to a booklet of poetry/lyrics on parchment paper includes a signed and numbered limited edition print by Arica Hilton. The album will be signed and numbered by both Arica Hilton and Erich Fritz. Limited to 250 copies.",
     price: "$650.00",
     image: IMAGES.album
   },
