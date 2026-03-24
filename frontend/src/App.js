@@ -1598,6 +1598,7 @@ function App() {
           <button onClick={() => scrollToSection("about")} data-testid="nav-about">ABOUT</button>
           <button onClick={() => scrollToSection("merch")} data-testid="nav-merch">MERCH</button>
           <button onClick={() => scrollToSection("links")} data-testid="nav-links">LINKS</button>
+          <a href="https://customer-assets.emergentagent.com/job_green-after-storm/artifacts/wp1dgual_PRESS-RELEASE-GARDEN-AFTER-THE-STORM%20V2.pdf" target="_blank" rel="noopener noreferrer" data-testid="nav-news">NEWS</a>
           <button onClick={() => scrollToSection("subscribe")} data-testid="nav-subscribe">SUBSCRIBE</button>
         </div>
         <div className="social-links">
