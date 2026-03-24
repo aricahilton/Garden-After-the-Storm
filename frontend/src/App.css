@@ -408,8 +408,18 @@ body {
   font-size: 2rem;
   font-weight: 400;
   color: var(--color-text);
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.release-location {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--color-text);
   margin-bottom: 1.25rem;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  letter-spacing: 0.2em;
 }
 
 .hero-album-cover {

@@ -1652,6 +1652,7 @@ function App() {
           <div className="hero-text">
             <p className="release-date">Album Release</p>
             <p className="release-date-value">10 April 2026</p>
+            <p className="release-location">CHICAGO</p>
             <button className="stream-btn" onClick={() => scrollToSection("music")} data-testid="stream-now-btn">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                 <polygon points="5 3 19 12 5 21 5 3"/>
