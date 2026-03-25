@@ -1601,7 +1601,7 @@ function App() {
           <button onClick={() => scrollToSection("about")} data-testid="nav-about">ABOUT</button>
           <button onClick={() => scrollToSection("merch")} data-testid="nav-merch">MERCH</button>
           <button onClick={() => scrollToSection("links")} data-testid="nav-links">LINKS</button>
-          <a href="https://customer-assets.emergentagent.com/job_code-sync-51/artifacts/nva6gfrz_PRESS-RELEASE-GARDEN-AFTER-THE-STORM%20V5.pdf" target="_blank" rel="noopener noreferrer" data-testid="nav-news">NEWS</a>
+          <button onClick={() => scrollToSection("news")} data-testid="nav-news">NEWS</button>
           <button onClick={() => scrollToSection("subscribe")} data-testid="nav-subscribe">SUBSCRIBE</button>
         </div>
         <div className="social-links">
@@ -1911,6 +1911,98 @@ function App() {
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </a>
+        </div>
+      </section>
+
+      {/* News Section */}
+      <section className="news-section" id="news" data-testid="news-section">
+        <p className="section-label">Press Release</p>
+        <h2>NEWS</h2>
+        
+        <div className="news-content">
+          <div className="news-header">
+            <p className="news-date">FOR IMMEDIATE RELEASE • March 25, 2026</p>
+            <h3 className="news-headline">HILTON CONTEMPORARY & ARTS POETICA PRESENTS</h3>
+            <h4 className="news-subheadline">ARICA HILTON & ERICH FRITZ</h4>
+            <h4 className="news-album-title">GARDEN AFTER THE STORM</h4>
+            <p className="news-tagline">An evening of Art | Poetry | Music</p>
+          </div>
+
+          <div className="news-event-box">
+            <div className="news-event-detail">
+              <span className="event-label">Album Release Opening Reception</span>
+              <span className="event-value">10 April 2026</span>
+            </div>
+            <div className="news-event-detail">
+              <span className="event-label">Location</span>
+              <span className="event-value">THE FOUNDRY ROOM<br/>700 N. LaSalle Street<br/>Chicago, IL 60654</span>
+            </div>
+            <div className="news-event-detail">
+              <span className="event-label">Admission</span>
+              <span className="event-value">BY INVITATION ONLY</span>
+            </div>
+            <div className="news-event-detail">
+              <span className="event-label">RSVP</span>
+              <span className="event-value">
+                <a href="mailto:lindsey@hiltoncontemporary.com">lindsey@hiltoncontemporary.com</a> or <a href="mailto:rachel@hiltoncontemporary.com">rachel@hiltoncontemporary.com</a>
+              </span>
+            </div>
+          </div>
+
+          <div className="news-quote">
+            <p>"Some songs are written to be heard. These were written to be felt."</p>
+          </div>
+
+          <div className="news-body">
+            <p><strong>CHICAGO</strong> – HILTON CONTEMPORARY is pleased to partner with ARTS POETICA GLOBAL, a multidisciplinary creative arts platform supporting the visual and literary arts; dance; film; music; architecture; located at 700 N. LaSalle Street, Chicago in an industrial-chic showroom in Chicago's River North neighborhood.</p>
+
+            <h5>PROGRESSIVE EXHIBITIONS</h5>
+            <p>On April 10th, the evening will begin at Hilton Contemporary, 716 N. Wells, where the works of Belgian artist Jonas LeRiche and Spanish artist Pablo Armesto will be on display from 5 pm-7 pm.</p>
+            <p>From Hilton Contemporary guests are invited to the FOUNDRY ROOM at 700 N. LaSalle Street, for an Art | Poetry | Music exhibition and EXPO Chicago After Party.</p>
+            <p>The evening will be highlighted by an exhibition of paintings by artist/poet Arica Hilton, <em>Garden After the Storm</em>, with a signing of her poetry book, <strong>BOUNDLESS</strong>.</p>
+            <p>In addition, the Album release of a musical collaboration between Hilton's poetry and composer Erich Fritz's compositions titled <em>Garden After the Storm</em>, will be celebrated with a DJ and dancing.</p>
+            <p>A percentage of sales from the paintings, poetry book and music album will benefit the <strong>Chicago Children's Advocacy Center</strong>, a not-for-profit that brings child protection, law enforcement and healing services together under one roof to respond to, treat and ultimately prevent child abuse.</p>
+
+            <h5>ABOUT THE ALBUM</h5>
+            <p>The paintings, poetry and music explore the emotional landscape that emerges after upheaval—reflection, transformation, longing, and renewal—while others move through themes of romantic passion, spirituality, and the visceral force of human emotion. Each composition unfolds like a chapter in a larger narrative, inviting the audience into a space of feeling, reflection, and discovery.</p>
+            <p>The title track from the album, <em>Garden After the Storm</em>, is a cinematic piano ballad about transformation after trauma. <em>Nomen Exspectans</em> (Waiting to be Named) features English and Latin converging with Gregorian chant textures. <em>Deeper Than Love</em> is a sensual, mystical Buddha Bar-style lounge track with breathy vocals and spoken-word passages.</p>
+            <p><em>"In many ways, this collaboration reflects where we believe the music industry is heading—away from sound as the product, and toward meaning as the center of gravity. Arica's poetry carries that weight inherently, and the music exists to elevate it, not compete with it,"</em> Fritz stated.</p>
+
+            <h5>SPECIAL EDITIONS</h5>
+            <p>A deluxe edition of <em>Garden After the Storm</em> will be available for pre-order as a limited-edition, gatefold album opening to a booklet with poetry/lyrics on parchment paper with a signed and numbered limited edition print by Arica Hilton. The album itself will be signed & numbered by both artists. Limited to only 250 copies.</p>
+
+            <h5>THE STORY</h5>
+            <p>The duo met through their mutual love of art. Fritz is an art collector, and Hilton is an artist and gallerist. The image on the cover of the album, Vincent Van Gogh's "Wheat fields with Cypresses" was especially meaningful because it was the work that brought them together.</p>
+            <p>One day Hilton sent Fritz her poem "Unlike You" (which has been retitled to <em>Garden After the Storm</em>) and he nonchalantly asked if he could put the poem to music. That was the beginning of their collaboration—an exercise of sleepless nights and extreme dedication to perfection.</p>
+            <p><em>Garden After the Storm</em> pays homage to the resilience of the human spirit. One minute a storm, the next a lush garden of love, peace and joy.</p>
+          </div>
+
+          <div className="news-exhibition-info">
+            <p><strong>GARDEN AFTER THE STORM</strong> will be on view at Arts Poetica Global at 700 N. LaSalle Street through June 21, 2026.</p>
+          </div>
+
+          <div className="news-links">
+            <a href="https://hiltoncontemporary.com/" target="_blank" rel="noopener noreferrer">hiltoncontemporary.com</a>
+            <a href="https://artspoetica.com/" target="_blank" rel="noopener noreferrer">artspoetica.com</a>
+          </div>
+
+          <div className="news-contact">
+            <h5>Media Contact</h5>
+            <p>Arica Hilton</p>
+            <p><a href="tel:312-852-8200">312.852.8200</a></p>
+            <p><a href="mailto:arica@aricahilton.com">arica@aricahilton.com</a></p>
+          </div>
+
+          <div className="news-download">
+            <a href="https://customer-assets.emergentagent.com/job_code-sync-51/artifacts/nva6gfrz_PRESS-RELEASE-GARDEN-AFTER-THE-STORM%20V5.pdf" target="_blank" rel="noopener noreferrer" className="download-press-release-btn">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              Download Press Release (PDF)
+            </a>
+          </div>
         </div>
       </section>
 
