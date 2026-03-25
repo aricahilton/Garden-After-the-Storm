@@ -510,7 +510,7 @@ You lapping it up
 
  to etch my perfection.
 
-Lyrics: Arica Hilton and Erich Fritz
+Lyrics: Arica Hilton & Erich Fritz
 Music: Erich Fritz`
   },
   {
