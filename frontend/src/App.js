@@ -508,7 +508,10 @@ You lapping it up
 
  I, waiting for your waves…
 
- to etch my perfection.`
+ to etch my perfection.
+
+Lyrics: Arica Hilton and Erich Fritz
+Music: Erich Fritz`
   },
   {
     number: 4,
