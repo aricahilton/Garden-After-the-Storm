@@ -1875,6 +1875,18 @@ function App() {
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </a>
+          <a href="https://fritzandco.co/" target="_blank" rel="noopener noreferrer" className="website-link-card" data-testid="link-erich">
+            <div className="website-link-content">
+              <h3>Erich Fritz</h3>
+              <p>Fritz & Company - technology-focused advisory firm founded by Erich Fritz</p>
+              <span className="website-url">https://fritzandco.co/</span>
+            </div>
+            <svg className="external-link-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
           <a href="https://artspoetica.com/" target="_blank" rel="noopener noreferrer" className="website-link-card" data-testid="link-artspoetica">
             <div className="website-link-content">
               <h3>Arts Poetica Global</h3>
@@ -1887,11 +1899,11 @@ function App() {
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </a>
-          <a href="https://fritzandco.co/" target="_blank" rel="noopener noreferrer" className="website-link-card" data-testid="link-erich">
+          <a href="https://hiltoncontemporary.com/" target="_blank" rel="noopener noreferrer" className="website-link-card" data-testid="link-hiltoncontemporary">
             <div className="website-link-content">
-              <h3>Erich Fritz</h3>
-              <p>Fritz & Company - technology-focused advisory firm founded by Erich Fritz</p>
-              <span className="website-url">https://fritzandco.co/</span>
+              <h3>Hilton Contemporary</h3>
+              <p>Gallery platform supporting internationally known artists and humanitarians who seek change for a better world</p>
+              <span className="website-url">https://hiltoncontemporary.com/</span>
             </div>
             <svg className="external-link-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
