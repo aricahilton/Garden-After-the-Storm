@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import "@/App.css";
 import axios from "axios";
 
@@ -13,14 +13,17 @@ const CheckoutSuccess = ({ onBackToShop }) => {
   const [attempts, setAttempts] = useState(0);
   const maxAttempts = 5;
 
-  const fetchDownloadLinks = async (sessionId) => {
+  const fetchDownloadLinks = useCallback(async (sessionId) => {
     try {
       const response = await axios.get(`${API}/download/${sessionId}`);
       setDownloadLinks(response.data);
     } catch (error) {
-      console.log("No download links available (physical product)");
+      // No download links available (physical product) - expected behavior
+      if (process.env.NODE_ENV !== 'production') {
+        console.log("No download links available (physical product)");
+      }
     }
-  };
+  }, []);
 
   const checkPaymentStatus = useCallback(async (sessionId) => {
     try {
@@ -41,10 +44,12 @@ const CheckoutSuccess = ({ onBackToShop }) => {
         setStatus("pending");
       }
     } catch (error) {
-      console.error("Error checking payment status:", error);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error("Error checking payment status:", error);
+      }
       setStatus("error");
     }
-  }, [attempts]);
+  }, [attempts, fetchDownloadLinks]);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -88,8 +93,8 @@ const CheckoutSuccess = ({ onBackToShop }) => {
                 <h3>Your Downloads</h3>
                 <p className="download-note">Click below to download your files:</p>
                 <div className="download-list">
-                  {downloadLinks.downloads.map((file, index) => (
-                    <a key={index} href={file.url} download className="download-link" data-testid={`download-link-${index}`}>
+                  {downloadLinks.downloads.map((file) => (
+                    <a key={file.filename} href={file.url} download className="download-link" data-testid={`download-link-${file.filename}`}>
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                         <polyline points="7 10 12 15 17 10"></polyline>
@@ -1167,13 +1172,13 @@ const ChatWidget = () => {
   const messagesEndRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  const scrollToBottom = () => {
+  const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  }, []);
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [messages, scrollToBottom]);
 
   useEffect(() => {
     if (isOpen && messages.length === 0) {
@@ -1182,7 +1187,7 @@ const ChatWidget = () => {
         content: "Welcome to Garden After the Storm! 🎵 I'm here to help you explore the album, learn about the artists Erich Fritz and Arica Hilton, or answer any questions. You can also share images or videos with me! How can I help you today?"
       }]);
     }
-  }, [isOpen, messages.length]);
+  }, [isOpen, messages.length, setMessages]);
 
   const handleFileSelect = (e) => {
     const file = e.target.files[0];
@@ -1238,7 +1243,9 @@ const ChatWidget = () => {
       try {
         fileData = await uploadFile(selectedFile);
       } catch (error) {
-        console.error("Upload failed:", error);
+        if (process.env.NODE_ENV !== 'production') {
+          console.error("Upload failed:", error);
+        }
         setMessages(prev => [...prev, {
           role: "assistant",
           content: "Sorry, I couldn't upload your file. Please try again."
@@ -1277,7 +1284,9 @@ const ChatWidget = () => {
         content: response.data.response
       }]);
     } catch (error) {
-      console.error("Chat error:", error);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error("Chat error:", error);
+      }
       setMessages(prev => [...prev, {
         role: "assistant",
         content: "Sorry, I'm having trouble responding right now. Please try again."
@@ -1329,7 +1338,7 @@ const ChatWidget = () => {
 
           <div className="chat-messages" data-testid="chat-messages">
             {messages.map((msg, idx) => (
-              <div key={idx} className={`chat-message ${msg.role}`} data-testid={`chat-message-${idx}`}>
+              <div key={`msg-${idx}-${msg.role}`} className={`chat-message ${msg.role}`} data-testid={`chat-message-${idx}`}>
                 {msg.file && msg.file.type === "image" && (
                   <img src={`${BACKEND_URL}${msg.file.url}`} alt={msg.file.name} className="chat-file-preview" />
                 )}
@@ -1516,6 +1525,11 @@ function App() {
   const [bgMusicPlaying, setBgMusicPlaying] = useState(false);
   const bgMusicRef = useRef(null);
 
+  // Memoized filtered merch items for performance
+  const filteredMerchItems = useMemo(() => {
+    return MERCH_ITEMS.filter(item => merchFilter === 'all' || item.category === merchFilter);
+  }, [merchFilter]);
+
   // Check if returning from Stripe checkout
   useEffect(() => {
     const path = window.location.pathname;
@@ -1564,7 +1578,9 @@ function App() {
         window.location.href = response.data.url;
       }
     } catch (error) {
-      console.error("Checkout error:", error);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error("Checkout error:", error);
+      }
       alert("Unable to process checkout. Please try again.");
     } finally {
       setCheckoutLoading(null);
@@ -1813,7 +1829,7 @@ function App() {
           >Books</button>
         </div>
         <div className="merch-grid" data-testid="merch-grid">
-          {MERCH_ITEMS.filter(item => merchFilter === 'all' || item.category === merchFilter).map((item) => (
+          {filteredMerchItems.map((item) => (
             <div key={item.id} className="merch-item" data-testid={`merch-item-${item.id}`}>
               <div className="merch-image-container">
                 <span className={`merch-category-badge ${item.category.toLowerCase()}`}>{item.category}</span>
@@ -2054,7 +2070,7 @@ function App() {
               <div className="lyrics-description">
                 <h3 className="lyrics-section-title">About This Track</h3>
                 {lyricsTrack.description.split('\n\n').map((paragraph, idx) => (
-                  <p key={idx}>{paragraph}</p>
+                  <p key={`desc-${lyricsTrack.number}-${idx}`}>{paragraph}</p>
                 ))}
               </div>
 
@@ -2063,9 +2079,9 @@ function App() {
                 <div className="lyrics-text">
                   <h3 className="lyrics-section-title">Lyrics</h3>
                   {lyricsTrack.lyrics.split('\n\n').map((verse, idx) => (
-                    <div key={idx} className="lyrics-verse">
+                    <div key={`verse-${lyricsTrack.number}-${idx}`} className="lyrics-verse">
                       {verse.split('\n').map((line, lineIdx) => (
-                        <p key={lineIdx} className="lyrics-line">{line}</p>
+                        <p key={`line-${lyricsTrack.number}-${idx}-${lineIdx}`} className="lyrics-line">{line}</p>
                       ))}
                     </div>
                   ))}
@@ -2086,7 +2102,11 @@ function App() {
         loop
         preload="auto"
         onEnded={() => setBgMusicPlaying(false)}
-        onError={(e) => console.error('Audio error:', e)}
+        onError={(e) => {
+          if (process.env.NODE_ENV !== 'production') {
+            console.error('Audio error:', e);
+          }
+        }}
       />
       <button
         className={`bg-music-btn ${bgMusicPlaying ? 'playing' : ''}`}
@@ -2101,7 +2121,9 @@ function App() {
                 await bgMusicRef.current.play();
                 setBgMusicPlaying(true);
               } catch (error) {
-                console.error('Audio play failed:', error);
+                if (process.env.NODE_ENV !== 'production') {
+                  console.error('Audio play failed:', error);
+                }
                 setBgMusicPlaying(false);
               }
             }
