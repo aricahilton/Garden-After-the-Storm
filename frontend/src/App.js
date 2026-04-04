@@ -1659,10 +1659,12 @@ function App() {
           muted
           loop
           playsInline
-          src={HERO_VIDEO}
           onError={(e) => e.target.style.display = 'none'}
           onCanPlay={(e) => e.target.play()}
-        />
+        >
+          <source src={HERO_VIDEO} type="video/quicktime" />
+          <source src={HERO_VIDEO} type="video/mp4" />
+        </video>
         <div className="hero-overlay"></div>
         <div className="hero-content-wrapper">
           <div className="hero-album-cover">
