@@ -1667,7 +1667,10 @@ function App() {
             }
             e.target.style.display = 'none';
           }}
-          onLoadedData={(e) => e.target.play()}
+          onLoadedData={(e) => {
+            e.target.playbackRate = 0.5; // Slow down to 50% speed
+            e.target.play();
+          }}
         />
         <div className="hero-overlay"></div>
         <div className="hero-content-wrapper">
