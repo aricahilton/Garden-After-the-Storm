@@ -1,4 +1,5 @@
 from fastapi import FastAPI, APIRouter
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -24,6 +25,12 @@ app = FastAPI()
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
+
+# Mount static files directory under /api prefix for proper routing through ingress
+static_dir = ROOT_DIR / "static"
+if static_dir.exists():
+    api_router_static = APIRouter(prefix="/api")
+    app.mount("/api/static", StaticFiles(directory=str(static_dir)), name="static")
 
 
 # Define Models

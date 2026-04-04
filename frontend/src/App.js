@@ -174,8 +174,8 @@ const IMAGES = {
   arica: "https://customer-assets.emergentagent.com/job_helper-upload-issue/artifacts/duduele8_Arica%20Western%20Doorway%20looking%20down.jpg"
 };
 
-// Video URL for hero background - Adobe Stock video
-const HERO_VIDEO = "https://customer-assets.emergentagent.com/job_code-sync-51/artifacts/pf4o94la_AdobeStock_1439799691_Video_HD_Preview.mov";
+// Video URL for hero background - served from backend static files
+const HERO_VIDEO = `${BACKEND_URL}/api/static/hero_video.mp4`;
 
 // Track data
 const TRACKS = [
@@ -1659,12 +1659,16 @@ function App() {
           muted
           loop
           playsInline
-          onError={(e) => e.target.style.display = 'none'}
-          onCanPlay={(e) => e.target.play()}
-        >
-          <source src={HERO_VIDEO} type="video/quicktime" />
-          <source src={HERO_VIDEO} type="video/mp4" />
-        </video>
+          crossOrigin="anonymous"
+          src={HERO_VIDEO}
+          onError={(e) => {
+            if (process.env.NODE_ENV !== 'production') {
+              console.error('Video error:', e);
+            }
+            e.target.style.display = 'none';
+          }}
+          onLoadedData={(e) => e.target.play()}
+        />
         <div className="hero-overlay"></div>
         <div className="hero-content-wrapper">
           <div className="hero-album-cover">
