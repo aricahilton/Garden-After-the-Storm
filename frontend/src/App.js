@@ -174,8 +174,8 @@ const IMAGES = {
   arica: "https://customer-assets.emergentagent.com/job_helper-upload-issue/artifacts/duduele8_Arica%20Western%20Doorway%20looking%20down.jpg"
 };
 
-// Video URL for hero background - blue sky with moving clouds
-const HERO_VIDEO = `${BACKEND_URL}/api/uploads/sky_video.mp4`;
+// Video URL for hero background - Adobe Stock video
+const HERO_VIDEO = "https://customer-assets.emergentagent.com/job_code-sync-51/artifacts/pf4o94la_AdobeStock_1439799691_Video_HD_Preview.mov";
 
 // Track data
 const TRACKS = [
