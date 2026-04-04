@@ -174,8 +174,8 @@ const IMAGES = {
   arica: "https://customer-assets.emergentagent.com/job_helper-upload-issue/artifacts/duduele8_Arica%20Western%20Doorway%20looking%20down.jpg"
 };
 
-// Video URL for hero background - served from backend static files
-const HERO_VIDEO = `${BACKEND_URL}/api/static/hero_video.mp4`;
+// Video URL for hero background - cloud/sky video from Mixkit CDN
+const HERO_VIDEO = "https://assets.mixkit.co/videos/51102/51102-720.mp4";
 
 // Track data
 const TRACKS = [
