@@ -1453,8 +1453,8 @@ const MERCH_ITEMS = [
     productId: "album_limited",
     category: "ALBUMS",
     title: "Deluxe Limited Edition Album",
-    description: "DELUXE LIMITED EDITION gatefold album opens to a booklet of poetry/lyrics on parchment paper includes a signed and numbered limited edition print by Arica Hilton. The album will be signed and numbered by both Arica Hilton and Erich Fritz. Limited to 250 copies.",
-    price: "$650.00",
+    description: "Available for pre-order as a limited-edition, gatefold album opening to a booklet with poetry/lyrics on parchment paper with signed and numbered limited edition print by Arica Hilton. The album itself will be signed & numbered by Arica Hilton and Erich Fritz. Limited to 250 copies.",
+    price: "$975.00",
     image: IMAGES.album
   },
   {
@@ -1470,10 +1470,10 @@ const MERCH_ITEMS = [
     id: 3,
     productId: "book",
     category: "BOOKS",
-    title: "Garden After the Storm 2026 - Poetry Book",
+    title: "BOUNDLESS Poetry Book",
     description: "Limited Edition signed by the artist. This beautiful 8\" x 10\" paperback features the complete poetry collection from the album with stunning artwork.",
     price: "$50.00",
-    image: `${BACKEND_URL}/api/uploads/book_cover.png`
+    image: `${BACKEND_URL}/api/static/boundless_cover.png`
   },
   {
     id: 4,

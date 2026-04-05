@@ -31,6 +31,10 @@ Music album website for "Garden After the Storm" by Erich Fritz and Arica Hilton
 - [x] AI chat widget
 - [x] Email subscription
 - [x] GitHub sync resolved
+- [x] NEWS section with press release content
+- [x] Hero section video background (Mixkit clouds)
+- [x] Code quality fixes (React hooks, stable keys, useMemo)
+- [x] Merch updates: Deluxe price $975, new description, BOUNDLESS Poetry Book with PDF cover (April 5, 2026)
 
 ## Prioritized Backlog
 ### P0 (Critical)
