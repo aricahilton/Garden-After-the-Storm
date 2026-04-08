@@ -73,6 +73,10 @@ agenthub/agents/youtube/db
 *.deb
 *.dylib
 
+# Large audio/video files (exceed GitHub 100MB limit)
+backend/static/*.wav
+backend/static/hero_video.mp4
+
 # Build caches
 .cache/
 
