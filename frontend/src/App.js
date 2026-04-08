@@ -1162,8 +1162,131 @@ replenishing my roving vessel with a moving song of the gypsy.`
     title: "GARDEN AFTER THE STORM - PART II (THE SILENT REVELATION)",
     duration: "6:47",
     file: "track_12_garden_after_the_storm_part_ii.wav",
-    description: ``,
-    lyrics: ``
+    description: `"Garden After the Storm - Part II (The Silent Revelation)" is a meditation on what remains after everything else has fallen away. It traces the arc from seeking answers in the past to finding peace in silence, from building on unstable ground to finally standing firm in one's own name. A powerful closing statement of resilience, identity, and renewal.`,
+    lyrics: `Garden After the Storm - Part II (The Silent Revelation)
+
+I remain.
+
+I kept asking the past
+to tell me the truth\u2026
+
+as if clarity
+lived in someone else's mouth.
+
+But silence\u2026
+
+was the answer.
+
+And I learned
+silence is not confusion\u2026
+it's conclusion.
+
+I built a home
+on shifting ground
+called it forever
+while it moved beneath me.
+
+Gave more than I had
+reached for more
+
+until I lost the identity
+of who I used to be.
+
+I was a crumbling lighthouse
+burning in daylight
+trying to hold
+what wouldn't stay.
+
+And I don't need to know
+what I can't prove
+
+I felt it
+
+that's enough.
+
+After the storm, I remain
+still standing in the pouring rain
+
+I lost it all
+but I found my name.
+
+after the storm, I remain.
+
+I remain\u2026
+I remain\u2026
+
+There were truths
+I could never hold
+only questions
+left behind me.
+
+Love in fragments
+words half-spoken
+a future built
+on missing pieces.
+
+I tried to fix it,
+every crack, every line.
+
+like understanding
+would bring it back.
+
+But some things don't break
+
+they fade away.
+
+And that's enough.
+
+After the storm, I remain
+still standing in the pouring.
+
+I lost it all
+but I found my name
+
+after the storm, I remain\u2026
+
+I remain\u2026
+I remain\u2026
+
+I was not wrong
+for loving deeply.
+
+I was not weak
+for believing.
+
+I just stood too long
+in a place
+that couldn't hold me.
+
+And now I see it.
+
+clearly.
+
+After the storm, I remain
+no longer caught in the same rain.
+
+I laid it down
+I walked away
+
+after the storm, I remain.
+
+I remain\u2026
+I remain\u2026
+
+The past can keep
+its unfinished stories
+
+I've stepped into a garden
+after the storm.
+
+I've stepped into a garden
+after the storm.
+
+I remain.
+
+I remain.
+
+I. Remain\u2026.`
   }
 ];
 
