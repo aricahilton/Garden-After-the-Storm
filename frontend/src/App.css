@@ -610,6 +610,44 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.album-artist {
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.escape-velocity-section {
+  background: linear-gradient(180deg, var(--color-bg-secondary) 0%, #0a0a14 100%);
+}
+
+.escape-velocity-description {
+  margin-bottom: 1.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.escape-velocity-description p {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.escape-velocity-description::-webkit-scrollbar {
+  width: 4px;
+}
+
+.escape-velocity-description::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.05);
+}
+
+.escape-velocity-description::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
+}
+
 .track-note {
   font-size: 0.75rem;
   margin-left: 1rem;

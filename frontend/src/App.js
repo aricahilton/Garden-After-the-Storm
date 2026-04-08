@@ -177,6 +177,32 @@ const IMAGES = {
 // Video URL for hero background - blue sky with white clouds from Mixkit
 const HERO_VIDEO = "https://assets.mixkit.co/videos/32600/32600-720.mp4";
 
+// Escape Velocity album data
+const ESCAPE_VELOCITY = {
+  title: "Escape Velocity",
+  artist: "Erich Fritz",
+  year: "2026",
+  cover: `${BACKEND_URL}/api/static/escape_velocity_cover.png`,
+  description: `A dark, club-driven body of work, Escape Velocity transforms personal rupture into kinetic release: trading introspection for impact as tension, detachment, and hard-earned clarity drive relentless, dance floor-ready sound.
+
+It exists in dialogue with Garden After the Storm, a deeply introspective and emotionally resonant album where poetry, atmosphere, and melodic composition create space for reflection, vulnerability, and meaning. Where that project lingers in feeling, Escape Velocity carries it forward.
+
+Many of these songs were written in real time during a period of emotional vulnerability (unfiltered, immediate, and unresolved) then reimagined and remixed into a club context. What was once internal becomes physical; what was processed in stillness now moves through rhythm.
+
+Spanning underground electronic styles (from warehouse techno to melodic house and bass-driven house / trap hybrids), the album traces disconnection through manipulation, illusion, pursuit, and release. Each track operates as both narrative fragment and rhythmic engine, where percussive vocal lines and spoken-word phrasing cut through driving grooves and hypnotic repetition.
+
+Built on contrast (cold and intimate, mechanical and human, control and collapse) its hooks function as mantras, repeated until they become physical, embedding themselves into movement as much as memory.
+
+Unfolding like a late-night progression (from sensual, immersive textures to stark warehouse intensity), the album builds toward clarity without forcing resolution.
+
+This is not a retreat from feeling: it's what happens after one has faced it. It is a confrontation with it\u2026`,
+  track: {
+    title: "ESCAPE VELOCITY (CONTINUOUS MIX)",
+    duration: "63:24",
+    file: "escape_velocity_set.wav"
+  }
+};
+
 // Track data
 const TRACKS = [
   {
@@ -696,9 +722,9 @@ forever unhidden.`
   },
   {
     number: 6,
-    title: "RIVERS IN ME",
-    duration: "5:50",
-    file: "track_06_rivers_in_me.wav",
+    title: "SEVEN FACES OF LOVE",
+    duration: "8:02",
+    file: "track_07_seven_faces_of_love.wav",
     description: `The central theme of "Rivers in Me" is emotional connection that runs deeper than words. It explores the idea that when two people truly connect, the experience feels like an unseen current moving beneath the surface: quiet but powerful, like rivers flowing through the night.
 
 The imagery of rivers, stars, silence, and night represents inner emotions that are difficult to explain but deeply felt. The song suggests that love or connection is not always loud or dramatic; sometimes it appears in quiet moments of shared understanding, reflection, and presence.
@@ -773,9 +799,9 @@ Feel the rivers in me`
   },
   {
     number: 7,
-    title: "SEVEN FACES OF LOVE",
-    duration: "8:02",
-    file: "track_07_seven_faces_of_love.wav",
+    title: "RIVERS IN ME",
+    duration: "5:50",
+    file: "track_06_rivers_in_me.wav",
     description: `"Seven Faces of Love" is an epic, cinematic journey through ancient mythology and timeless desire. The song weaves together imagery of the Seven Wonders of the World with the seven veils of Salome, creating a tapestry of longing, discovery, and transformation.
 
 Set in a "faraway land" and "faraway time," the narrator speaks of a hidden cache—a heart locked away, waiting to be unearthed. Through archaeological metaphors of shovels and buried coffers, the song explores the risk of excavating deep emotion: the danger and beauty of revealing what has been buried beneath "millennia" of protection.
@@ -1652,6 +1678,7 @@ function App() {
   const [merchFilter, setMerchFilter] = useState("all");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [checkoutLoading, setCheckoutLoading] = useState(null);
+  const [escapeVelocityOpen, setEscapeVelocityOpen] = useState(false);
   const [showCheckoutSuccess, setShowCheckoutSuccess] = useState(false);
   const [bgMusicPlaying, setBgMusicPlaying] = useState(false);
   const bgMusicRef = useRef(null);
@@ -1894,6 +1921,50 @@ function App() {
                   )}
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Escape Velocity Album Section */}
+      <section className="music-section escape-velocity-section" id="escape-velocity" data-testid="escape-velocity-section">
+        <p className="section-label">New Release</p>
+        <h2>Escape Velocity</h2>
+        <div className="album-container">
+          <div className="album-cover">
+            <img src={ESCAPE_VELOCITY.cover} alt="Escape Velocity Cover Art" data-testid="escape-velocity-cover" />
+          </div>
+          <div className="album-info">
+            <p className="album-year">{ESCAPE_VELOCITY.year}</p>
+            <h3>{ESCAPE_VELOCITY.title}</h3>
+            <p className="album-artist">{ESCAPE_VELOCITY.artist}</p>
+            <p className="track-count">Continuous Mix</p>
+            <div className="escape-velocity-description" data-testid="escape-velocity-description">
+              {ESCAPE_VELOCITY.description.split('\n\n').map((paragraph, idx) => (
+                <p key={`ev-desc-${idx}`}>{paragraph}</p>
+              ))}
+            </div>
+            <div className="track-list" data-testid="escape-velocity-track-list">
+              <div className={`track ${escapeVelocityOpen ? 'active' : ''}`} data-testid="escape-velocity-track">
+                <div className="track-header" onClick={() => setEscapeVelocityOpen(!escapeVelocityOpen)}>
+                  <span className="track-number">1</span>
+                  <span className="track-title">{ESCAPE_VELOCITY.track.title}</span>
+                  <span className="track-duration">{ESCAPE_VELOCITY.track.duration}</span>
+                </div>
+                {escapeVelocityOpen && (
+                  <div className="track-player">
+                    <audio
+                      controls
+                      controlsList="nodownload"
+                      src={`${BACKEND_URL}/api/static/${ESCAPE_VELOCITY.track.file}`}
+                      data-testid="escape-velocity-audio-player"
+                      onContextMenu={(e) => e.preventDefault()}
+                    >
+                      Your browser does not support the audio element.
+                    </audio>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
