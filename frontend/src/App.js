@@ -177,6 +177,43 @@ const IMAGES = {
 // Video URL for hero background - blue sky with white clouds from Mixkit
 const HERO_VIDEO = "https://assets.mixkit.co/videos/32600/32600-720.mp4";
 
+// Garden After the Storm album description
+const GATS_DESCRIPTION = `Garden After the Storm, a collaboration between Arica Hilton and Erich Fritz, is a musical and intellectual journey where poetry becomes sound.
+
+The piece is not a singular story, but rather a dual narrative between Arica Hilton and Erich Fritz, unfolding in parallel as two emotional worlds move toward the same truth from very different beginnings.
+
+At its core, the album lives in the aftermath, where everything that once felt certain has been stripped away, and only truth remains. It is not about the storm itself, but about what follows: the stillness where memory settles, where love is no longer distorted by longing and where identity begins to reassemble itself with clarity. Each piece unfolds like a private reflection (intimate, unguarded and deliberate) where poetry carries the weight and music exists as atmosphere, not distraction. Yet unlike a linear journey, this work unfolds like a film: perspectives shift, voices alternate and the listener is carried between two distinct but deeply connected experiences of love and transformation.
+
+What gives the album its depth is the interplay between Arica and Erich\u2019s voices.
+
+Arica Hilton\u2019s pieces, whose poetry comprises the majority of the album, arrive with a passion that feels elemental: love experienced fully, expressed openly and lived without restraint. Her work carries movement: desire, connection, longing and the beauty of emotional immersion. There is a richness and immediacy to her perspective, shaped by a life punctuated by feeling, where love is something to step into completely, even when it risks fracture. Her voice does not hold back; it lives inside the experience.
+
+Erich Fritz\u2019s pieces emerge from a more introspective terrain: one shaped by reflection, deconstruction and the search for meaning after the fact. His work asks quieter, but deeply resonant questions: what remains when something deeply felt no longer holds? What is left when identity has been stretched beyond recognition? Where Arica moves through love, Erich often pauses to understand it, tracing its echoes, its illusions, and ultimately, its lessons.
+
+The album moves through a deliberate emotional arc that begins with searching. Love lingers in fragments (echoes, questions, unfinished meanings). As the journey progresses, that search gives way to reflection. Themes of attachment, illusion and self-abandonment surface, revealing the quiet cost of holding onto something that could not hold in return.
+
+Midway through the album, the two perspectives begin to intertwine more visibly. Transition pieces act as thresholds, or moments where the emotional lens shifts: where one voice gives way to the other like a change in scene. The listener is no longer anchored to a single point of view, but instead experiences love as something multifaceted: lived, remembered and understood differently depending on where one stands within it.
+
+From there, a shift begins.
+
+Not abrupt, but undeniable.
+
+The need for answers softens. The impulse to fix, to prove, to fully understand begins to dissolve. In its place comes acceptance: the realization that some things are not meant to be resolved, only released. And within that release, something deeper emerges: a return to self.
+
+By the final movement, the distinction between Arica and Erich\u2019s narratives softens into convergence. Passion and reflection (once distinct) arrive at the same quiet realization: that love, in all its forms, ultimately leads back to identity. Not as something broken, but as something clarified.
+
+The \u201cgarden\u201d is not a destination, but a state of being: cultivated through loss, clarified through reflection and entered through letting go.
+
+Sonically, the album is restrained and cinematic. Ambient textures (ancient meeting modern), minimal instrumentation and spacious arrangements create room for the words to breathe. There are traces of electronic and neoclassical influence, but always in service of the poetic narrative, which the music serves to elevate. The voice remains central: at times spoken (\u201ccall-and-response\u201d vocals intertwined throughout to create a sense of dialogue), at times melodic: guiding the listener through each emotional passage.
+
+In contrast to Escape Velocity, which transforms pain into movement and physical release, Garden After the Storm chooses stillness. It does not seek to outrun the past, but to understand it: fully, honestly and without distortion.
+
+Ultimately, this is a body of work about two ways of loving, two ways of processing and one shared destination.
+
+It does not ask for resolution.
+
+It offers arrival.`;
+
 // Escape Velocity album data
 const ESCAPE_VELOCITY = {
   title: "Escape Velocity",
@@ -1861,6 +1898,11 @@ function App() {
             <p className="album-year">2026</p>
             <h3>Garden After the Storm</h3>
             <p className="track-count">12 Tracks</p>
+            <div className="escape-velocity-description gats-description" data-testid="gats-description">
+              {GATS_DESCRIPTION.split('\n\n').map((paragraph, idx) => (
+                <p key={`gats-desc-${idx}`}>{paragraph}</p>
+              ))}
+            </div>
             <div className="track-list" data-testid="track-list">
               {TRACKS.map((track) => (
                 <div key={track.number} className={`track ${activeTrack === track.number ? 'active' : ''}`} data-testid={`track-${track.number}`}>
