@@ -1156,6 +1156,14 @@ distort your ecstasy. as I drive to a movie alone
 in placid countenance…
 
 replenishing my roving vessel with a moving song of the gypsy.`
+  },
+  {
+    number: 12,
+    title: "GARDEN AFTER THE STORM - PART II (THE SILENT REVELATION)",
+    duration: "6:47",
+    file: "track_12_garden_after_the_storm_part_ii.wav",
+    description: ``,
+    lyrics: ``
   }
 ];
 
@@ -1702,7 +1710,7 @@ function App() {
           <div className="album-info">
             <p className="album-year">2026</p>
             <h3>Garden After the Storm</h3>
-            <p className="track-count">11 Tracks</p>
+            <p className="track-count">12 Tracks</p>
             <div className="track-list" data-testid="track-list">
               {TRACKS.map((track) => (
                 <div key={track.number} className={`track ${activeTrack === track.number ? 'active' : ''}`} data-testid={`track-${track.number}`}>
