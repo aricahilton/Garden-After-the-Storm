@@ -169,7 +169,7 @@ const CheckoutSuccess = ({ onBackToShop }) => {
 // Image URLs from the live site
 const IMAGES = {
   hero: `${BACKEND_URL}/api/uploads/images/f1c2950b-a4c0-46cd-9180-0511a19ff3ed.jpg`,
-  album: "https://customer-assets.emergentagent.com/job_helper-upload-issue/artifacts/unc8lw89_Darko%20%26%20Sophia%20-%20Cover%20Art%20%28PNG3%29.jpg",
+  album: `${BACKEND_URL}/api/static/album_cover_new.png`,
   erich: "https://customer-assets.emergentagent.com/job_helper-upload-issue/artifacts/jk04fq3e_2.png",
   arica: "https://customer-assets.emergentagent.com/job_helper-upload-issue/artifacts/duduele8_Arica%20Western%20Doorway%20looking%20down.jpg"
 };
