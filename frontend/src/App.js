@@ -838,7 +838,7 @@ Feel the rivers in me`
     number: 7,
     title: "RIVERS IN ME",
     duration: "5:50",
-    file: "track_06_rivers_in_me.wav",
+    file: "track_07_rivers_in_me.wav",
     description: `"Seven Faces of Love" is an epic, cinematic journey through ancient mythology and timeless desire. The song weaves together imagery of the Seven Wonders of the World with the seven veils of Salome, creating a tapestry of longing, discovery, and transformation.
 
 Set in a "faraway land" and "faraway time," the narrator speaks of a hidden cache—a heart locked away, waiting to be unearthed. Through archaeological metaphors of shovels and buried coffers, the song explores the risk of excavating deep emotion: the danger and beauty of revealing what has been buried beneath "millennia" of protection.
@@ -998,7 +998,7 @@ Your seven faces of love.`
     number: 10,
     title: "NOMEN EXSPECTANS (NEW AGE HOUSE REMIX)",
     duration: "6:10",
-    file: "track_09_nomen_exspectans.wav",
+    file: "track_10_nomen_exspectans.wav",
     description: `"Nomen Exspectans" (Latin for "Waiting to be Named") is a mystical meditation on identity, transformation, and cosmic connection. Opening with lines from the ancient Emerald Tablet of Hermes Trismegistus—"As above, so below"—the song weaves alchemical wisdom with dreamlike imagery of hunters catching stars, wings melting into fins, and souls walking up the sky.
 
 The narrator contemplates whether the Emerald Tablet represents true transformation or merely the reflection of a mythic man who found himself in the stars. Ultimately, they embrace the mystery, choosing to simply "walk up the sky like a star, waiting to be named by my discoverer."`,
