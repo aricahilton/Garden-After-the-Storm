@@ -76,6 +76,8 @@ agenthub/agents/youtube/db
 # Large audio/video files (exceed GitHub 100MB limit)
 backend/static/*.wav
 backend/static/hero_video.mp4
+backend/uploads/*.wav
+backend/uploads/*.mp3
 
 # Build caches
 .cache/

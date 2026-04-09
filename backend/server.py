@@ -32,6 +32,11 @@ if static_dir.exists():
     api_router_static = APIRouter(prefix="/api")
     app.mount("/api/static", StaticFiles(directory=str(static_dir)), name="static")
 
+# Mount uploads directory for audio tracks
+uploads_dir = ROOT_DIR / "uploads"
+if uploads_dir.exists():
+    app.mount("/api/uploads", StaticFiles(directory=str(uploads_dir)), name="uploads")
+
 
 # Define Models
 class StatusCheck(BaseModel):
