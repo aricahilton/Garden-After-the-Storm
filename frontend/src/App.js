@@ -988,6 +988,14 @@ Your seven faces of love.`
   },
   {
     number: 9,
+    title: "WAITING TO POUR",
+    duration: "4:07",
+    file: "track_09_waiting_to_pour.wav",
+    description: ``,
+    lyrics: ``
+  },
+  {
+    number: 10,
     title: "NOMEN EXSPECTANS (NEW AGE HOUSE REMIX)",
     duration: "6:10",
     file: "track_09_nomen_exspectans.wav",
@@ -1037,7 +1045,7 @@ As above…
 So below…`
   },
   {
-    number: 10,
+    number: 11,
     title: "DISTANCE",
     duration: "6:15",
     file: "track_10_distance.wav",
@@ -1132,7 +1140,7 @@ was wise
 to our staccato embrace`
   },
   {
-    number: 11,
+    number: 12,
     title: "SONG OF THE GYPSY",
     duration: "6:25",
     file: "track_11_song_of_the_gypsy.wav",
@@ -1221,7 +1229,7 @@ in placid countenance…
 replenishing my roving vessel with a moving song of the gypsy.`
   },
   {
-    number: 12,
+    number: 13,
     title: "GARDEN AFTER THE STORM - PART II (THE SILENT REVELATION)",
     duration: "6:47",
     file: "track_12_garden_after_the_storm_part_ii.wav",
@@ -1897,7 +1905,7 @@ function App() {
           <div className="album-info">
             <p className="album-year">2026</p>
             <h3>Garden After the Storm</h3>
-            <p className="track-count">12 Tracks</p>
+            <p className="track-count">13 Tracks</p>
             <div className="escape-velocity-description gats-description" data-testid="gats-description">
               {GATS_DESCRIPTION.split('\n\n').map((paragraph, idx) => (
                 <p key={`gats-desc-${idx}`}>{paragraph}</p>
