@@ -761,7 +761,7 @@ forever unhidden.`
     number: 6,
     title: "SEVEN FACES OF LOVE",
     duration: "8:02",
-    file: "track_07_seven_faces_of_love.wav",
+    file: "track_06_seven_faces_of_love.wav",
     description: `The central theme of "Rivers in Me" is emotional connection that runs deeper than words. It explores the idea that when two people truly connect, the experience feels like an unseen current moving beneath the surface: quiet but powerful, like rivers flowing through the night.
 
 The imagery of rivers, stars, silence, and night represents inner emotions that are difficult to explain but deeply felt. The song suggests that love or connection is not always loud or dramatic; sometimes it appears in quiet moments of shared understanding, reflection, and presence.
@@ -1143,7 +1143,7 @@ to our staccato embrace`
     number: 12,
     title: "SONG OF THE GYPSY",
     duration: "6:25",
-    file: "track_11_song_of_the_gypsy.wav",
+    file: "track_12_song_of_the_gypsy.wav",
     description: `"Song of the Gypsy" traces the memory of a love that was once visceral, intoxicating, and deeply intertwined: felt through scent, touch, and shared thought. What begins as a sensory immersion (fruit, skin, breath, late-night intimacy) slowly unravels into distance and unanswered longing.
 
 The piece reflects on the quiet fracture that follows intensity: unspoken words, fading presence, and the disorientation of absence. Yet even in separation, the connection lingers: echoing through memory, rhythm, and the body itself.
@@ -1232,7 +1232,7 @@ replenishing my roving vessel with a moving song of the gypsy.`
     number: 13,
     title: "GARDEN AFTER THE STORM - PART II (THE SILENT REVELATION)",
     duration: "6:47",
-    file: "track_12_garden_after_the_storm_part_ii.wav",
+    file: "track_13_garden_after_the_storm_part_ii.wav",
     description: `"Garden After the Storm - Part II (The Silent Revelation)" is a meditation on what remains after everything else has fallen away. It traces the arc from seeking answers in the past to finding peace in silence, from building on unstable ground to finally standing firm in one's own name. A powerful closing statement of resilience, identity, and renewal.`,
     lyrics: `Garden After the Storm - Part II (The Silent Revelation)
 
