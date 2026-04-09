@@ -1230,11 +1230,11 @@ replenishing my roving vessel with a moving song of the gypsy.`
   },
   {
     number: 13,
-    title: "GARDEN AFTER THE STORM - PART II (THE SILENT REVELATION)",
+    title: "GARDEN AFTER THE STORM II (THE SILENT REVELATION)",
     duration: "6:47",
     file: "track_13_garden_after_the_storm_part_ii.wav",
-    description: `"Garden After the Storm - Part II (The Silent Revelation)" is a meditation on what remains after everything else has fallen away. It traces the arc from seeking answers in the past to finding peace in silence, from building on unstable ground to finally standing firm in one's own name. A powerful closing statement of resilience, identity, and renewal.`,
-    lyrics: `Garden After the Storm - Part II (The Silent Revelation)
+    description: `"Garden After the Storm II (The Silent Revelation)" is a meditation on what remains after everything else has fallen away. It traces the arc from seeking answers in the past to finding peace in silence, from building on unstable ground to finally standing firm in one's own name. A powerful closing statement of resilience, identity, and renewal.`,
+    lyrics: `Garden After the Storm II (The Silent Revelation)
 
 I remain.
 
