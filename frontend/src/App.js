@@ -1726,12 +1726,22 @@ function App() {
   const [escapeVelocityOpen, setEscapeVelocityOpen] = useState(false);
   const [showCheckoutSuccess, setShowCheckoutSuccess] = useState(false);
   const [bgMusicPlaying, setBgMusicPlaying] = useState(false);
+  const [cart, setCart] = useState([]);
+  const [cartOpen, setCartOpen] = useState(false);
   const bgMusicRef = useRef(null);
 
   // Memoized filtered merch items for performance
   const filteredMerchItems = useMemo(() => {
     return MERCH_ITEMS.filter(item => merchFilter === 'all' || item.category === merchFilter);
   }, [merchFilter]);
+
+  const cartTotal = useMemo(() => {
+    return cart.reduce((sum, c) => sum + parseFloat(c.price.replace('$', '')) * c.qty, 0).toFixed(2);
+  }, [cart]);
+
+  const cartCount = useMemo(() => {
+    return cart.reduce((sum, c) => sum + c.qty, 0);
+  }, [cart]);
 
   // Check if returning from Stripe checkout
   useEffect(() => {
@@ -1777,6 +1787,54 @@ function App() {
         origin_url: originUrl
       });
 
+      if (response.data.url) {
+        window.location.href = response.data.url;
+      }
+    } catch (error) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error("Checkout error:", error);
+      }
+      alert("Unable to process checkout. Please try again.");
+    } finally {
+      setCheckoutLoading(null);
+    }
+  };
+
+  const addToCart = (item) => {
+    setCart(prev => {
+      const existing = prev.find(c => c.productId === item.productId);
+      if (existing) {
+        return prev.map(c => c.productId === item.productId ? { ...c, qty: c.qty + 1 } : c);
+      }
+      return [...prev, { productId: item.productId, title: item.title, price: item.price, image: item.image, qty: 1 }];
+    });
+    setCartOpen(true);
+  };
+
+  const updateCartQty = (productId, delta) => {
+    setCart(prev => prev.map(c => {
+      if (c.productId === productId) {
+        const newQty = c.qty + delta;
+        return newQty > 0 ? { ...c, qty: newQty } : c;
+      }
+      return c;
+    }).filter(c => c.qty > 0));
+  };
+
+  const removeFromCart = (productId) => {
+    setCart(prev => prev.filter(c => c.productId !== productId));
+  };
+
+  const handleCheckout = async () => {
+    if (cart.length === 0) return;
+    setCheckoutLoading('cart');
+    try {
+      const originUrl = window.location.origin;
+      const items = cart.map(c => ({ product_id: c.productId, quantity: c.qty }));
+      const response = await axios.post(`${API}/checkout/create`, {
+        items,
+        origin_url: originUrl
+      });
       if (response.data.url) {
         window.location.href = response.data.url;
       }
@@ -2102,31 +2160,15 @@ function App() {
                 <span className="merch-price">{item.price}</span>
                 <button
                   className={`merch-btn ${item.isDigital ? 'digital' : ''}`}
-                  onClick={() => handleBuyNow(item.productId)}
-                  disabled={checkoutLoading === item.productId}
-                  data-testid={`buy-btn-${item.productId}`}
+                  onClick={() => addToCart(item)}
+                  data-testid={`add-cart-${item.productId}`}
                 >
-                  {checkoutLoading === item.productId ? (
-                    <>Processing...</>
-                  ) : item.isDigital ? (
-                    <>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                      </svg>
-                      Buy & Download
-                    </>
-                  ) : (
-                    <>
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
-                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                      </svg>
-                      Buy Now
-                    </>
-                  )}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                  </svg>
+                  Add to Cart
                 </button>
               </div>
             </div>
@@ -2405,6 +2447,77 @@ function App() {
         )}
         <span className="bg-music-label">{bgMusicPlaying ? 'Ambient' : 'Play'}</span>
       </button>
+
+      {/* Cart Button */}
+      {cartCount > 0 && (
+        <button className="cart-floating-btn" onClick={() => setCartOpen(!cartOpen)} data-testid="cart-floating-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          <span className="cart-badge" data-testid="cart-badge">{cartCount}</span>
+        </button>
+      )}
+
+      {/* Cart Drawer */}
+      {cartOpen && (
+        <div className="cart-overlay" onClick={() => setCartOpen(false)} data-testid="cart-overlay">
+          <div className="cart-drawer" onClick={(e) => e.stopPropagation()} data-testid="cart-drawer">
+            <div className="cart-header">
+              <h3>Your Cart ({cartCount})</h3>
+              <button className="cart-close-btn" onClick={() => setCartOpen(false)} data-testid="cart-close-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            <div className="cart-items">
+              {cart.length === 0 ? (
+                <p className="cart-empty">Your cart is empty</p>
+              ) : (
+                cart.map(item => (
+                  <div key={item.productId} className="cart-item" data-testid={`cart-item-${item.productId}`}>
+                    <img src={item.image} alt={item.title} className="cart-item-img" />
+                    <div className="cart-item-info">
+                      <p className="cart-item-title">{item.title}</p>
+                      <p className="cart-item-price">{item.price}</p>
+                      <div className="cart-qty-controls">
+                        <button onClick={() => updateCartQty(item.productId, -1)} data-testid={`cart-qty-minus-${item.productId}`}>-</button>
+                        <span data-testid={`cart-qty-${item.productId}`}>{item.qty}</span>
+                        <button onClick={() => updateCartQty(item.productId, 1)} data-testid={`cart-qty-plus-${item.productId}`}>+</button>
+                      </div>
+                    </div>
+                    <button className="cart-remove-btn" onClick={() => removeFromCart(item.productId)} data-testid={`cart-remove-${item.productId}`}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                      </svg>
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
+            {cart.length > 0 && (
+              <div className="cart-footer">
+                <div className="cart-total">
+                  <span>Total</span>
+                  <span data-testid="cart-total">${cartTotal}</span>
+                </div>
+                <button
+                  className="cart-checkout-btn"
+                  onClick={handleCheckout}
+                  disabled={checkoutLoading === 'cart'}
+                  data-testid="cart-checkout-btn"
+                >
+                  {checkoutLoading === 'cart' ? 'Processing...' : 'Checkout'}
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

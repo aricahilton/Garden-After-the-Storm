@@ -95,29 +95,36 @@ async def get_status_checks():
     return status_checks
 
 # Checkout request model
-class CheckoutCreateRequest(BaseModel):
+class CheckoutItem(BaseModel):
     product_id: str
+    quantity: int = 1
+
+class CheckoutCreateRequest(BaseModel):
+    items: Optional[List[CheckoutItem]] = None
+    product_id: Optional[str] = None
     origin_url: str
 
 # Stripe Checkout Routes
 @api_router.post("/checkout/create")
 async def create_checkout(request_body: CheckoutCreateRequest, http_request: Request):
-    product_id = request_body.product_id
     origin_url = request_body.origin_url
 
-    if product_id not in PRODUCTS:
-        raise HTTPException(status_code=400, detail="Invalid product")
+    # Support both single item (legacy) and multi-item cart
+    if request_body.items:
+        cart_items = request_body.items
+    elif request_body.product_id:
+        cart_items = [CheckoutItem(product_id=request_body.product_id, quantity=1)]
+    else:
+        raise HTTPException(status_code=400, detail="No items provided")
 
-    product = PRODUCTS[product_id]
-
-    success_url = f"{origin_url}/checkout/success?session_id={{CHECKOUT_SESSION_ID}}"
-    cancel_url = origin_url
-
-    amount_in_cents = int(product["price"] * 100)
-
-    session = stripe.checkout.Session.create(
-        payment_method_types=["card"],
-        line_items=[{
+    line_items = []
+    order_details = []
+    for cart_item in cart_items:
+        if cart_item.product_id not in PRODUCTS:
+            raise HTTPException(status_code=400, detail=f"Invalid product: {cart_item.product_id}")
+        product = PRODUCTS[cart_item.product_id]
+        amount_in_cents = int(product["price"] * 100)
+        line_items.append({
             "price_data": {
                 "currency": product["currency"],
                 "product_data": {
@@ -125,21 +132,34 @@ async def create_checkout(request_body: CheckoutCreateRequest, http_request: Req
                 },
                 "unit_amount": amount_in_cents,
             },
-            "quantity": 1,
-        }],
+            "quantity": cart_item.quantity,
+        })
+        order_details.append({
+            "product_id": cart_item.product_id,
+            "product_name": product["name"],
+            "quantity": cart_item.quantity,
+            "unit_price": product["price"]
+        })
+
+    success_url = f"{origin_url}/checkout/success?session_id={{CHECKOUT_SESSION_ID}}"
+    cancel_url = origin_url
+
+    session = stripe.checkout.Session.create(
+        payment_method_types=["card"],
+        line_items=line_items,
         mode="payment",
         success_url=success_url,
         cancel_url=cancel_url,
-        metadata={"product_id": product_id, "product_name": product["name"]}
+        metadata={"order_summary": str([d["product_name"] for d in order_details])}
     )
 
     # Store transaction in MongoDB
+    total = sum(d["unit_price"] * d["quantity"] for d in order_details)
     transaction = {
         "session_id": session.id,
-        "product_id": product_id,
-        "product_name": product["name"],
-        "amount": product["price"],
-        "currency": product["currency"],
+        "items": order_details,
+        "total": total,
+        "currency": "usd",
         "payment_status": "initiated",
         "status": "pending",
         "created_at": datetime.now(timezone.utc).isoformat()
