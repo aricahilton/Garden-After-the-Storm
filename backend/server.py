@@ -10,8 +10,10 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Optional, Dict
 import uuid
 from datetime import datetime, timezone
-from emergentintegrations.payments.stripe.checkout import StripeCheckout, CheckoutSessionRequest
+from emergentintegrations.payments.stripe.checkout import StripeCheckout
 
+
+import stripe
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -22,7 +24,7 @@ client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
 
 # Stripe setup
-stripe_api_key = os.environ['STRIPE_API_KEY']
+stripe.api_key = os.environ['STRIPE_API_KEY']
 
 # Fixed product packages (prices defined server-side only)
 PRODUCTS = {
@@ -108,26 +110,32 @@ async def create_checkout(request_body: CheckoutCreateRequest, http_request: Req
 
     product = PRODUCTS[product_id]
 
-    host_url = str(http_request.base_url).rstrip("/")
-    webhook_url = f"{host_url}/api/webhook/stripe"
-    stripe_checkout = StripeCheckout(api_key=stripe_api_key, webhook_url=webhook_url)
-
     success_url = f"{origin_url}/checkout/success?session_id={{CHECKOUT_SESSION_ID}}"
     cancel_url = origin_url
 
-    checkout_request = CheckoutSessionRequest(
-        amount=product["price"],
-        currency=product["currency"],
+    amount_in_cents = int(product["price"] * 100)
+
+    session = stripe.checkout.Session.create(
+        payment_method_types=["card"],
+        line_items=[{
+            "price_data": {
+                "currency": product["currency"],
+                "product_data": {
+                    "name": product["name"],
+                },
+                "unit_amount": amount_in_cents,
+            },
+            "quantity": 1,
+        }],
+        mode="payment",
         success_url=success_url,
         cancel_url=cancel_url,
         metadata={"product_id": product_id, "product_name": product["name"]}
     )
 
-    session = await stripe_checkout.create_checkout_session(checkout_request)
-
     # Store transaction in MongoDB
     transaction = {
-        "session_id": session.session_id,
+        "session_id": session.id,
         "product_id": product_id,
         "product_name": product["name"],
         "amount": product["price"],
@@ -138,18 +146,17 @@ async def create_checkout(request_body: CheckoutCreateRequest, http_request: Req
     }
     await db.payment_transactions.insert_one(transaction)
 
-    return {"url": session.url, "session_id": session.session_id}
+    return {"url": session.url, "session_id": session.id}
 
 
 @api_router.get("/checkout/status/{session_id}")
-async def get_checkout_status(session_id: str, http_request: Request):
-    host_url = str(http_request.base_url).rstrip("/")
-    webhook_url = f"{host_url}/api/webhook/stripe"
-    stripe_checkout = StripeCheckout(api_key=stripe_api_key, webhook_url=webhook_url)
+async def get_checkout_status(session_id: str):
+    session = stripe.checkout.Session.retrieve(session_id)
 
-    checkout_status = await stripe_checkout.get_checkout_status(session_id)
+    payment_status = session.payment_status
+    status = session.status
 
-    # Update transaction in MongoDB (only if not already marked as paid)
+    # Update transaction in MongoDB
     existing = await db.payment_transactions.find_one(
         {"session_id": session_id},
         {"_id": 0}
@@ -158,52 +165,42 @@ async def get_checkout_status(session_id: str, http_request: Request):
         await db.payment_transactions.update_one(
             {"session_id": session_id},
             {"$set": {
-                "payment_status": checkout_status.payment_status,
-                "status": checkout_status.status,
+                "payment_status": payment_status,
+                "status": status,
                 "updated_at": datetime.now(timezone.utc).isoformat()
             }}
         )
 
     return {
-        "status": checkout_status.status,
-        "payment_status": checkout_status.payment_status,
-        "amount_total": checkout_status.amount_total,
-        "currency": checkout_status.currency,
-        "metadata": checkout_status.metadata
+        "status": status,
+        "payment_status": payment_status,
+        "amount_total": session.amount_total,
+        "currency": session.currency,
+        "metadata": dict(session.metadata) if session.metadata else {}
     }
 
 
 @api_router.post("/webhook/stripe")
 async def stripe_webhook(request: Request):
-    body = await request.body()
-    signature = request.headers.get("Stripe-Signature")
+    body = await request.json()
     
-    host_url = str(request.base_url).rstrip("/")
-    webhook_url = f"{host_url}/api/webhook/stripe"
-    stripe_checkout = StripeCheckout(api_key=stripe_api_key, webhook_url=webhook_url)
+    event_type = body.get("type", "")
+    session_data = body.get("data", {}).get("object", {})
+    session_id = session_data.get("id", "")
+    payment_status = session_data.get("payment_status", "")
 
-    try:
-        webhook_response = await stripe_checkout.handle_webhook(body, signature)
-        
-        if webhook_response.payment_status == "paid":
-            existing = await db.payment_transactions.find_one(
-                {"session_id": webhook_response.session_id},
-                {"_id": 0}
-            )
-            if existing and existing.get("payment_status") != "paid":
-                await db.payment_transactions.update_one(
-                    {"session_id": webhook_response.session_id},
-                    {"$set": {
-                        "payment_status": "paid",
-                        "status": "complete",
-                        "event_type": webhook_response.event_type,
-                        "updated_at": datetime.now(timezone.utc).isoformat()
-                    }}
-                )
-        return {"status": "ok"}
-    except Exception as e:
-        logger.error(f"Webhook error: {e}")
-        return {"status": "error"}
+    if event_type == "checkout.session.completed" and payment_status == "paid":
+        await db.payment_transactions.update_one(
+            {"session_id": session_id},
+            {"$set": {
+                "payment_status": "paid",
+                "status": "complete",
+                "event_type": event_type,
+                "updated_at": datetime.now(timezone.utc).isoformat()
+            }}
+        )
+
+    return {"status": "ok"}
 
 
 # Include the router in the main app
