@@ -102,6 +102,28 @@ body {
   color: var(--color-accent);
 }
 
+.nav-cart-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #e74c3c;
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .social-links {
   display: flex;
   gap: 1.25rem;
