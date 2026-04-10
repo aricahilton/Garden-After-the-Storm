@@ -148,6 +148,9 @@ async def create_checkout(request_body: CheckoutCreateRequest, http_request: Req
         payment_method_types=["card"],
         line_items=line_items,
         mode="payment",
+        billing_address_collection="required",
+        shipping_address_collection={"allowed_countries": ["US"]},
+        phone_number_collection={"enabled": True},
         success_url=success_url,
         cancel_url=cancel_url,
         metadata={"order_summary": str([d["product_name"] for d in order_details])}
