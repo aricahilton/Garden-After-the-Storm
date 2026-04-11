@@ -1726,7 +1726,12 @@ function App() {
   const [escapeVelocityOpen, setEscapeVelocityOpen] = useState(false);
   const [showCheckoutSuccess, setShowCheckoutSuccess] = useState(false);
   const [bgMusicPlaying, setBgMusicPlaying] = useState(false);
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(() => {
+    try {
+      const saved = localStorage.getItem('gats_cart');
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
+  });
   const [cartOpen, setCartOpen] = useState(false);
   const bgMusicRef = useRef(null);
 
@@ -1743,11 +1748,24 @@ function App() {
     return cart.reduce((sum, c) => sum + c.qty, 0);
   }, [cart]);
 
+  // Persist cart to localStorage
+  useEffect(() => {
+    localStorage.setItem('gats_cart', JSON.stringify(cart));
+  }, [cart]);
+
+  // Auto-open cart if returning from Stripe (cancel) with items in cart
+  useEffect(() => {
+    if (cart.length > 0 && document.referrer.includes('stripe.com')) {
+      setCartOpen(true);
+    }
+  }, []);
+
   // Check if returning from Stripe checkout
   useEffect(() => {
     const path = window.location.pathname;
     if (path === "/checkout/success" || window.location.search.includes("session_id")) {
       setShowCheckoutSuccess(true);
+      setCart([]);
     }
   }, []);
 
