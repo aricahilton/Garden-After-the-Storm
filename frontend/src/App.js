@@ -1708,6 +1708,17 @@ const MERCH_ITEMS = [
     image: IMAGES.album,
     isDigital: true,
     trackFile: "track_02_i_heard_an_oak_tree.wav"
+  },
+  {
+    id: 7,
+    productId: "digital_escape_velocity",
+    category: "DIGITAL",
+    title: "Escape Velocity - Digital Download",
+    description: "Download the full Escape Velocity continuous mix in high-quality WAV format. 63 minutes of dark, club-driven electronic music spanning warehouse techno, melodic house, and bass-driven hybrids.",
+    price: "$49.99",
+    image: `${BACKEND_URL}/api/static/escape_velocity_cover.png`,
+    isDigital: true,
+    trackFile: "escape_velocity_set.wav"
   }
 ];
 

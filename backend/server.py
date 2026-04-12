@@ -34,6 +34,7 @@ PRODUCTS = {
     "digital_album": {"name": "Digital Album - Full Download", "price": 19.99, "currency": "usd"},
     "digital_single_garden": {"name": "Garden After the Storm - Single", "price": 3.99, "currency": "usd"},
     "digital_single_oak": {"name": "I Heard an Oak Tree - Single", "price": 3.99, "currency": "usd"},
+    "digital_escape_velocity": {"name": "Escape Velocity - Digital Download", "price": 49.99, "currency": "usd"},
 }
 
 # Create the main app without a prefix
